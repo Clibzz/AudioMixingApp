@@ -1,10 +1,9 @@
-# Startdocument C#2 project - racing game
+# Startdocument C#2 project - AudioMixingApplication
 
 Startdocument van **Monique Sabong**, **Yannieck Blaauw**, **Victor Peters** en **Chris Klunder**.
 
 ## Applicatie Beschrijving
-
-
+Voor de herkansing van C#2 wordt er een dj-mixset applicatie gemaakt. Hierbij is de bedoeling dat er twee audio's afgespeeld kunnen worden en dat je door middel van druk- en draaiknoppen de audio kan aanpassen voor leuke effecten. Het is de bedoeling dat je als een echte dj. Leuke mixen kan maken met muziek. 
 
 ### Input & Output
 
