@@ -76,7 +76,7 @@ Om de voortgang van dit project te bewaken, is er een planning gemaakt. Deze pla
 
 Dit project is begonnen op maandag 2 oktober 2023 en zal eindigen op vrijdag 1 december 2023.
 
-![Planning](img/planning.png.png "Project planning")
+![Planning](img/Planning.png "Project planning")
 
 ## Literatuurlijst
 
