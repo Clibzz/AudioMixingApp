@@ -27,13 +27,6 @@ In de tabellen hieronder worden alle input beschreven. (De input dat de user moe
 |                                                     | `image`    |
 |                                                     | `image`    |
 
-
-#### Berekeningen
-
-| Case                                                                  | Calculation                                                                                                                      |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-
-
 #### Opmerkingen
 
 -   Input wordt gevalideerd
@@ -81,7 +74,9 @@ In dit hoofdstuk worden de testcases beschreven. Elke testcase dient uitgevoerd 
 
 Om de voortgang van dit project te bewaken, is er een planning gemaakt. Deze planning bevat in grote lijnen hetgeen waarmee wij ons bezig zullen houden per week tot de deadline. Er kan natuurlijk afgeweken worden van deze planning, maar het is het doel om deze in grote lijnen te volgen.
 
-![Planning](set/link.png "Project planning")
+Dit project is begonnen op maandag 2 oktober 2023 en zal eindigen op vrijdag 1 december 2023.
+
+![Planning](img/planning.png.png "Project planning")
 
 ## Literatuurlijst
 
