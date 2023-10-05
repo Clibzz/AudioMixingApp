@@ -3,38 +3,11 @@
 Startdocument van **Monique Sabong**, **Yannieck Blaauw**, **Victor Peters** en **Chris Klunder**.
 
 ## Applicatie Beschrijving
-Voor de herkansing van C#2 wordt er een dj-mixset applicatie gemaakt. Hierbij is de bedoeling dat er twee audio's afgespeeld kunnen worden en dat je door middel van druk- en draaiknoppen de audio kan aanpassen voor leuke effecten. Het is de bedoeling dat je als een echte dj. Leuke mixen kan maken met muziek. 
+De applicatie die ontwikkeld wordt is een virtueel dj station. Hierbij is de bedoeling dat er een of twee nummers afgespeeld kunnen worden en dat je effecten kunt toevoegen aan de nummers (reverb, mid boosting, bass boosting, flanger etc.). De applicatie dient als audio player en als audio mixer.
 
-### Input & Output
-
-In deze sectie worden de input en output van de applicatie beschreven.
-
-#### Input
-
-In de tabellen hieronder worden alle input beschreven. (De input dat de user moet invoeren om de applicatie werkend te krijgen)
-
-| Case                                                           | Type          | Conditions |
-| -------------------------------------------------------------- | ------------- | ---------- |
-|                                                     | `String`      | not empty  |
-|                                                       | `Image`       | not empty  |
-|  | `KeyBoardKey` |
-
-#### Output
-
-| Case                                                | Type       |
-| --------------------------------------------------- | ---------- |
-|                                                     | `TimeSpan` |
-|                                                     | `image`    |
-|                                                     | `image`    |
-
-#### Opmerkingen
-
--   Input wordt gevalideerd
--   Unit Tests worden meegeleverd
+De applicatie zal ontwikkeld worden met **.NET MAUI**.
 
 ## Lay-out
-
-De applicatie zal gemaakt worden met .NET MAUI.
 
 
 ![GUI](set/imagelink.png "First Version of the GUI")
@@ -56,19 +29,42 @@ In de tabellen hieronder worden de data weergegeven die nodig zijn om de applica
 
 | ID           | Input          | Code                |
 | ------------ | -------------- | ------------------- |
-| `test`       | test.png       | `new test(image[0])` |
+| `test`       |  | `new test(image[0])` |
 | `test`       | test.png       | `new test(image[1])` |
 
+## Test cases:
 
-### Testcases
+Player interactive cases:
 
-In dit hoofdstuk worden de testcases beschreven. Elke testcase dient uitgevoerd te worden met de testdata als uitgangspunt.
+| Input                                         | Expected result                                           | Actual result |
+| --------------------------------------------- | --------------------------------------------------------- | ------------- |
+| User imports song                             | Song is displayed in the DJ menu                          | ...           |
+| User imports second song                      | Second song is also displayed in the DJ menu              | ...           |
+| User plays one or both song(s)                | Song(s) are played                                        | ...           |
+| User pauses one or both song(s)               | Song(s) are paused                                        | ...           |
+| User skips a song                             | The next song in the queue plays                          | ...           |
+| Gebruiker gaat naar het nummer overzicht      | Alle nummers in de library worden weergegeven.            | ...           |
+| Gebruiker past het volume aan                 | Het volume wordt aangepast                                | ...           |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
+| Gebruiker maakt een afspeellijst aan          | Er wordt een afspeellijst aangemaakt.                     | ...           |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
 
-#### #1 
+Level cases:
 
-#### #2 
+| Input                        | Expected result              | Actual result |
+| ---------------------------- | ---------------------------- | ------------- |
+| Level is opened              | User can see levels on a map | ...           |
+| User switches between levels | Level selected is updated    | ...           |
+| User chooses level           | Loading screen is shown      | ...           |
+| User is past loading screen  | Level is loaded in           | ...           |
 
-#### #3 
+Enemy cases:
+
+| Input | Expected result | Actual result |
+| ----- | --------------- | ------------- |
 
 ## Planning
 
