@@ -14,7 +14,7 @@ De applicatie zal ontwikkeld worden met **.NET MAUI**.
 
 ## Klassendiagram
 
-![Class Diagram](set/link.png "First Version of the class diagram")
+![Class Diagram](img/classdiagram.png "First Version of the class diagram")
 
 ## Testplan
 
