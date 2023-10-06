@@ -29,17 +29,9 @@ In this section the testcases will be described to test the application.
 
 In de tabellen hieronder worden de data weergegeven die nodig zijn om de applicatie te testen
 
-
-#### Car
-
-| ID           | Input          | Code                |
-| ------------ | -------------- | ------------------- |
-| `test`       |  | `new test(image[0])` |
-| `test`       | test.png       | `new test(image[1])` |
-
 ## Test cases:
 
-Player interactive cases:
+User interactive cases:
 
 | Input                                         | Expected result                                           | Actual result |
 | --------------------------------------------- | --------------------------------------------------------- | ------------- |
@@ -57,27 +49,13 @@ Player interactive cases:
 | Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
 | Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
 
-Level cases:
-
-| Input                        | Expected result              | Actual result |
-| ---------------------------- | ---------------------------- | ------------- |
-| Level is opened              | User can see levels on a map | ...           |
-| User switches between levels | Level selected is updated    | ...           |
-| User chooses level           | Loading screen is shown      | ...           |
-| User is past loading screen  | Level is loaded in           | ...           |
-
-Enemy cases:
-
-| Input | Expected result | Actual result |
-| ----- | --------------- | ------------- |
-
 ## Planning
 
 Om de voortgang van dit project te bewaken, is er een planning gemaakt. Deze planning bevat in grote lijnen hetgeen waarmee wij ons bezig zullen houden per week tot de deadline. Er kan natuurlijk afgeweken worden van deze planning, maar het is het doel om deze in grote lijnen te volgen.
 
 Dit project is begonnen op maandag 2 oktober 2023 en zal eindigen op vrijdag 1 december 2023.
 
-![Planning](img/Planning.png "Project planning")
+![Planning](img/planning.png "Project planning")
 
 ## Literatuurlijst
 
