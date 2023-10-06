@@ -10,7 +10,12 @@ De applicatie zal ontwikkeld worden met **.NET MAUI**.
 ## Lay-out
 
 
-![GUI](set/imagelink.png "First Version of the GUI")
+![Scherm1](img/Scherm%201.png "Scherm 1")
+![Scherm2](img/Scherm%202.png "Scherm 2")
+![Scherm3](img/Scherm%203.png "Scherm 3")
+![Scherm4](img/Scherm%204.png "Scherm 4")
+![Scherm5](img/Scherm%205.png "Scherm 5")
+
 
 ## Klassendiagram
 
