@@ -23,7 +23,7 @@ De applicatie zal ontwikkeld worden met **.NET MAUI**.
 
 ## Testplan
 
-In this section the testcases will be described to test the application.
+In dit deel zullen de testcases worden beschreven die worden gebruikt voor het testen van de applicatie.
 
 ### Testdata
 
@@ -31,23 +31,23 @@ In de tabellen hieronder worden de data weergegeven die nodig zijn om de applica
 
 ## Test cases:
 
-User interactive cases:
+User interactieve cases:
 
-| Input                                         | Expected result                                           | Actual result |
-| --------------------------------------------- | --------------------------------------------------------- | ------------- |
-| User imports song                             | Song is displayed in the DJ menu                          | ...           |
-| User imports second song                      | Second song is also displayed in the DJ menu              | ...           |
-| User plays one or both song(s)                | Song(s) are played                                        | ...           |
-| User pauses one or both song(s)               | Song(s) are paused                                        | ...           |
-| User skips a song                             | The next song in the queue plays                          | ...           |
-| Gebruiker gaat naar het nummer overzicht      | Alle nummers in de library worden weergegeven.            | ...           |
-| Gebruiker past het volume aan                 | Het volume wordt aangepast                                | ...           |
-| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
-| Gebruiker maakt een afspeellijst aan          | Er wordt een afspeellijst aangemaakt.                     | ...           |
-| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
-| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
-| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
-| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...           |
+| Input                                         | Verwachte resultaat                                       | Daadwerkelijke resultaat  |
+| --------------------------------------------- | --------------------------------------------------------- | -------------             |
+| Gebruiker importeert een nummer               | Nummer wordt in het paneel weergegeven                    | ...                       |
+| Gebruiker importeert een tweede nummer        | Tweede nummer wordt ook in het paneel weergegeven         | ...                       |
+| Gebruiker speelt één of meer nummers af       | Nummer(s) worden afgespeeld                               | ...                       |
+| Gebruiker pauzeert één of meerdere nummers    | Nummer(s) worden gepauzeerd                               | ...                       |
+| Gebruiker skipt een nummer                    | Het volgend nummer in de queue wordt afgespeeld           | ...                       |
+| Gebruiker gaat naar het nummer overzicht      | Alle nummers in de library worden weergegeven.            | ...                       |
+| Gebruiker past het volume aan                 | Het volume wordt aangepast                                | ...                       |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...                       |
+| Gebruiker maakt een afspeellijst aan          | Er wordt een afspeellijst aangemaakt.                     | ...                       |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...                       |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...                       |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...                       |
+| Gebruiker voegt een effect toe aan het nummer | Het nummer krijgt het effect dat de gebruiker toegevoegd. | ...                       |
 
 ## Planning
 
