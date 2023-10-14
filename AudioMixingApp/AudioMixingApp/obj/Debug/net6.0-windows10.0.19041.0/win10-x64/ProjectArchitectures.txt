@@ -1,0 +1,1 @@
+C:\Users\moniq\C#2_herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\AudioMixingApp.csproj;x64
