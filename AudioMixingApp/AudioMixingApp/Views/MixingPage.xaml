@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioMixingApp.Views.MixingPage"
+             Title="Test page"
+             xmlns:vm="clr-namespace:AudioMixingApp.Models"
+             xmlns:eff="clr-namespace:AudioMixingApp.Models.Effects"
+             x:DataType="vm:Song">
+    <ListView ItemsSource="{Binding Effects}">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="eff:Equalizer">
+                <ViewCell>
+                    <Label TextColor="White" Text="{Binding low}" />
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+
+</ContentPage>

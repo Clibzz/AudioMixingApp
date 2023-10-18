@@ -24633,24 +24633,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\moniq\\.nuget\\packages\\": {},
+    "C:\\Users\\Yanni\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\moniq\\C#2_herkansing\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp.csproj",
+      "projectUniqueName": "C:\\Users\\Yanni\\Documents\\GitHub\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp.csproj",
       "projectName": "AudioMixingApp",
-      "projectPath": "C:\\Users\\moniq\\C#2_herkansing\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp.csproj",
-      "packagesPath": "C:\\Users\\moniq\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\moniq\\C#2_herkansing\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\obj\\",
+      "projectPath": "C:\\Users\\Yanni\\Documents\\GitHub\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp.csproj",
+      "packagesPath": "C:\\Users\\Yanni\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Yanni\\Documents\\GitHub\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\obj\\",
       "projectStyle": "PackageReference",
       "crossTargeting": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\moniq\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Yanni\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
