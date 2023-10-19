@@ -49,12 +49,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Viewmodels\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Views\MixingPage.xaml.cs">
+	  <Compile Update="Viewmodels\MixingPage.xaml.cs">
 	    <DependentUpon>MixingPage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
+	  </Compile>
+	  <Compile Update="Viewmodels\MainPage.xaml.cs">
+	    <DependentUpon>MainPage.xaml</DependentUpon>
+	    <SubType>Code</SubType>
 	  </Compile>
 	</ItemGroup>
 

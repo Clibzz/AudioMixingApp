@@ -2,7 +2,5 @@
 
 class Song
 {
-    public List<Effect> Effects { get; set; }
-
-    public string Title { get; set; }
+    public List<IEffect> Effects { get; set; }
 }

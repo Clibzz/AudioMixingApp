@@ -1,15 +1,20 @@
 ﻿namespace AudioMixingApp.Models.Effects;
 
-class Equalizer : Effect
+class Equalizer : IEffect
 {
-    public float low;
-    public float mid;
-    public float high;
+    public int Min { get; set; }
+    public int Max { get; set; }
+    public float Value { get; set; }
 
-    public Equalizer(float low, float mid, float high)
+    public Equalizer(int min, int max, float value)
     {
-        this.low = low;
-        this.mid = mid;
-        this.high = high;
+        Min = min;
+        Max = max;
+        Value = value;
+    }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()}: Min:{Min}, Max:{Max}, Value:{Value}";
     }
 }

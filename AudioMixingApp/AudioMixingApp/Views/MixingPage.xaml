@@ -1,20 +1,36 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AudioMixingApp.Views.MixingPage"
-             Title="Test page"
-             xmlns:vm="clr-namespace:AudioMixingApp.Models"
-             xmlns:eff="clr-namespace:AudioMixingApp.Models.Effects"
-             x:DataType="vm:Song">
-    <ListView ItemsSource="{Binding Effects}">
-        <ListView.ItemTemplate>
-            <DataTemplate x:DataType="eff:Equalizer">
+             x:Class="AudioMixingApp.Viewmodels.MixingPage"
+             Title="Mixing"
+             xmlns:m="clr-namespace:AudioMixingApp.Models"
+             x:DataType="m:Song">
+    <TableView Intent="Menu">
+        <TableRoot>
+            <TableSection Title="Filters">
+                <TextCell Text="1. Introduction to .NET MAUI"
+                          Detail="Learn about .NET MAUI and what it provides." />
                 <ViewCell>
-                    <Label TextColor="White" Text="{Binding low}" />
+                    <Grid ColumnDefinitions="*, 50, *">
+                        <Label Grid.Column="0" Text="{Binding Effects[0]}" VerticalOptions="Center"
+                               Margin="10,0" />
+                        <Entry Grid.Column="1" x:Name="SliderLabel"
+                               Text="{Binding Effects[0].Value}"
+                               Placeholder="{Binding Effects[0]}"
+                               Completed="Entry_OnCompleted"
+                        />
+                        <Slider Grid.Column="2" x:Name="ValueSlider"
+                                Margin="10"
+                                Minimum="{Binding Effects[0].Min}"
+                                Maximum="{Binding Effects[0].Max}"
+                                Value="{Binding Effects[0].Value}"
+                                ValueChanged="Slider_OnValueChanged" />
+                    </Grid>
                 </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+            </TableSection>
+        </TableRoot>
+    </TableView>
 
 
 </ContentPage>

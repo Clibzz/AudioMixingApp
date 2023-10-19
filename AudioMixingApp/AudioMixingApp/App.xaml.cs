@@ -1,4 +1,4 @@
-﻿using AudioMixingApp.Views;
+﻿using AudioMixingApp.Viewmodels;
 
 namespace AudioMixingApp;
 

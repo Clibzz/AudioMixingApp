@@ -12,47 +12,46 @@
     <PackageIdentityPublisher>CN=User Name</PackageIdentityPublisher>
     <IntermediateOutputPath>C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
-    <PackageRegistrationPath>
-    </PackageRegistrationPath>
+    <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
-    <WindowsSdkPath>
-    </WindowsSdkPath>
+    <WindowsSdkPath></WindowsSdkPath>
     <LayoutDir>C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppX</LayoutDir>
-    <RegisteredManifestChecksum>E74A6E368FFE762A97C7997B68874B131E6048F4128C122A3FAAB4607CBB16EA</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>DBE730DAC8C2B766376EA948E2B8F85025B22AB925751E6AF84CCD9238DA5639</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>e83edb00-4d7c-49a0-af60-bea277361a71_1.0.0.1_x64__9zz4h110yvjzm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>e83edb00-4d7c-49a0-af60-bea277361a71_9zz4h110yvjzm!App</RegisteredUserModeAppID>
     <RegisteredPackageID>e83edb00-4d7c-49a0-af60-bea277361a71</RegisteredPackageID>
     <RegisteredPackagePublisher>CN=User Name</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.1</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-10-18T21:21:17.051</Modified>
+      <Modified>2023-10-19T21:24:05.054</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-10-18T21:21:16.859</Modified>
+      <Modified>2023-10-19T21:24:04.846</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AudioMixingApp.runtimeconfig.json">
       <PackagePath>AudioMixingApp.runtimeconfig.json</PackagePath>
-      <Modified>2023-10-18T19:20:41.694</Modified>
+      <Modified>2023-10-19T18:04:21.398</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AudioMixingApp.dll">
       <PackagePath>AudioMixingApp.dll</PackagePath>
-      <Modified>2023-10-18T21:21:16.198</Modified>
+      <Modified>2023-10-19T21:24:04.140</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>AudioMixingApp.exe</PackagePath>
-      <Modified>2023-10-18T21:21:16.205</Modified>
+      <Modified>2023-10-19T21:24:04.150</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AudioMixingApp.deps.json">
       <PackagePath>AudioMixingApp.deps.json</PackagePath>
-      <Modified>2023-10-18T20:59:20.901</Modified>
+      <Modified>2023-10-19T21:24:04.714</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.16\runtimes\win-x64\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1084,235 +1083,235 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.736</Modified>
+      <Modified>2023-10-19T17:50:43.312</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
       <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.737</Modified>
+      <Modified>2023-10-19T17:50:43.323</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
       <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.737</Modified>
+      <Modified>2023-10-19T17:50:43.339</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
       <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.738</Modified>
+      <Modified>2023-10-19T17:50:43.363</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.738</Modified>
+      <Modified>2023-10-19T17:50:43.453</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
-      <Modified>2023-10-16T18:05:09.716</Modified>
+      <Modified>2023-10-16T18:05:07.692</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
-      <Modified>2023-10-16T18:05:09.717</Modified>
+      <Modified>2023-10-16T18:05:07.694</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2023-10-16T18:05:09.718</Modified>
+      <Modified>2023-10-19T17:50:43.482</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.718</Modified>
+      <Modified>2023-10-19T17:50:43.648</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.719</Modified>
+      <Modified>2023-10-19T17:50:43.656</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.719</Modified>
+      <Modified>2023-10-19T17:50:43.663</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.719</Modified>
+      <Modified>2023-10-19T17:50:43.676</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.720</Modified>
+      <Modified>2023-10-19T17:50:43.723</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.720</Modified>
+      <Modified>2023-10-19T17:50:43.528</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.720</Modified>
+      <Modified>2023-10-19T17:50:43.530</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.721</Modified>
+      <Modified>2023-10-19T17:50:43.538</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.721</Modified>
+      <Modified>2023-10-19T17:50:43.531</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.721</Modified>
+      <Modified>2023-10-19T17:50:43.533</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.722</Modified>
+      <Modified>2023-10-19T17:50:43.519</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.722</Modified>
+      <Modified>2023-10-19T17:50:43.521</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.722</Modified>
+      <Modified>2023-10-19T17:50:43.527</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.722</Modified>
+      <Modified>2023-10-19T17:50:43.523</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.723</Modified>
+      <Modified>2023-10-19T17:50:43.524</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.723</Modified>
+      <Modified>2023-10-19T17:50:43.492</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.724</Modified>
+      <Modified>2023-10-19T17:50:43.494</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.724</Modified>
+      <Modified>2023-10-19T17:50:43.496</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.724</Modified>
+      <Modified>2023-10-19T17:50:43.498</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.724</Modified>
+      <Modified>2023-10-19T17:50:43.502</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
       <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.725</Modified>
+      <Modified>2023-10-19T17:50:43.505</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
       <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.725</Modified>
+      <Modified>2023-10-19T17:50:43.507</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
       <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.725</Modified>
+      <Modified>2023-10-19T17:50:43.517</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
       <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.726</Modified>
+      <Modified>2023-10-19T17:50:43.510</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
       <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.726</Modified>
+      <Modified>2023-10-19T17:50:43.511</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.726</Modified>
+      <Modified>2023-10-19T17:50:43.570</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.727</Modified>
+      <Modified>2023-10-19T17:50:43.575</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.727</Modified>
+      <Modified>2023-10-19T17:50:43.579</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.728</Modified>
+      <Modified>2023-10-19T17:50:43.585</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.728</Modified>
+      <Modified>2023-10-19T17:50:43.596</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.729</Modified>
+      <Modified>2023-10-19T17:50:43.555</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.729</Modified>
+      <Modified>2023-10-19T17:50:43.557</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.730</Modified>
+      <Modified>2023-10-19T17:50:43.560</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.730</Modified>
+      <Modified>2023-10-19T17:50:43.563</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.730</Modified>
+      <Modified>2023-10-19T17:50:43.568</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.730</Modified>
+      <Modified>2023-10-19T17:50:43.540</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.730</Modified>
+      <Modified>2023-10-19T17:50:43.543</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.732</Modified>
+      <Modified>2023-10-19T17:50:43.545</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.732</Modified>
+      <Modified>2023-10-19T17:50:43.548</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.732</Modified>
+      <Modified>2023-10-19T17:50:43.552</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.732</Modified>
+      <Modified>2023-10-19T17:50:43.600</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.733</Modified>
+      <Modified>2023-10-19T17:50:43.604</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.733</Modified>
+      <Modified>2023-10-19T17:50:43.610</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.734</Modified>
+      <Modified>2023-10-19T17:50:43.618</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.734</Modified>
+      <Modified>2023-10-19T17:50:43.641</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.734</Modified>
+      <Modified>2023-10-19T17:50:43.488</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.735</Modified>
+      <Modified>2023-10-19T17:50:43.495</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.735</Modified>
+      <Modified>2023-10-19T17:50:43.504</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.735</Modified>
+      <Modified>2023-10-19T17:50:43.518</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2023-10-16T18:05:09.736</Modified>
+      <Modified>2023-10-19T17:50:43.554</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
@@ -1322,8 +1321,7 @@
       <Architecture>x86</Architecture>
       <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.1, MinVersion = 1005.616.1651.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Users\Yanni\.nuget\packages\microsoft.windowsappsdk\1.1.5\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.1.msix</AppxLocation>
-      <MoreInfo>
-      </MoreInfo>
+      <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Users\Yanni\.nuget\packages\microsoft.windowsappsdk\1.1.5\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.1.msix">
       <Name>Microsoft.WindowsAppRuntime.1.1</Name>
@@ -1331,8 +1329,7 @@
       <Architecture>win32</Architecture>
       <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.1, MinVersion = 1005.616.1651.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Users\Yanni\.nuget\packages\microsoft.windowsappsdk\1.1.5\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.1.msix</AppxLocation>
-      <MoreInfo>
-      </MoreInfo>
+      <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Users\Yanni\.nuget\packages\microsoft.windowsappsdk\1.1.5\buildTransitive\..\tools\MSIX\win10-x64\Microsoft.WindowsAppRuntime.1.1.msix">
       <Name>Microsoft.WindowsAppRuntime.1.1</Name>
@@ -1340,8 +1337,7 @@
       <Architecture>x64</Architecture>
       <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.1, MinVersion = 1005.616.1651.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Users\Yanni\.nuget\packages\microsoft.windowsappsdk\1.1.5\buildTransitive\..\tools\MSIX\win10-x64\Microsoft.WindowsAppRuntime.1.1.msix</AppxLocation>
-      <MoreInfo>
-      </MoreInfo>
+      <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Users\Yanni\.nuget\packages\microsoft.windowsappsdk\1.1.5\buildTransitive\..\tools\MSIX\win10-arm64\Microsoft.WindowsAppRuntime.1.1.msix">
       <Name>Microsoft.WindowsAppRuntime.1.1</Name>
@@ -1349,8 +1345,7 @@
       <Architecture>arm64</Architecture>
       <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.1, MinVersion = 1005.616.1651.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Users\Yanni\.nuget\packages\microsoft.windowsappsdk\1.1.5\buildTransitive\..\tools\MSIX\win10-arm64\Microsoft.WindowsAppRuntime.1.1.msix</AppxLocation>
-      <MoreInfo>
-      </MoreInfo>
+      <MoreInfo></MoreInfo>
     </ResolvedSDKReference>
   </ItemGroup>
 </Project>
