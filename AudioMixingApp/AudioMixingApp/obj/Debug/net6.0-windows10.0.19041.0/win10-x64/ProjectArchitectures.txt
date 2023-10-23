@@ -1,1 +1,1 @@
-C:\Users\moniq\C#2_herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\AudioMixingApp.csproj;x64
+C:\xampp\htdocs\school\Jaar 3\C#2 herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\AudioMixingApp.csproj;x64
