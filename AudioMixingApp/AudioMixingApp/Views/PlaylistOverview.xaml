@@ -4,33 +4,46 @@
              BackgroundColor="#3F3F3F">
 
     <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="#3F3F3F">
-        <Label Text="Playlists"
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <AbsoluteLayout Grid.Column="0">
+                <Label Text="Playlists"
                FontSize="32"
-               HorizontalOptions="Center"
-               Margin="0,40,0,60"/>
+               TextColor="White"
+               AbsoluteLayout.LayoutFlags="XProportional"
+               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
+            </AbsoluteLayout>
+
+            <Button Text="Back"
+            BackgroundColor="Black"
+            TextColor="White"
+            Margin="0,0,10,0"
+            Grid.Column="1"
+            HorizontalOptions="End" />
+        </Grid>
+
+
 
         <Frame HasShadow="False" BorderColor="Transparent" BackgroundColor="#3F3F3F">
             <Grid HorizontalOptions="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1000" />
-                    <!-- Width set to Auto will make the column size to its content -->
                 </Grid.ColumnDefinitions>
 
-                <!-- First column contains the TableView -->
                 <Frame Grid.Column="0" BorderColor="Transparent" BackgroundColor="#3F3F3F" HasShadow="False">
-                    <TableView>
+                    <TableView Intent="Menu" Margin="50,20,20,20">
                         <TableRoot>
-                            <TableSection Title="Playlists">
+                            <TableSection>
                                 <ViewCell>
-                                    <Label Text="Song 2" Padding="10"/>
-                                    <Label Text="Song 3" Padding="10"/>s
+                                    <StackLayout BackgroundColor="#6E6E6E" Padding="10">
+                                        <Label Text="Playlist 1" TextColor="White" />
+                                    </StackLayout>
                                 </ViewCell>
-                                <ViewCell>
-                                    <Label Text="Song 3" Padding="10"/>
-                                </ViewCell>
-                                <!-- Add more ViewCell elements for additional rows -->
                             </TableSection>
-
                         </TableRoot>
                     </TableView>
                 </Frame>

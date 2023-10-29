@@ -8,3 +8,7 @@ obj/Debug/
 *.cache
 *.editorconfig
 *.cache
+*.dll
+*.appxrecipe
+AudioMixingApp/.vs/AudioMixingApp/v17/.suo
+*.v2
