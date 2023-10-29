@@ -1,0 +1,40 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioMixingApp.PlaylistOverview"
+             BackgroundColor="#3F3F3F">
+
+    <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="#3F3F3F">
+        <Label Text="Playlists"
+               FontSize="32"
+               HorizontalOptions="Center"
+               Margin="0,40,0,60"/>
+
+        <Frame HasShadow="False" BorderColor="Transparent" BackgroundColor="#3F3F3F">
+            <Grid HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1000" />
+                    <!-- Width set to Auto will make the column size to its content -->
+                </Grid.ColumnDefinitions>
+
+                <!-- First column contains the TableView -->
+                <Frame Grid.Column="0" BorderColor="Transparent" BackgroundColor="#3F3F3F" HasShadow="False">
+                    <TableView>
+                        <TableRoot>
+                            <TableSection Title="Playlists">
+                                <ViewCell>
+                                    <Label Text="Song 2" Padding="10"/>
+                                    <Label Text="Song 3" Padding="10"/>s
+                                </ViewCell>
+                                <ViewCell>
+                                    <Label Text="Song 3" Padding="10"/>
+                                </ViewCell>
+                                <!-- Add more ViewCell elements for additional rows -->
+                            </TableSection>
+
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+            </Grid>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

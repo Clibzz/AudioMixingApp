@@ -1,1 +1,1 @@
-C:\Users\Yanni\Documents\GitHub\AudioMixingApp\AudioMixingApp\AudioMixingApp\AudioMixingApp.csproj;x64
+C:\Users\moniq\C#2_herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\AudioMixingApp.csproj;x64

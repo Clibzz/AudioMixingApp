@@ -5,3 +5,6 @@ img/classdiagram.png.bak
 .vs/
 bin/
 obj/Debug/
+*.cache
+*.editorconfig
+*.cache
