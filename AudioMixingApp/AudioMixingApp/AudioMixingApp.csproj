@@ -49,6 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\SongOverview.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PlaylistOverview.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -1,12 +1,48 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AudioMixingApp.SongOverview"
-             Title="SongOverview">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             BackgroundColor="#3F3F3F">
+
+    <VerticalStackLayout HorizontalOptions="Center" BackgroundColor="#3F3F3F">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <AbsoluteLayout Grid.Column="0">
+                <Label Text="Songs"
+               FontSize="32"
+               TextColor="White"
+               AbsoluteLayout.LayoutFlags="XProportional"
+               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
+            </AbsoluteLayout>
+
+            
+        </Grid>
+
+
+
+        <Frame HasShadow="False" BorderColor="Transparent" BackgroundColor="#3F3F3F">
+            <Grid HorizontalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1000" />
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="0" BorderColor="Transparent" BackgroundColor="#3F3F3F" HasShadow="False">
+                    <TableView Intent="Menu" Margin="50,20,20,20">
+                        <TableRoot>
+                            <TableSection>
+                                <ViewCell>
+                                    <StackLayout BackgroundColor="#6E6E6E" Padding="10">
+                                        <Label Text="Song 1" TextColor="White" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+            </Grid>
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>

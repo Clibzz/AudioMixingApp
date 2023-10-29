@@ -12,3 +12,6 @@ obj/Debug/
 *.appxrecipe
 AudioMixingApp/.vs/AudioMixingApp/v17/.suo
 *.v2
+*.pdb
+*.dll
+*.appxrecipe

@@ -8,7 +8,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage(new PlaylistOverview());
+		MainPage = new NavigationPage(new SongOverview());
 	}
 
 }
