@@ -30,7 +30,7 @@
     <AppXManifest Include="C:\Users\moniq\C#2_herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-10-29T17:42:58.045</Modified>
+      <Modified>2023-10-29T17:44:14.119</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\moniq\C#2_herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AudioMixingApp.dll">
       <PackagePath>AudioMixingApp.dll</PackagePath>
-      <Modified>2023-10-29T17:42:56.282</Modified>
+      <Modified>2023-10-29T17:44:12.369</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\moniq\C#2_herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>AudioMixingApp.exe</PackagePath>
-      <Modified>2023-10-29T17:42:56.305</Modified>
+      <Modified>2023-10-29T17:44:12.379</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\moniq\C#2_herkansing\AudioMixingApp\AudioMixingApp\AudioMixingApp\bin\Debug\net6.0-windows10.0.19041.0\win10-x64\AudioMixingApp.deps.json">
       <PackagePath>AudioMixingApp.deps.json</PackagePath>
