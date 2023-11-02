@@ -13,3 +13,15 @@ AudioMixingApp/AudioMixingApp/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/Aud
 *.cache
 *.cache
 *.props
+*.cache
+*.cache
+*.json
+*.cache
+*.cache
+*.cache
+*.cache
+*.cache
+*.cache
+*.props
+AudioMixingApp/AudioMixingApp/obj/AudioMixingApp.csproj.nuget.dgspec.json
+AudioMixingApp/.vs/AudioMixingApp/v17/.suo
