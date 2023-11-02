@@ -3,3 +3,13 @@ classdiagram/ClassDiagramV0.1.asta.lock
 img/classdiagram.png.bak
 *.vsidx
 *.lock
+*.cache
+*.cache
+AudioMixingApp/AudioMixingApp/obj/Debug/net6.0-ios/iossimulator-x64/AudioMixingApp.GeneratedMSBuildEditorConfig.editorconfig
+AudioMixingApp/AudioMixingApp/obj/Debug/net6.0-maccatalyst/maccatalyst-x64/AudioMixingApp.assets.cache
+AudioMixingApp/AudioMixingApp/obj/Debug/net6.0-maccatalyst/maccatalyst-x64/AudioMixingApp.csproj.AssemblyReference.cache
+AudioMixingApp/AudioMixingApp/obj/Debug/net6.0-windows10.0.19041.0/win10-x64/AudioMixingApp.assets.cache
+*.editorconfig
+*.cache
+*.cache
+*.props
