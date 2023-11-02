@@ -1,4 +1,5 @@
 ﻿namespace AudioMixingApp;
+using Viewmodels;
 
 public partial class App : Application
 {

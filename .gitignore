@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+.vs/
+AudioMixingApp/bin/
+AudioMixingApp/AudioMixingApp/bin/Debug/
+AudioMixingApp/.vs/
+AudioMixingApp/AudioMixingApp/.vs/
+
 # User-specific files
 *.rsuser
 *.suo
