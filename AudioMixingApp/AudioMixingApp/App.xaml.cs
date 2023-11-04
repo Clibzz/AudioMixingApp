@@ -1,6 +1,4 @@
-﻿using AudioMixingApp.Viewmodels;
-
-namespace AudioMixingApp;
+﻿namespace AudioMixingApp;
 
 public partial class App : Application
 {
