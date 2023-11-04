@@ -35,6 +35,7 @@ namespace AudioMixingApp
         /// Method <c>RemoveFromQueue</c> removes a specific song from the queue.
         /// </summary>
         /// <param name="songName">the name of the mp3 file that represents the song.</param>
+        /// source: https://kodify.net/csharp/queue/remove/
         public void RemoveFromQueue(string songName) 
         {
             // gets the path to the song.
@@ -66,6 +67,7 @@ namespace AudioMixingApp
                 Output.Init(PlayingSong);
 
                 // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
+                // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
                 Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
             }
         }
