@@ -1,4 +1,4 @@
-﻿namespace AudioMixingApp.Viewmodels;
+﻿namespace AudioMixingApp.ViewModels;
 
 public partial class MainPage : ContentPage
 {
