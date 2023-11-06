@@ -1,4 +1,4 @@
-﻿namespace AudioMixingApp.Viewmodels;
+﻿namespace AudioMixingApp;
 
 public partial class AppShell : Shell
 {
