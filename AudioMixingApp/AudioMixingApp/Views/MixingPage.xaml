@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioMixingApp.Views.MixingPage"
+             Title="Mixing page"
+             BackgroundColor="#424242">
+    <Grid
+        RowDefinitions="3*, 2*"
+        Padding="30"
+        VerticalOptions="Fill">
+        <Grid
+            VerticalOptions="Fill"
+            Padding="30"
+            Grid.Row="0">
+            <Label Text="Grid" />
+        </Grid>
+        <StackLayout
+            VerticalOptions="Fill"
+            Padding="30"
+            BackgroundColor="#292929"
+            Grid.Row="1">
+            <Button Text="Import" HorizontalOptions="Start" Margin="5" Padding="5"/>
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Items">
+                        <ViewCell>  
+                            <Label Text="Row 1"
+                                   VerticalOptions="End" />
+                        </ViewCell>
+                        <ViewCell>
+                            <Label Text="Row 1"
+                                   VerticalOptions="End" />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+        </StackLayout>
+
+    </Grid>
+</ContentPage>
