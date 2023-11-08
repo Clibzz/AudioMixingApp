@@ -10,4 +10,11 @@ public partial class MixingPage : ContentPage
         InitializeComponent();
         BindingContext = new MixingPageViewModel();
     }
+    
+    protected override void OnSizeAllocated(double width, double height)
+    {
+        base.OnSizeAllocated(width, height);
+
+        DjPanel.WidthRequest = DjPanel.Height * 2.5;
+    }
 }

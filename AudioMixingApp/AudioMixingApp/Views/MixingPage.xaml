@@ -10,10 +10,30 @@
         Padding="30"
         VerticalOptions="Fill">
         <Grid
+            x:Name = "DjPanel"
+            RowDefinitions="4*, 1*, 1*"
+            ColumnDefinitions="1*, 3*, 1*, 1*, 3*, 1*"
             VerticalOptions="Fill"
-            Padding="30"
+            Padding="100,0,100,30"
             Grid.Row="0">
-            <Label Text="Grid" />
+            <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End">
+                <Ellipse Fill="DarkBlue"
+                         Stroke="Red"
+                         StrokeThickness="4"
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         HorizontalOptions="Start" />
+            </VerticalStackLayout>
+            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Fill"></VerticalStackLayout>
+            <Rectangle Fill="Green" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Green" Grid.Row="1" Grid.Column="5" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Orange" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Orange" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
         </Grid>
         <StackLayout
             VerticalOptions="Fill"
@@ -22,7 +42,7 @@
             Grid.Row="1">
             <Button Text="Import" HorizontalOptions="Start" Margin="5" Padding="5"/>
             <TableView>
-                <TableRoot>
+                <TableRoot> 
                     <TableSection Title="Items">
                         <ViewCell>  
                             <Label Text="Row 1"
