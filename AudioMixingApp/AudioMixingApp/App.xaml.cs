@@ -12,10 +12,11 @@ public partial class App : Application
         MainPage = new NavigationPage(new MainPage());
         string filePath = "";
         var audioFile = new AudioFileReader(filePath);
-        var flangerEffect = new FlangerEffect(audioFile, flangerFactor: 0.4f); // (tussen 0.0 en 0.5)
-
+        //Pas de flangerFactor naar wens aan tussen 0.0 en 0.5
+        var flangerEffect = new FlangerEffect(audioFile, flangerFactor: 0.1f);
+        Console.WriteLine("bleep");
         var output = new WaveOutEvent();
         output.Init(flangerEffect);
-        output.Play();
+        output.Play();   
     }
 }
