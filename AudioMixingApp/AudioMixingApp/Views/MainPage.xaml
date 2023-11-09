@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AudioMixingApp.Viewmodels.MainPage"
+             x:Class="AudioMixingApp.Views.MainPage"
              BackgroundColor="#ffffff">
 
     <ScrollView>
@@ -30,10 +30,20 @@
                 HorizontalOptions="Center" />
             
             <Button
-                x:Name="AboutPageButton"
-                Text="Click me"
+                x:Name="MixingPageButton"
+                Text="Mixing page"
                 SemanticProperties.Hint="Counts the number of times you click"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center"
+                Clicked="MixingPageButton_OnClicked"
+                />
+            
+            <Button
+                x:Name="AboutPageButton"
+                Text="About page"
+                SemanticProperties.Hint="Counts the number of times you click"
+                HorizontalOptions="Center"
+                Clicked="AboutPageButton_OnClicked"
+            />
 
         </VerticalStackLayout>
     </ScrollView>

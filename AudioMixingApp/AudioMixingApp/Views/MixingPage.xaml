@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioMixingApp.Views.MixingPage"
+             Title="Mixing page"
+             BackgroundColor="#424242">
+    <Grid
+        RowDefinitions="3*, 2*"
+        Padding="30"
+        VerticalOptions="Fill">
+        <Grid
+            x:Name="DjPanel"
+            RowDefinitions="4*, 1*, 1*"
+            ColumnDefinitions="1*, 3*, 1*, 1*, 3*, 1*"
+            VerticalOptions="Fill"
+            Padding="100,0,100,30"
+            Grid.Row="0">
+            <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" x:Name="CircleParent">
+                <Ellipse x:Name="Circle"
+                    Fill="DarkBlue"
+                         Stroke="Red"
+                         StrokeThickness="4"
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         HorizontalOptions="Center" />
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Label>Play</Label>
+                    <Label>Pause</Label>
+                    <Label>Stop</Label>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Fill"></VerticalStackLayout>
+            <Rectangle Fill="Green" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Green" Grid.Row="1" Grid.Column="5" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Orange" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <Rectangle Fill="Orange" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+        </Grid>
+        <StackLayout
+            VerticalOptions="Fill"
+            Padding="30"
+            BackgroundColor="#292929"
+            Grid.Row="1">
+            <Button Text="Import" HorizontalOptions="Start" Margin="5" Padding="5" />
+            <TableView>
+                <TableRoot>
+                    <TableSection Title="Items">
+                        <ViewCell>
+                            <Label Text="Row 1"
+                                   VerticalOptions="End" />
+                        </ViewCell>
+                        <ViewCell>
+                            <Label Text="Row 1"
+                                   VerticalOptions="End" />
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

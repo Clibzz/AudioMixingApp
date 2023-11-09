@@ -1,8 +1,7 @@
 ﻿namespace AudioMixingApp;
 using AudioMixingApp.Effects;
-
+using AudioMixingApp.Views;
 using NAudio.Wave;
-using Viewmodels;
 
 public partial class App : Application
 {
