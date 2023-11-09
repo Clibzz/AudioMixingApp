@@ -10,19 +10,25 @@
         Padding="30"
         VerticalOptions="Fill">
         <Grid
-            x:Name = "DjPanel"
+            x:Name="DjPanel"
             RowDefinitions="4*, 1*, 1*"
             ColumnDefinitions="1*, 3*, 1*, 1*, 3*, 1*"
             VerticalOptions="Fill"
             Padding="100,0,100,30"
             Grid.Row="0">
-            <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="End">
-                <Ellipse Fill="DarkBlue"
+            <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" x:Name="CircleParent">
+                <Ellipse x:Name="Circle"
+                    Fill="DarkBlue"
                          Stroke="Red"
                          StrokeThickness="4"
                          WidthRequest="50"
                          HeightRequest="50"
-                         HorizontalOptions="Start" />
+                         HorizontalOptions="Center" />
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Label>Play</Label>
+                    <Label>Pause</Label>
+                    <Label>Stop</Label>
+                </HorizontalStackLayout>
             </VerticalStackLayout>
             <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
             <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
@@ -40,11 +46,11 @@
             Padding="30"
             BackgroundColor="#292929"
             Grid.Row="1">
-            <Button Text="Import" HorizontalOptions="Start" Margin="5" Padding="5"/>
+            <Button Text="Import" HorizontalOptions="Start" Margin="5" Padding="5" />
             <TableView>
-                <TableRoot> 
+                <TableRoot>
                     <TableSection Title="Items">
-                        <ViewCell>  
+                        <ViewCell>
                             <Label Text="Row 1"
                                    VerticalOptions="End" />
                         </ViewCell>
