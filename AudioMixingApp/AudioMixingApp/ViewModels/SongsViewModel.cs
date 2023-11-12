@@ -1,11 +1,6 @@
 ﻿using AudioMixingApp.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AudioMixingApp.ViewModels
 {
@@ -18,7 +13,7 @@ namespace AudioMixingApp.ViewModels
             set
             {
                 songs = value;
-                OnPropertyChanged("Songs");
+                OnPropertyChanged(nameof(Songs));
             }
         }
 
@@ -32,11 +27,10 @@ namespace AudioMixingApp.ViewModels
         public SongsViewModel()
         {
             Songs = new ObservableCollection<Song>
-        {
-            new Song { Title = "Baboon" },
-            new Song { Title = "Capuchin Monkey" },
-            // Add more monkeys as needed...
-        };
+            {
+                new Song { Title = "Cowboys from hell", Artist = "Pantera" },
+                new Song { Title = "Bleed", Artist = "Meshuggah" },
+            };
         }
     }
 }

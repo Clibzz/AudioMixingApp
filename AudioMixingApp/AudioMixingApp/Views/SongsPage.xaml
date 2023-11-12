@@ -2,19 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AudioMixingApp.Views.SongsPage"
-             Title="SongsPage">
+             Title="SongsPage"
+             BackgroundColor="#3F3F3F">
     <VerticalStackLayout Padding="100, 100, 100, 100">
-        <Label Text="Songs" FontSize="Large" />
-        <StackLayout BackgroundColor="DarkSlateGrey" VerticalOptions="Center">
-            <CollectionView ItemsSource="{Binding Songs}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <StackLayout Margin="0,10,0,0" BackgroundColor="AliceBlue">
-                            <Label FontSize="Large" Text="{Binding Title}" />
-                        </StackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
+        <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
+        <Border Stroke="#BF11B8"
+                StrokeThickness="1"
+                Padding="16,8"
+                HorizontalOptions="Center" WidthRequest="1720">
+            <StackLayout BackgroundColor="#5F5F5F" VerticalOptions="Center">
+                <CollectionView ItemsSource="{Binding Songs}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke="#2F2F2F"
+                                    StrokeThickness="1"
+                                    Padding="16,8"
+                                    HorizontalOptions="Center" WidthRequest="1720">     
+                                <FlexLayout Margin="0,10,0,0" FlowDirection="LeftToRight" Direction="Column">
+                                    <Label FontSize="Large" Text="{Binding Artist}" />
+                                    <Label FontSize="Large" Text="{Binding Title}" />
+                                </FlexLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </Border>
     </VerticalStackLayout>
 </ContentPage>

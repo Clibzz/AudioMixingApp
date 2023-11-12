@@ -45,8 +45,8 @@
                 Clicked="AboutPageButton_OnClicked"
             />
             <Button
-                x:Name="MonkeysPageButton"
-                Text="Monkeys page"
+                x:Name="SongsPageButton"
+                Text="Songs page"
                 SemanticProperties.Hint="Counts the number of times you click"
                 HorizontalOptions="Center"
                 Clicked="SongsPageButton_OnClicked"
