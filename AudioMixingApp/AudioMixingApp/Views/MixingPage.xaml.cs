@@ -16,7 +16,16 @@ public partial class MixingPage : ContentPage
         base.OnSizeAllocated(width, height);
 
         DjPanel.WidthRequest = DjPanel.Height * 2.5;
-        Circle.WidthRequest = CircleParent.Width;
-        Circle.HeightRequest = CircleParent.Width;
+    }
+
+    private void PlayButtonA_Clicked(object sender, EventArgs e)
+    {
+        MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
+        
+        string inputFilePath =
+            "C:/Users/Yanni/Downloads/@Pantera-Cowboys-from-Hell.mp3";
+        
+        vm.PlaySound(inputFilePath, 0.5f);
+        
     }
 }
