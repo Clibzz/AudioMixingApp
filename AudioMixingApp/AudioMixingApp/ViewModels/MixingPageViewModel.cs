@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using AudioMixingApp.Effects;
@@ -7,70 +8,76 @@ using NAudio.Wave;
 
 namespace AudioMixingApp.ViewModels;
 
-public class MixingPageViewModel
+public class MixingPageViewModel : INotifyPropertyChanged
 {
-    public List<Song> Songs { get; set; }
-
-    // public int CurrentValue { get; set; }
-    public int SongDuration { get; set; }
-
+    private int _currentValue;
+    private int _songDuration;
     private readonly System.Timers.Timer _timer;
-    private WaveOutEvent waveOut;
+    private readonly WaveOutEvent _waveOut;
+    private AudioFileReader _currentAudio;
+    private bool _isDragging;
+
+    public int CurrentValue
+    {
+        get => _currentValue;
+        set
+        {
+            _currentValue = value;
+            OnPropertyChanged(nameof(CurrentValue));
+        }
+    }
+
+    public int SongDuration
+    {
+        get => _songDuration;
+        set
+        {
+            _songDuration = value;
+            OnPropertyChanged(nameof(SongDuration));
+        }
+    }
+
 
     public MixingPageViewModel()
     {
         _timer = new System.Timers.Timer();
-        _timer.Interval = 1000;
         _timer.Start();
 
-        waveOut = new WaveOutEvent();
+        _waveOut = new WaveOutEvent();
     }
 
     public void PlaySound(string path, float volume)
     {
-        if (waveOut.PlaybackState == PlaybackState.Playing)
+        if (_waveOut.PlaybackState == PlaybackState.Playing)
         {
-            waveOut.Stop();
+            _waveOut.Pause();
             return;
         }
 
-        AudioFileReader audioFile = new AudioFileReader(path);
-
-        waveOut.Init(audioFile);
-        waveOut.Play();
-        waveOut.Volume = volume;
-
-        SongDuration = (int)audioFile.TotalTime.TotalSeconds;
-
-        _timer.Elapsed += (sender, eventArgs) =>
+        if (_waveOut.PlaybackState == PlaybackState.Paused)
         {
-            CurrentValue = (int)audioFile.CurrentTime.TotalSeconds;
-            Trace.WriteLine(CurrentValue);
-            Trace.WriteLine(SongDuration);
-        };
-    }
-    
-    
-    
-    
-    
-    
-    private int _CurrentValue = 10;
-    public int CurrentValue
-    {
-        get => _CurrentValue;
-        set
-        {
-            if (_CurrentValue != value)
-            {
-                _CurrentValue = value;
-                OnPropertyChanged("CurrentValue"); 
-            }
+            _waveOut.Play();
+            return;
         }
+
+        _currentAudio = new AudioFileReader(path);
+
+        _waveOut.Init(_currentAudio);
+        _waveOut.Play();
+        _waveOut.Volume = volume;
+
+        SongDuration = (int)_currentAudio.TotalTime.TotalSeconds;
+
+        _timer.Elapsed += (sender, eventArgs) => { CurrentValue = (int)_currentAudio.CurrentTime.TotalSeconds; };
+    }
+
+    public void SetTime(double time)
+    {
+        _currentAudio.CurrentTime = TimeSpan.FromSeconds(time);
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
-    
+
     private void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

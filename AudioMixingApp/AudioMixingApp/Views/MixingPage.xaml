@@ -50,12 +50,13 @@
             </Rectangle>
             <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
             <Rectangle Fill="Green" Grid.Row="1" Grid.Column="5" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Slider Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Fill"
-                    VerticalOptions="Fill" Margin="30, 0"
-                    Value="{Binding CurrentValue}" Maximum="{Binding SongDuration}"></Slider>
+            <Slider Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Fill"
+                    VerticalOptions="Center" Margin="30, 0"
+                    Value="{Binding CurrentValue}" Maximum="{Binding SongDuration}" ValueChanged="TimeSliderA_ValueChanged"></Slider>
             <Label Grid.Row="2" Grid.Column="0" Text="{Binding CurrentValue}"></Label>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding SongDuration}"></Label>
             <Slider Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="Fill"
-                    VerticalOptions="Fill" Margin="30, 0"></Slider> 
+                    VerticalOptions="Center" Margin="30, 0"></Slider> 
         </Grid>
         <StackLayout
             VerticalOptions="Fill"
