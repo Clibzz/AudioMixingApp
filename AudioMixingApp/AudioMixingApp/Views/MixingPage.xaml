@@ -52,7 +52,7 @@
             <Rectangle Fill="Green" Grid.Row="1" Grid.Column="5" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
             <Slider Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="Fill"
                     VerticalOptions="Fill" Margin="30, 0"
-                    Value="{Binding CurrentValue}"></Slider>
+                    Value="{Binding CurrentValue}" Maximum="{Binding SongDuration}"></Slider>
             <Label Grid.Row="2" Grid.Column="0" Text="{Binding CurrentValue}"></Label>
             <Slider Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="Fill"
                     VerticalOptions="Fill" Margin="30, 0"></Slider> 
