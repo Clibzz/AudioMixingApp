@@ -18,6 +18,11 @@ public partial class MixingPage : ContentPage
         DjPanel.WidthRequest = DjPanel.Height * 2.5;
     }
 
+    /// <summary>
+    /// Demo event to play an audio file
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
@@ -28,10 +33,27 @@ public partial class MixingPage : ContentPage
         vm.PlaySound(inputFilePath, 0.25f);
     }
 
+    /// <summary>
+    /// When the user lets go of the slider, update the current playtime to the newly chosen playtime
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Slider_OnDragCompleted(object sender, EventArgs e)
+    {
+        Trace.WriteLine(sender.GetType());
+        MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
+        vm.SetTime(((Slider)sender).Value);
+        vm.PauseSliderUpdates = false;
+    }
 
-    private void TimeSliderA_ValueChanged(object sender, ValueChangedEventArgs e)
+    /// <summary>
+    /// When the user starts dragging, tell the viewmodel to stop updating the sliders value
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Slider_OnDragStarted(object sender, EventArgs e)
     {
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
-        vm.SetTime(e.NewValue);
+        vm.PauseSliderUpdates = true;
     }
 }

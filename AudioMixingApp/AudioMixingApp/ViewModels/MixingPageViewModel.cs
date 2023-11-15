@@ -15,36 +15,16 @@ public class MixingPageViewModel : INotifyPropertyChanged
     private readonly System.Timers.Timer _timer;
     private readonly WaveOutEvent _waveOut;
     private AudioFileReader _currentAudio;
-    private bool _isDragging;
-
-    public int CurrentValue
-    {
-        get => _currentValue;
-        set
-        {
-            _currentValue = value;
-            OnPropertyChanged(nameof(CurrentValue));
-        }
-    }
-
-    public int SongDuration
-    {
-        get => _songDuration;
-        set
-        {
-            _songDuration = value;
-            OnPropertyChanged(nameof(SongDuration));
-        }
-    }
-
 
     public MixingPageViewModel()
     {
         _timer = new System.Timers.Timer();
+        _timer.Interval = 500;
         _timer.Start();
 
         _waveOut = new WaveOutEvent();
     }
+
 
     public void PlaySound(string path, float volume)
     {
@@ -68,12 +48,23 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         SongDuration = (int)_currentAudio.TotalTime.TotalSeconds;
 
-        _timer.Elapsed += (sender, eventArgs) => { CurrentValue = (int)_currentAudio.CurrentTime.TotalSeconds; };
+        _timer.Elapsed += (sender, eventArgs) =>
+        {
+            if (!PauseSliderUpdates)
+            {
+                CurrentValue = (int)_currentAudio.CurrentTime.TotalSeconds;
+            }
+        };
     }
 
     public void SetTime(double time)
     {
         _currentAudio.CurrentTime = TimeSpan.FromSeconds(time);
+
+        if (_waveOut.PlaybackState == PlaybackState.Stopped && _currentAudio.CurrentTime != _currentAudio.TotalTime)
+        {
+            _waveOut.Play();
+        }
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
@@ -81,5 +72,27 @@ public class MixingPageViewModel : INotifyPropertyChanged
     private void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public bool PauseSliderUpdates { get; set; }
+
+    public int CurrentValue
+    {
+        get => _currentValue;
+        set
+        {
+            _currentValue = value;
+            OnPropertyChanged(nameof(CurrentValue));
+        }
+    }
+
+    public int SongDuration
+    {
+        get => _songDuration;
+        set
+        {
+            _songDuration = value;
+            OnPropertyChanged(nameof(SongDuration));
+        }
     }
 }
