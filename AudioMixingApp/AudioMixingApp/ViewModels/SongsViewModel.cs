@@ -28,8 +28,8 @@ namespace AudioMixingApp.ViewModels
         {
             Songs = new ObservableCollection<Song>
             {
-                new Song { Title = "Cowboys from hell", Artist = "Pantera" },
-                new Song { Title = "Bleed", Artist = "Meshuggah" },
+                new Song { title = "Cowboys from hell", artist = "Pantera" },
+                new Song { title = "Bleed", artist = "Meshuggah" },
             };
         }
     }

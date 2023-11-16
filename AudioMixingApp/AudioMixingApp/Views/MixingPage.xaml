@@ -23,62 +23,177 @@
                          HeightRequest="120"
                          HorizontalOptions="Center"
                          VerticalOptions="Center" />
-                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="15"></ImageButton>
-                    <ImageButton Source="play.png" HeightRequest="15" Margin="5,0" Clicked="PlayButtonA_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="15"></ImageButton>
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                    <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
+                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
+                <Slider x:Name="SliderVolume1"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="185"
+                    HeightRequest="29"
+                    Rotation="-90"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
+                <Slider x:Name="SliderVolume2"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="185"
+                    HeightRequest="29"
+                    Rotation="-90"/>
+            </VerticalStackLayout>
+
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
                 <Ellipse Fill="DarkBlue"
-                         WidthRequest="120"
-                         HeightRequest="120"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center" />
-                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,10,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="15"></ImageButton>
-                    <ImageButton Source="play.png" HeightRequest="15" Margin="5,0"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="15"></ImageButton>
+                        WidthRequest="120"
+                        HeightRequest="120"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+                <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+                    <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
+                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <Rectangle Fill="Green" Grid.Row="1" Grid.Column="0" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalOptions="Fill"
-                       VerticalOptions="Fill">
-            </Rectangle>
-            <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Rectangle Fill="Green" Grid.Row="1" Grid.Column="5" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Slider Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Fill"
-                    VerticalOptions="Center" Margin="30, 0"
-                    Value="{Binding CurrentTime}" Maximum="{Binding TotalTime}" DragStarted="Slider_OnDragStarted" DragCompleted="Slider_OnDragCompleted"></Slider>
-            <Label Grid.Row="2" Grid.Column="0" Text="{Binding CurrentTimeString}"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text="{Binding TotalTimeString}"></Label>
-            <Slider Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="Fill"
-                    VerticalOptions="Center" Margin="30, 0"></Slider> 
+            <Ellipse Fill="White"
+                     WidthRequest="40"
+                     HeightRequest="40"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Grid.Row="1"
+                     Grid.Column="0"/>
+            
+            <Label Text="Maneskin - Beggin'"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"/>
+            
+            <Slider x:Name="SliderSongMixing"
+                    VerticalOptions="Center"
+                    WidthRequest="140"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    MinimumTrackColor="Blue"
+                    MaximumTrackColor="HotPink"/>
+            
+            <Label Text="Test test = THE test"
+                   Grid.Row="1"
+                   Grid.Column="4"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="Fill"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"/>
+            
+            <Ellipse Fill="White"
+                     WidthRequest="40"
+                     HeightRequest="40"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Grid.Row="1"
+                     Grid.Column="5" />
+            
+            <Label Grid.Row="2" 
+                   Grid.Column="0" 
+                   Text="{Binding CurrentValue}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="End"/>
+            
+            <Slider Grid.Row="2" 
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="3" 
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center" 
+                    WidthRequest="200"
+                    Value="{Binding CurrentValue}" />
+            
+            <Label Grid.Row="2" 
+                   Grid.Column="2" 
+                   Text="{Binding SongDuration}"
+                   VerticalOptions="Center" />
+            
+            <Label Grid.Row="2" 
+                   Grid.Column="3" 
+                   Text="{Binding CurrentValue}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="End"/>
+            
+            <Slider Grid.Row="2" 
+                    Grid.Column="3" 
+                    Grid.ColumnSpan="4" 
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center" 
+                    WidthRequest="200"
+                    Value="{Binding ProgressValue}" />
+            
+            <Label Grid.Row="2" 
+                   Grid.Column="5" 
+                   Text="{Binding SongDuration}"
+                   VerticalOptions="Center"/>
         </Grid>
         <StackLayout
             VerticalOptions="Fill"
             Padding="30"
             BackgroundColor="#292929"
             Grid.Row="1">
-            <Button Text="Import" HorizontalOptions="Start" Margin="5" Padding="5" />
-            <TableView>
-                <TableRoot>
-                    <TableSection Title="Items">
-                        <ViewCell>
-                            <Label Text="Row 1"
-                                   VerticalOptions="End" />
-                        </ViewCell>
-                        <ViewCell>
-                            <Label Text="Row 1"
-                                   VerticalOptions="End" />
-                        </ViewCell>
-                    </TableSection>
-                </TableRoot>
-            </TableView>
 
+            <StackLayout
+                VerticalOptions="Fill"
+                Padding="30"
+                BackgroundColor="#292929"
+                Grid.Row="1">
+
+                <Button Text="Import" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" />
+                <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Black"
+                    Padding="10">
+
+                    <ListView x:Name="SongsListView" HasUnevenRows="True">
+                        <ListView.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Artist" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Title" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Duration" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Actions" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="{Binding Artist}" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Title}" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Duration}" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Button Text="Action" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
 
     </Grid>

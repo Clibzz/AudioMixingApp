@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using NAudio.Wave;
+﻿using NAudio.Wave;
 using static System.Environment;
 
 namespace AudioMixingApp
@@ -24,14 +23,17 @@ namespace AudioMixingApp
         /// <param name="songName">the name of the mp3 file that represents the song.</param>
         public void AddToQueue(string songName)
         {
+            // Gets the path to the song.
             string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
             
             if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
             
             string song = documentsPath + songName;
+            if (!File.Exists(song)) return;
+            
             // Adds the path to the song to the queue.
             SongQueue.Enqueue(song);
-
+            
             if (SongQueue.Count == 1)
             {
                 PlaySongFromQueue();
@@ -72,6 +74,8 @@ namespace AudioMixingApp
                 // Prepare the song for playback.
                 PlayingSong = new(song);
                 Output.Init(PlayingSong);
+
+                // Start playback of the queued song.
                 Output.Play();
 
                 // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
@@ -95,6 +99,14 @@ namespace AudioMixingApp
             {
                 Output.Play();
             }
+        }
+
+        /// <summary>
+        /// Method <c>SkipSong</c> goes to the next song by stopping the output so that the PlaybackStopped event is called.
+        /// </summary>
+        public void SkipSong()
+        {
+            Output.Stop();
         }
     }
 }
