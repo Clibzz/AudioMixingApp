@@ -16,9 +16,14 @@ public partial class MainPage : ContentPage
 	
 	private void MixingPageButton_OnClicked(object sender, EventArgs e)
 	{
-		// var mixingPage = ;
-		// mixingPage.BindingContext = new MixingPageViewModel();
-		Navigation.PushAsync(new MixingPage());
+		var mixingPage = new MixingPage();
+		mixingPage.BindingContext = new MixingPageViewModel();
+		Navigation.PushAsync(mixingPage);
 	}
+
+    private void SongsPageButton_OnClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new SongsPage());
+    }
 }
 
