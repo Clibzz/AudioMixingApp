@@ -29,8 +29,23 @@
                     <ImageButton Source="next.png" HeightRequest="15"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Rectangle Fill="Yellow" Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
+            <!-- First Vertical Slider -->
+            <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
+                <Slider x:Name="SliderVolume1"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="185"
+                    HeightRequest="29"
+                    Rotation="-90"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
+                <Slider x:Name="SliderVolume2"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="185"
+                    HeightRequest="29"
+                    Rotation="-90"/>
+            </VerticalStackLayout>
+
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
                 <Ellipse Fill="DarkBlue"
                          WidthRequest="120"
