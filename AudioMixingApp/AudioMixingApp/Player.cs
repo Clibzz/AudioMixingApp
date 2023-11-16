@@ -1,9 +1,10 @@
-﻿using NAudio.Wave;
+﻿using System.Reflection;
+using NAudio.Wave;
 using static System.Environment;
 
 namespace AudioMixingApp
 {
-    class Player
+    public class Player
     {
         // The output device.
         public WaveOutEvent Output { get; set; }
@@ -23,12 +24,18 @@ namespace AudioMixingApp
         /// <param name="songName">the name of the mp3 file that represents the song.</param>
         public void AddToQueue(string songName)
         {
-            // Gets the path to the song.
-            string projectDirectory = Directory.GetParent(CurrentDirectory).Parent.Parent.FullName + @"\";
-            string pathToSongs = projectDirectory + @"Songs\";
-            string song = pathToSongs + songName;
+            string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
+            
+            if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
+            
+            string song = documentsPath + songName;
             // Adds the path to the song to the queue.
             SongQueue.Enqueue(song);
+
+            if (SongQueue.Count == 1)
+            {
+                PlaySongFromQueue();
+            }
         }
 
         /// <summary>
@@ -65,6 +72,7 @@ namespace AudioMixingApp
                 // Prepare the song for playback.
                 PlayingSong = new(song);
                 Output.Init(PlayingSong);
+                Output.Play();
 
                 // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
                 // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed

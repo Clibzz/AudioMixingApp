@@ -10,60 +10,63 @@ namespace AudioMixingApp.ViewModels;
 
 public class MixingPageViewModel : INotifyPropertyChanged
 {
-    private int _currentValue;
-    private int _songDuration;
+    private int _currentTime;
+    private int _totalTime;
     private readonly System.Timers.Timer _timer;
-    private readonly WaveOutEvent _waveOut;
-    private AudioFileReader _currentAudio;
+    private string _currentTimeString = "00:00:00";
+    private string _totalTimeString = "00:00:00";
+
+    private readonly Player _player;
 
     public MixingPageViewModel()
     {
         _timer = new System.Timers.Timer();
-        _timer.Interval = 500;
+        _timer.Interval = 100;
         _timer.Start();
 
-        _waveOut = new WaveOutEvent();
+        _player = new Player();
     }
 
-
-    public void PlaySound(string path, float volume)
+    /// <summary>
+    /// Add an audio file to the queue
+    /// </summary>
+    /// <param name="filename">filename including file extension</param>
+    public void AddSong(string filename)
     {
-        if (_waveOut.PlaybackState == PlaybackState.Playing)
-        {
-            _waveOut.Pause();
-            return;
-        }
+        _player.AddToQueue(filename);
+    }
 
-        if (_waveOut.PlaybackState == PlaybackState.Paused)
-        {
-            _waveOut.Play();
-            return;
-        }
+    /// <summary>
+    /// Play the song and update the slider values and labels
+    /// </summary>
+    public void PlaySound()
+    {
+        _player.PlaySongFromQueue(); //TODO: Hier nog ff naar kijken
+        // _player.TogglePlayback();
 
-        _currentAudio = new AudioFileReader(path);
-
-        _waveOut.Init(_currentAudio);
-        _waveOut.Play();
-        _waveOut.Volume = volume;
-
-        SongDuration = (int)_currentAudio.TotalTime.TotalSeconds;
-
+        TotalTime = (int)_player.PlayingSong.TotalTime.TotalSeconds;
+        TotalTimeString = _player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
+        
         _timer.Elapsed += (sender, eventArgs) =>
         {
-            if (!PauseSliderUpdates)
-            {
-                CurrentValue = (int)_currentAudio.CurrentTime.TotalSeconds;
-            }
+            if (PauseSliderUpdates) return;
+            
+            CurrentTime = (int)_player.PlayingSong.CurrentTime.TotalSeconds;
+            CurrentTimeString = _player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
         };
     }
 
-    public void SetTime(double time)
+    /// <summary>
+    /// Update the current time of the slider and start playing the song if its stopped
+    /// </summary>
+    /// <param name="time"></param>
+    public void UpdateCurrentTime(double time)
     {
-        _currentAudio.CurrentTime = TimeSpan.FromSeconds(time);
+        _player.PlayingSong.CurrentTime = TimeSpan.FromSeconds(time);
 
-        if (_waveOut.PlaybackState == PlaybackState.Stopped && _currentAudio.CurrentTime != _currentAudio.TotalTime)
+        if (_player.Output.PlaybackState == PlaybackState.Stopped && _player.PlayingSong.CurrentTime != _player.PlayingSong.TotalTime)
         {
-            _waveOut.Play();
+            _player.Output.Play();
         }
     }
 
@@ -76,23 +79,43 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
     public bool PauseSliderUpdates { get; set; }
 
-    public int CurrentValue
+    public int CurrentTime
     {
-        get => _currentValue;
+        get => _currentTime;
         set
         {
-            _currentValue = value;
-            OnPropertyChanged(nameof(CurrentValue));
+            _currentTime = value;
+            OnPropertyChanged(nameof(CurrentTime));
         }
     }
 
-    public int SongDuration
+    public int TotalTime
     {
-        get => _songDuration;
+        get => _totalTime;
         set
         {
-            _songDuration = value;
-            OnPropertyChanged(nameof(SongDuration));
+            _totalTime = value;
+            OnPropertyChanged(nameof(TotalTime));
+        }
+    }
+
+    public string CurrentTimeString
+    {
+        get => _currentTimeString;
+        set
+        {
+            _currentTimeString = value;
+            OnPropertyChanged(nameof(CurrentTimeString));
+        }
+    }
+
+    public string TotalTimeString
+    {
+        get => _totalTimeString;
+        set
+        {
+            _totalTimeString = value;
+            OnPropertyChanged(nameof(TotalTimeString));
         }
     }
 }

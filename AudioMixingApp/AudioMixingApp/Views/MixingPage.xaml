@@ -52,9 +52,9 @@
             <Rectangle Fill="Green" Grid.Row="1" Grid.Column="5" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
             <Slider Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Fill"
                     VerticalOptions="Center" Margin="30, 0"
-                    Value="{Binding CurrentValue}" Maximum="{Binding SongDuration}" DragStarted="Slider_OnDragStarted" DragCompleted="Slider_OnDragCompleted"></Slider>
-            <Label Grid.Row="2" Grid.Column="0" Text="{Binding CurrentValue}"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text="{Binding SongDuration}"></Label>
+                    Value="{Binding CurrentTime}" Maximum="{Binding TotalTime}" DragStarted="Slider_OnDragStarted" DragCompleted="Slider_OnDragCompleted"></Slider>
+            <Label Grid.Row="2" Grid.Column="0" Text="{Binding CurrentTimeString}"></Label>
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding TotalTimeString}"></Label>
             <Slider Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="Fill"
                     VerticalOptions="Center" Margin="30, 0"></Slider> 
         </Grid>
