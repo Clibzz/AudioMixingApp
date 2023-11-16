@@ -29,7 +29,6 @@
                     <ImageButton Source="next.png" HeightRequest="20"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <!-- First Vertical Slider -->
             <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
                 <Slider x:Name="SliderVolume1"
                     VerticalOptions="FillAndExpand"
@@ -52,9 +51,6 @@
                         HeightRequest="120"
                         HorizontalOptions="Center"
                         VerticalOptions="Center" />
-
-           
-
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
                     <ImageButton Source="play.png" HeightRequest="20" Margin="30,0"></ImageButton>
@@ -67,7 +63,8 @@
                      HorizontalOptions="Center"
                      VerticalOptions="Center"
                      Grid.Row="1"
-                     Grid.Column="0" />
+                     Grid.Column="0"/>
+            
             <Label Text="Maneskin - Beggin'"
                    Grid.Row="1"
                    Grid.Column="1"
@@ -76,6 +73,7 @@
                    TextColor="White"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
+            
             <Slider x:Name="SliderSongMixing"
                     VerticalOptions="Center"
                     WidthRequest="140"
@@ -83,8 +81,8 @@
                     Grid.Column="2"
                     Grid.ColumnSpan="2"
                     MinimumTrackColor="Blue"
-                    MaximumTrackColor="HotPink"
-                    />
+                    MaximumTrackColor="HotPink"/>
+            
             <Label Text="Test test = THE test"
                    Grid.Row="1"
                    Grid.Column="4"
@@ -93,6 +91,7 @@
                    TextColor="White"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
+            
             <Ellipse Fill="White"
                      WidthRequest="40"
                      HeightRequest="40"
@@ -105,40 +104,39 @@
                    Grid.Column="0" 
                    Text="{Binding CurrentValue}"
                    VerticalOptions="Center" 
-                   HorizontalOptions="End"
-                                            />
-            <ProgressBar Grid.Row="2" 
-                         Grid.Column="0" 
-                         Grid.ColumnSpan="3" 
-                         HorizontalOptions="Fill"
-                         VerticalOptions="Center" 
-                         WidthRequest="200"
-                         Progress="{Binding CurrentValue, Mode=OneWay}" />
-
+                   HorizontalOptions="End"/>
+            
+            <Slider Grid.Row="2" 
+                    Grid.Column="0" 
+                    Grid.ColumnSpan="3" 
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center" 
+                    WidthRequest="200"
+                    Value="{Binding CurrentValue}" />
+            
             <Label Grid.Row="2" 
                    Grid.Column="2" 
                    Text="{Binding SongDuration}"
                    VerticalOptions="Center" />
-
+            
             <Label Grid.Row="2" 
                    Grid.Column="3" 
                    Text="{Binding CurrentValue}"
                    VerticalOptions="Center" 
-                   HorizontalOptions="End"
-                                            />
-            <ProgressBar Grid.Row="2" 
-                         Grid.Column="3" 
-                         Grid.ColumnSpan="4" 
-                         HorizontalOptions="Fill"
-                         VerticalOptions="Center" 
-                         WidthRequest="200"
-                         Progress="{Binding ProgressValue}" />
-
+                   HorizontalOptions="End"/>
+            
+            <Slider Grid.Row="2" 
+                    Grid.Column="3" 
+                    Grid.ColumnSpan="4" 
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center" 
+                    WidthRequest="200"
+                    Value="{Binding ProgressValue}" />
+            
             <Label Grid.Row="2" 
                    Grid.Column="5" 
                    Text="{Binding SongDuration}"
                    VerticalOptions="Center"/>
-
         </Grid>
         <StackLayout
             VerticalOptions="Fill"
@@ -153,15 +151,12 @@
                 Grid.Row="1">
 
                 <Button Text="Import" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" />
-
-                <!-- Nested StackLayout -->
                 <StackLayout
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="Black"
                     Padding="10">
 
-                    <!-- Table (ListView) -->
                     <ListView x:Name="SongsListView" HasUnevenRows="True">
                         <ListView.Header>
                             <Grid>
@@ -171,7 +166,6 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-
                                 <Label Text="Artist" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                 <Label Text="Title" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                 <Label Text="Duration" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
@@ -198,10 +192,8 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-
                 </StackLayout>
             </StackLayout>
-
         </StackLayout>
     </Grid>
 </ContentPage>
