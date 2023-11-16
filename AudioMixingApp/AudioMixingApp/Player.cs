@@ -24,11 +24,16 @@ namespace AudioMixingApp
         public void AddToQueue(string songName)
         {
             // Gets the path to the song.
-            string projectDirectory = Directory.GetParent(CurrentDirectory).Parent.Parent.FullName + @"\";
-            string pathToSongs = projectDirectory + @"Songs\";
-            string song = pathToSongs + songName;
-            // Adds the path to the song to the queue.
-            SongQueue.Enqueue(song);
+            string documentsPath = $@"C:\Users{Environment.UserName}\Documents\AudioMixingApp\Songs";
+
+            if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
+
+            string song = documentsPath + songName;
+            // Adds the path to the song to the queue if the song exists.
+            if (File.Exists(song))
+            {
+                SongQueue.Enqueue(song);
+            }
         }
 
         /// <summary>
@@ -65,6 +70,9 @@ namespace AudioMixingApp
                 // Prepare the song for playback.
                 PlayingSong = new(song);
                 Output.Init(PlayingSong);
+
+                // Start playback of the queued song.
+                Output.Play();
 
                 // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
                 // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
