@@ -65,13 +65,22 @@
             </Rectangle>
             <Rectangle Fill="Blue" Grid.Row="1" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
             <Rectangle Fill="Green" Grid.Row="1" Grid.Column="5" HorizontalOptions="Fill" VerticalOptions="Fill"></Rectangle>
-            <Slider Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Fill"
-                    VerticalOptions="Center" Margin="30, 0"
-                    Value="{Binding CurrentValue}" Maximum="{Binding SongDuration}" DragStarted="Slider_OnDragStarted" DragCompleted="Slider_OnDragCompleted"></Slider>
+            <ProgressBar Grid.Row="2" 
+                         Grid.Column="0" 
+                         Grid.ColumnSpan="3" 
+                         HorizontalOptions="Fill"
+                         VerticalOptions="Center" Margin="30, 0"
+                         Progress="{Binding ProgressValue, Mode=OneWay}" />
+
             <Label Grid.Row="2" Grid.Column="0" Text="{Binding CurrentValue}"></Label>
             <Label Grid.Row="2" Grid.Column="1" Text="{Binding SongDuration}"></Label>
-            <Slider Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" HorizontalOptions="Fill"
-                    VerticalOptions="Center" Margin="30, 0"></Slider> 
+            <ProgressBar Grid.Row="2" 
+                         Grid.Column="3" 
+                         Grid.ColumnSpan="3" 
+                         HorizontalOptions="Fill"
+                         VerticalOptions="Center" 
+                         Margin="30, 0"
+                         Progress="{Binding ProgressValue, Mode=OneWay}" />
         </Grid>
         <StackLayout
             VerticalOptions="Fill"
