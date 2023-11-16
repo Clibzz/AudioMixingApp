@@ -48,10 +48,13 @@
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
                 <Ellipse Fill="DarkBlue"
-                         WidthRequest="120"
-                         HeightRequest="120"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center" />
+                        WidthRequest="120"
+                        HeightRequest="120"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center" />
+
+           
+
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
                     <ImageButton Source="play.png" HeightRequest="20" Margin="30,0"></ImageButton>
@@ -142,23 +145,63 @@
             Padding="30"
             BackgroundColor="#292929"
             Grid.Row="1">
-            <Button Text="Import" HorizontalOptions="Start" Margin="5" Padding="5" />
-            <TableView>
-                <TableRoot>
-                    <TableSection Title="Items">
-                        <ViewCell>
-                            <Label Text="Row 1"
-                                   VerticalOptions="End" />
-                        </ViewCell>
-                        <ViewCell>
-                            <Label Text="Row 1"
-                                   VerticalOptions="End" />
-                        </ViewCell>
-                    </TableSection>
-                </TableRoot>
-            </TableView>
+
+            <StackLayout
+                VerticalOptions="Fill"
+                Padding="30"
+                BackgroundColor="#292929"
+                Grid.Row="1">
+
+                <Button Text="Import" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" />
+
+                <!-- Nested StackLayout -->
+                <StackLayout
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Black"
+                    Padding="10">
+
+                    <!-- Table (ListView) -->
+                    <ListView x:Name="SongsListView" HasUnevenRows="True">
+                        <ListView.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="Artist" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Title" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Duration" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Actions" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="{Binding Artist}" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Title}" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Duration}" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Button Text="Action" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </StackLayout>
+            </StackLayout>
 
         </StackLayout>
-
     </Grid>
 </ContentPage>
