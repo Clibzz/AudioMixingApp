@@ -97,21 +97,45 @@
                      VerticalOptions="Center"
                      Grid.Row="1"
                      Grid.Column="5" />
+            
+            <Label Grid.Row="2" 
+                   Grid.Column="0" 
+                   Text="{Binding CurrentValue}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="End"
+                                            />
             <ProgressBar Grid.Row="2" 
                          Grid.Column="0" 
                          Grid.ColumnSpan="3" 
                          HorizontalOptions="Fill"
-                         VerticalOptions="Center" Margin="30, 0"
+                         VerticalOptions="Center" 
+                         WidthRequest="200"
                          Progress="{Binding CurrentValue, Mode=OneWay}" />
-            <Label Grid.Row="2" Grid.Column="0" Text="{Binding CurrentValue}"></Label>
-            <Label Grid.Row="2" Grid.Column="1" Text="{Binding SongDuration}"></Label>
+
+            <Label Grid.Row="2" 
+                   Grid.Column="2" 
+                   Text="{Binding SongDuration}"
+                   VerticalOptions="Center" />
+
+            <Label Grid.Row="2" 
+                   Grid.Column="3" 
+                   Text="{Binding CurrentValue}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="End"
+                                            />
             <ProgressBar Grid.Row="2" 
                          Grid.Column="3" 
-                         Grid.ColumnSpan="3" 
+                         Grid.ColumnSpan="4" 
                          HorizontalOptions="Fill"
                          VerticalOptions="Center" 
-                         Margin="30, 0"
+                         WidthRequest="200"
                          Progress="{Binding ProgressValue}" />
+
+            <Label Grid.Row="2" 
+                   Grid.Column="5" 
+                   Text="{Binding SongDuration}"
+                   VerticalOptions="Center"/>
+
         </Grid>
         <StackLayout
             VerticalOptions="Fill"
