@@ -3,7 +3,7 @@ using static System.Environment;
 
 namespace AudioMixingApp
 {
-    class Player
+    public class Player
     {
         // The output device.
         public WaveOutEvent Output { get; set; }
@@ -24,15 +24,19 @@ namespace AudioMixingApp
         public void AddToQueue(string songName)
         {
             // Gets the path to the song.
-            string documentsPath = $@"C:\Users{Environment.UserName}\Documents\AudioMixingApp\Songs";
-
+            string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
+            
             if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
-
+            
             string song = documentsPath + songName;
-            // Adds the path to the song to the queue if the song exists.
-            if (File.Exists(song))
+            if (!File.Exists(song)) return;
+            
+            // Adds the path to the song to the queue.
+            SongQueue.Enqueue(song);
+            
+            if (SongQueue.Count == 1)
             {
-                SongQueue.Enqueue(song);
+                PlaySongFromQueue();
             }
         }
 

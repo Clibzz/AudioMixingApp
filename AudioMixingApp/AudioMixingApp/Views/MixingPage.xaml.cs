@@ -26,11 +26,9 @@ public partial class MixingPage : ContentPage
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
-
-        string inputFilePath =
-            "C:/Users/Yanni/Downloads/@Pantera-Cowboys-from-Hell.mp3";
-
-        vm.PlaySound(inputFilePath, 0.25f);
+        
+        vm.AddSong("cfh.mp3");
+        vm.PlaySound();
     }
 
     /// <summary>
@@ -40,9 +38,9 @@ public partial class MixingPage : ContentPage
     /// <param name="e"></param>
     private void Slider_OnDragCompleted(object sender, EventArgs e)
     {
-        Trace.WriteLine(sender.GetType());
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
-        vm.SetTime(((Slider)sender).Value);
+        
+        vm.UpdateCurrentTime(((Slider)sender).Value);
         vm.PauseSliderUpdates = false;
     }
 

@@ -102,7 +102,7 @@
             
             <Label Grid.Row="2" 
                    Grid.Column="0" 
-                   Text="{Binding CurrentValue}"
+                   Text="{Binding CurrentTimeString}"
                    VerticalOptions="Center" 
                    HorizontalOptions="End"/>
             
@@ -112,16 +112,19 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
-                    Value="{Binding CurrentValue}" />
+                    Value="{Binding CurrentTime}"
+                    Maximum="{Binding TotalTime}"
+                    DragStarted="Slider_OnDragStarted"
+                    DragCompleted="Slider_OnDragCompleted" />
             
             <Label Grid.Row="2" 
                    Grid.Column="2" 
-                   Text="{Binding SongDuration}"
+                   Text="{Binding TotalTimeString}"
                    VerticalOptions="Center" />
             
             <Label Grid.Row="2" 
                    Grid.Column="3" 
-                   Text="{Binding CurrentValue}"
+                   Text="{Binding CurrentTimeString}"
                    VerticalOptions="Center" 
                    HorizontalOptions="End"/>
             
@@ -131,11 +134,14 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
-                    Value="{Binding ProgressValue}" />
+                    Value="{Binding CurrentTime}"
+                    Maximum="{Binding TotalTime}"
+                    DragStarted="Slider_OnDragStarted"
+                    DragCompleted="Slider_OnDragCompleted" />
             
             <Label Grid.Row="2" 
                    Grid.Column="5" 
-                   Text="{Binding SongDuration}"
+                   Text="{Binding TotalTimeString}"
                    VerticalOptions="Center"/>
         </Grid>
         <StackLayout
@@ -195,5 +201,6 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
+
     </Grid>
 </ContentPage>
