@@ -32,6 +32,13 @@ public class FlangerEffect : ISampleProvider
         this.flangerFactor = 0.5f; 
     }
 
+    // Method to adjust the flanger factor dynamically
+    public void AdjustFlangerFactor(float factor)
+    {
+        // Ensure the factor is within the valid range (0.0 to 1.0)
+        this.flangerFactor = Math.Max(0.0f, Math.Min(1.0f, factor));
+    }
+
     public int Read(float[] buffer, int offset, int count)
     {
         int samplesRead = source.Read(buffer, offset, count);
