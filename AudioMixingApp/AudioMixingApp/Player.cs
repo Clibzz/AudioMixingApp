@@ -3,7 +3,7 @@ using static System.Environment;
 
 namespace AudioMixingApp
 {
-    class Player
+    public class Player
     {
         // The output device.
         public WaveOutEvent Output { get; set; }
@@ -24,11 +24,20 @@ namespace AudioMixingApp
         public void AddToQueue(string songName)
         {
             // Gets the path to the song.
-            string projectDirectory = Directory.GetParent(CurrentDirectory).Parent.Parent.FullName + @"\";
-            string pathToSongs = projectDirectory + @"Songs\";
-            string song = pathToSongs + songName;
+            string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
+            
+            if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
+            
+            string song = documentsPath + songName;
+            if (!File.Exists(song)) return;
+            
             // Adds the path to the song to the queue.
             SongQueue.Enqueue(song);
+            
+            if (SongQueue.Count == 1)
+            {
+                PlaySongFromQueue();
+            }
         }
 
         /// <summary>
@@ -66,6 +75,9 @@ namespace AudioMixingApp
                 PlayingSong = new(song);
                 Output.Init(PlayingSong);
 
+                // Start playback of the queued song.
+                Output.Play();
+
                 // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
                 // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
                 Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
@@ -87,6 +99,14 @@ namespace AudioMixingApp
             {
                 Output.Play();
             }
+        }
+
+        /// <summary>
+        /// Method <c>SkipSong</c> goes to the next song by stopping the output so that the PlaybackStopped event is called.
+        /// </summary>
+        public void SkipSong()
+        {
+            Output.Stop();
         }
     }
 }
