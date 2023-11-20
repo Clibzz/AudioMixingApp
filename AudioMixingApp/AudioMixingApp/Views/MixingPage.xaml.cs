@@ -1,14 +1,18 @@
 using System.Diagnostics;
 using AudioMixingApp.ViewModels;
+using NAudio.Wave;
 
 namespace AudioMixingApp.Views;
 
 public partial class MixingPage : ContentPage
 {
+    /*TODO: Get song in a less hardcoded way*/
+    private WaveOutEvent output;
     public MixingPage()
     {
         InitializeComponent();
         BindingContext = new MixingPageViewModel();
+        output = new WaveOutEvent();
     }
 
     protected override void OnSizeAllocated(double width, double height)
@@ -16,6 +20,33 @@ public partial class MixingPage : ContentPage
         base.OnSizeAllocated(width, height);
 
         DjPanel.WidthRequest = DjPanel.Height * 2.5;
+    }
+
+    /*TODO: Bind to the actual play button*/
+    private void TestBtn_Clicked(object sender, EventArgs e)
+    {
+        /*TODO: Change hardcoded file path*/
+        string filePath = @"C:\xampp\htdocs\AudioMixingApp\AudioMixingApp\AudioMixingApp\Maneskin-Beggin-Lyrics.mp3";
+        var audioFile = new AudioFileReader(filePath);
+
+        if (output.PlaybackState != PlaybackState.Playing)
+        {
+            output.Init(audioFile);
+            output.Play();
+        }
+    }
+
+    /// <summary>
+    /// Change the volume of the first song that's playing
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public void SliderVolume1_OnDragCompleted(object sender, ValueChangedEventArgs e)
+    {
+        if (output != null)
+        {
+            output.Volume = (float)e.NewValue;
+        }
     }
 
     /// <summary>
