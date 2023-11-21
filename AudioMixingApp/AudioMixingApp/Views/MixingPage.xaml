@@ -5,6 +5,12 @@
              x:Class="AudioMixingApp.Views.MixingPage"
              Title="Mixing page"
              BackgroundColor="#424242">
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="About">
+            <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
     <Grid
         RowDefinitions="3*, 2*"
         Padding="30"
@@ -63,8 +69,12 @@
                      HorizontalOptions="Center"
                      VerticalOptions="Center"
                      Grid.Row="1"
-                     Grid.Column="0"/>
-            
+                     Grid.Column="0">
+                <Ellipse.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="FilterPageButton_OnClicked" />
+                </Ellipse.GestureRecognizers>
+            </Ellipse>
+
             <Label Text="Maneskin - Beggin'"
                    Grid.Row="1"
                    Grid.Column="1"
@@ -91,15 +101,19 @@
                    TextColor="White"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
-            
+
             <Ellipse Fill="White"
                      WidthRequest="40"
                      HeightRequest="40"
                      HorizontalOptions="Center"
                      VerticalOptions="Center"
                      Grid.Row="1"
-                     Grid.Column="5" />
-            
+                     Grid.Column="5">
+                <Ellipse.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="FilterPageButton_OnClicked" />
+                </Ellipse.GestureRecognizers>
+            </Ellipse>
+
             <Label Grid.Row="2" 
                    Grid.Column="0" 
                    Text="{Binding CurrentTimeString}"
@@ -156,7 +170,7 @@
                 BackgroundColor="#292929"
                 Grid.Row="1">
 
-                <Button Text="Import" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" />
+                <Button Text="Import" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButton_OnClicked"/>
                 <StackLayout
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
