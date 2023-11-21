@@ -5,6 +5,13 @@
              Title="Filters"
              BackgroundColor="DarkGray">
 
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="About">
+            <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
     <VerticalStackLayout
     Spacing="25"
     Padding="30,0"

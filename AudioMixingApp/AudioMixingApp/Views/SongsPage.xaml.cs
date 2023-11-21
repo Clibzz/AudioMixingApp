@@ -8,4 +8,9 @@ public partial class SongsPage : ContentPage
 		InitializeComponent();
 		BindingContext = new SongsViewModel();
 	}
+
+    private void AboutPageButton_OnClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AboutPage());
+    }
 }

@@ -4,6 +4,14 @@
              x:Class="AudioMixingApp.Views.SongsPage"
              Title="SongsPage"
              BackgroundColor="#3F3F3F">
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="About">
+            <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
+
     <VerticalStackLayout Padding="100, 100, 100, 100">
         <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
         <StackLayout BackgroundColor="#5F5F5F" VerticalOptions="Center">

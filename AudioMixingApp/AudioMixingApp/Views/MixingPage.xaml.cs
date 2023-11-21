@@ -54,4 +54,19 @@ public partial class MixingPage : ContentPage
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
         vm.PauseSliderUpdates = true;
     }
+
+    private void SongsPageButton_OnClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new SongsPage());
+    }
+
+    private void FilterPageButton_OnClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new FilterPage());
+    }
+
+    private void AboutPageButton_OnClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new AboutPage());
+    }
 }

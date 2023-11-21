@@ -5,10 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AudioMixingApp.Views"
     Shell.FlyoutBehavior="Disabled">
-
     <ShellContent   
         Title="Home"
         ContentTemplate="{DataTemplate local:MixingPage}"
         Route="MainPage" />
-
 </Shell>
