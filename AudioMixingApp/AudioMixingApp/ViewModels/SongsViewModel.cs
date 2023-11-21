@@ -12,8 +12,12 @@ namespace AudioMixingApp.ViewModels
             get { return songs; }
             set
             {
-                songs = value;
-                OnPropertyChanged(nameof(Songs));
+                if (songs != value)
+                {
+                    songs = value;
+                    OnPropertyChanged(nameof(Songs));
+                    Console.WriteLine("Songs collection updated");
+                }
             }
         }
 
@@ -28,8 +32,8 @@ namespace AudioMixingApp.ViewModels
         {
             Songs = new ObservableCollection<Song>
             {
-                new Song { title = "Cowboys from hell", artist = "Pantera" },
-                new Song { title = "Bleed", artist = "Meshuggah" },
+                new Song { Title = "Cowboys from hell", Artist = "Pantera" },
+                new Song { Title = "Bleed", Artist = "Meshuggah" },
             };
         }
     }
