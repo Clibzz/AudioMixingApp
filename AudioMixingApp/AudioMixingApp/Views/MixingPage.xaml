@@ -10,6 +10,10 @@
             <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
             </MenuFlyoutItem>
         </MenuBarItem>
+        <MenuBarItem Text="Playlists">
+            <MenuFlyoutItem Text="Playlists" Clicked="PlaylistsPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
     </ContentPage.MenuBarItems>
     <Grid
         RowDefinitions="3*, 2*"

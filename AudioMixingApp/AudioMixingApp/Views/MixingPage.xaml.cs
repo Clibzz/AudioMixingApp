@@ -69,4 +69,9 @@ public partial class MixingPage : ContentPage
     {
         Navigation.PushAsync(new AboutPage());
     }
+
+    private void PlaylistsPageButton_OnClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new PlaylistPage());
+    }
 }

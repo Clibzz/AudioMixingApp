@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Metal",
+    "Songs": [
+      {
+        "Title": "Song 1",
+        "Artist": "Artist 1",
+        "Source": "source1.mp3"
+      },
+      {
+        "Title": "Song 2",
+        "Artist": "Artist 2",
+        "Source": "source2.mp3"
+      }
+    ]
+  },
+  {
+    "Name": "Rock",
+    "Songs": [
+      {
+        "Title": "Rock Song 1",
+        "Artist": "Rock Artist 1",
+        "Source": "rock_source1.mp3"
+      },
+      {
+        "Title": "Rock Song 2",
+        "Artist": "Rock Artist 2",
+        "Source": "rock_source2.mp3"
+      }
+    ]
+  }
+]
