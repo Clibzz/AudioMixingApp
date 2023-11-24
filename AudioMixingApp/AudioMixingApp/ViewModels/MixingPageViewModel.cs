@@ -20,8 +20,10 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
     public MixingPageViewModel()
     {
-        _timer = new System.Timers.Timer();
-        _timer.Interval = 100;
+        _timer = new System.Timers.Timer
+        {
+            Interval = 100
+        };
         _timer.Start();
 
         _player = new Player();
@@ -68,6 +70,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
         {
             _player.Output.Play();
         }
+    }
+
+    public void ChangeVolume(float volume)
+    {
+        _player.Output.Volume = volume;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
