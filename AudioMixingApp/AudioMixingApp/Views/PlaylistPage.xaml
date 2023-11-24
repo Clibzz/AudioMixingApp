@@ -18,22 +18,15 @@
             <CollectionView ItemsSource="{Binding PlaylistsCollection}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout MinimumHeightRequest="300">
-                            <Label Text="{Binding Name}" FontSize="20" />
-                            <CollectionView ItemsSource="{Binding Songs}">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Stroke="#2F2F2F"
-                                                StrokeThickness="1"
-                                                HorizontalOptions="Center" WidthRequest="1720">             
-                                            <StackLayout Margin="0,10,0,0" FlowDirection="LeftToRight">
-                                                <Label FontSize="Large" Text="{Binding Title}" />
-                                                <Label FontSize="Medium" Text="{Binding Artist}" />
-                                            </StackLayout>
-                                        </Border>
-                                    </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                        <StackLayout>
+                            <Border Stroke="#2F2F2F"
+                                    StrokeThickness="1"
+                                    HorizontalOptions="Center" WidthRequest="1720">
+                                <StackLayout Margin="0,10,0,0" FlowDirection="LeftToRight">
+                                    <Label Text="{Binding Name}" FontSize="Large" />
+                                    <Button Text="Songs" Clicked=""></Button>
+                                </StackLayout>
+                            </Border>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
