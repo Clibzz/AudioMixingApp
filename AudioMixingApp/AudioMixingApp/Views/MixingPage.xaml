@@ -40,7 +40,10 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="185"
                     HeightRequest="29"
-                    Rotation="-90"/>
+                    Rotation="-90"
+                    Maximum="1.0" 
+                    Minimum="0.0" 
+                    ValueChanged="SliderVolume1_OnDragCompleted" Value="0.5"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
@@ -48,7 +51,7 @@
                     VerticalOptions="FillAndExpand"
                     WidthRequest="185"
                     HeightRequest="29"
-                    Rotation="-90"/>
+                    Rotation="-90" Value="0.5"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">

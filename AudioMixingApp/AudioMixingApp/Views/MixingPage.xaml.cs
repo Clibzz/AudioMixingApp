@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using AudioMixingApp.ViewModels;
+using NAudio.Wave;
 
 namespace AudioMixingApp.Views;
 
@@ -7,8 +8,8 @@ public partial class MixingPage : ContentPage
 {
     public MixingPage()
     {
-        InitializeComponent();
         BindingContext = new MixingPageViewModel();
+        InitializeComponent();
     }
 
     protected override void OnSizeAllocated(double width, double height)
@@ -16,6 +17,17 @@ public partial class MixingPage : ContentPage
         base.OnSizeAllocated(width, height);
 
         DjPanel.WidthRequest = DjPanel.Height * 2.5;
+    }
+
+    /// <summary>
+    /// Change the volume of the first song that's playing
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    public void SliderVolume1_OnDragCompleted(object sender, ValueChangedEventArgs e)
+    {
+        MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
+        vm.ChangeVolume((float)e.NewValue);
     }
 
     /// <summary>
@@ -27,7 +39,7 @@ public partial class MixingPage : ContentPage
     {
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
         
-        vm.AddSong("cfh.mp3");
+        vm.AddSong("Possessed - The Exorcist.mp3");
         vm.PlaySound();
     }
 
