@@ -11,6 +11,7 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new NavigationPage(new MixingPage());
+        MainPage = new NavigationPage(new MainPage());
+    
     }
 }

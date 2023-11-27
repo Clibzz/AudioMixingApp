@@ -12,8 +12,12 @@ namespace AudioMixingApp.ViewModels
             get { return songs; }
             set
             {
-                songs = value;
-                OnPropertyChanged(nameof(Songs));
+                if (songs != value)
+                {
+                    songs = value;
+                    OnPropertyChanged(nameof(Songs));
+                    Console.WriteLine("Songs collection updated");
+                }
             }
         }
 
