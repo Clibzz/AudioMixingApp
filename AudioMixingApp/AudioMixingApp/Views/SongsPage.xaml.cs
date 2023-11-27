@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Xml;
 using AudioMixingApp.Models;
 using AudioMixingApp.ViewModels;
 using Microsoft.Maui.Controls;
@@ -10,26 +12,31 @@ namespace AudioMixingApp.Views
 {
     public partial class SongsPage : ContentPage
     {
+        public List<Song> Songs { get; set; } = new List<Song>();
+        public SongsViewModel viewModel;
+
         public SongsPage()
         {
             InitializeComponent();
             BindingContext = new SongsViewModel();
+            viewModel = new SongsViewModel();
         }
 
         private async void OnAddSongClicked(object sender, EventArgs e)
         {
             string artist;
             string title;
+            string filePath;
 
             do
             {
-                artist = await DisplayPromptAsync("Add Song", "Enter Artist");
+                artist = await DisplayPromptAsync("Add Song", "Enter Artist name:");
 
                 if (artist == null) return; // User canceled, exit method
 
-                title = await DisplayPromptAsync("Add Song", "Enter Title");
+                title = await DisplayPromptAsync("Add Song", "Enter Title:");
 
-                if (title == null) return; // check if user canceled
+                if (title == null) return; // Check if the user canceled
 
                 // Show an error message if the artist or title is empty
                 if (string.IsNullOrWhiteSpace(artist) || string.IsNullOrWhiteSpace(title))
@@ -54,17 +61,17 @@ namespace AudioMixingApp.Views
                     return; // Exit the method if the user canceled
                 }
 
-                // file validation on .mp3 extention
+                // File validation on .mp3 extension
                 if (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase))
                 {
-                    //Error message, wrong file
+                    // Error message, wrong file
                     await DisplayAlert("Error", "Please select a valid .mp3 file.", "OK");
                 }
             }
             while (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase));
 
-            // Get the file path
-            string filePath = fileResult.FullPath;
+            // Get the file path and save it in the existing 'filePath' variable
+            filePath = fileResult.FullPath;
 
             // Save the file to this path
             string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
@@ -76,9 +83,21 @@ namespace AudioMixingApp.Views
             // Copy the file to the destination path
             File.Copy(filePath, destinationPath, true);
 
-            //add to collection
+            // Add to the collection
             var viewModel = (SongsViewModel)BindingContext;
-            viewModel.Songs.Add(new Song { Title = title, Artist = artist });
+            var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath };
+
+            viewModel.Songs.Add(newSong);
+
+            // add song to JSON file
+            await viewModel.AddSongToJsonFile(newSong);
+        }
+
+        
+
+        public class SongListWrapper
+        {
+            public List<Song> Songs { get; set; } = new List<Song>();
         }
 
     }
