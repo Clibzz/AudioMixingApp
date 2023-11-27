@@ -12,10 +12,14 @@ namespace AudioMixingApp.Views
 {
     public partial class SongsPage : ContentPage
     {
+        private SongsViewModel _viewModel;
+        public List<Song> Songs { get; set; } = new List<Song>();
+
         public SongsPage()
         {
             InitializeComponent();
             BindingContext = new SongsViewModel();
+            _viewModel = new SongsViewModel();
         }
 
         private async void OnAddSongClicked(object sender, EventArgs e)
@@ -26,11 +30,11 @@ namespace AudioMixingApp.Views
 
             do
             {
-                artist = await DisplayPromptAsync("Add Song", "Enter Artist");
+                artist = await DisplayPromptAsync("Add Song", "Enter Artist name:");
 
                 if (artist == null) return; // User canceled, exit method
 
-                title = await DisplayPromptAsync("Add Song", "Enter Title");
+                title = await DisplayPromptAsync("Add Song", "Enter Title:");
 
                 if (title == null) return; // Check if the user canceled
 
@@ -85,49 +89,59 @@ namespace AudioMixingApp.Views
 
             viewModel.Songs.Add(newSong);
 
-            // Voeg het nummer toe aan het JSON-bestand
+            // add song to JSON file
             await AddSongToJsonFile(newSong);
         }
 
         private async Task AddSongToJsonFile(Song song)
         {
-            string JsonFilePath = "C:\\Users\\moniq\\C#2_herkansing\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\songs.json";
-
+            string jsonFilePath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
             try
             {
-                string jsonContent;
-
-                // Lees de bestaande gegevens uit het JSON-bestand, als het bestand bestaat
-                if (File.Exists(JsonFilePath))
+                //check if json file exists
+                if (!File.Exists(jsonFilePath))
                 {
-                    jsonContent = await File.ReadAllTextAsync(JsonFilePath);
+                    //Create default json structure
+                    string defaultJsonContent = JsonSerializer.Serialize(new
+                    {
+                        Songs = new[]
+                        {
+                    new
+                    {
+                        Title = "",
+                        Artist = "",
+                        FilePath = ""
+                    }
                 }
-                else
-                {
-                    jsonContent = "{\"songs\": []}";
+                    }, new JsonSerializerOptions { WriteIndented = true });
+
+                    // write default json structure to json file
+                    await File.WriteAllTextAsync(jsonFilePath, defaultJsonContent);
                 }
 
-                // Deserialiseer de JSON-inhoud naar een SongListWrapper-object
+                string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
+
+                // Get JSON content and add it to song list
                 var songListWrapper = JsonSerializer.Deserialize<SongListWrapper>(jsonContent) ?? new SongListWrapper();
 
-                // Voeg het nieuwe nummer toe aan de lijst
+                // add new song to list
                 songListWrapper.Songs.Add(song);
 
-                // Serialiseer het bijgewerkte object terug naar JSON
+                // Convert new list to json
                 string updatedJsonContent = JsonSerializer.Serialize(songListWrapper, new JsonSerializerOptions { WriteIndented = true });
 
-                // Schrijf de bijgewerkte JSON terug naar het bestand
-                await File.WriteAllTextAsync(JsonFilePath, updatedJsonContent);
+                //Write updated json to the json file
+                await File.WriteAllTextAsync(jsonFilePath, updatedJsonContent);
 
-                // Toon een waarschuwingsvenster met de inhoud van het bijgewerkte JSON-bestand
-                await DisplayAlert("JSON Updated", "JSON content after update:\n" + updatedJsonContent, "OK");
+                //Alert that song has been added
+                await DisplayAlert("Added song", "the song has been succesfully added", "OK");
             }
             catch (Exception ex)
             {
-                // Handel eventuele fouten af (bijv. geen schrijfrechten)
                 await DisplayAlert("Error", $"Error writing to JSON file: {ex.Message}", "OK");
             }
         }
+
 
         public class SongListWrapper
         {
