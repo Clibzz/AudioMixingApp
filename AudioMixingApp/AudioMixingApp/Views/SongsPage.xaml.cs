@@ -12,14 +12,14 @@ namespace AudioMixingApp.Views
 {
     public partial class SongsPage : ContentPage
     {
-        private SongsViewModel _viewModel;
         public List<Song> Songs { get; set; } = new List<Song>();
+        public SongsViewModel viewModel;
 
         public SongsPage()
         {
             InitializeComponent();
             BindingContext = new SongsViewModel();
-            _viewModel = new SongsViewModel();
+            viewModel = new SongsViewModel();
         }
 
         private async void OnAddSongClicked(object sender, EventArgs e)
@@ -90,73 +90,10 @@ namespace AudioMixingApp.Views
             viewModel.Songs.Add(newSong);
 
             // add song to JSON file
-            await AddSongToJsonFile(newSong);
+            await viewModel.AddSongToJsonFile(newSong);
         }
 
-        private async Task AddSongToJsonFile(Song song)
-        {
-            string jsonFilePath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
-            try
-            {
-                // Check if json file exists
-                if (!File.Exists(jsonFilePath))
-                {
-                    // Create default json structure with the provided song
-                    string defaultJsonContent = JsonSerializer.Serialize(new
-                    {
-                        Songs = new[]
-                        {
-                    new
-                    {
-                        Title = song.Title,
-                        Artist = song.Artist,
-                        FilePath = song.FilePath
-                    }
-                }
-                    }, new JsonSerializerOptions { WriteIndented = true });
-
-                    // Write default json structure to json file
-                    await File.WriteAllTextAsync(jsonFilePath, defaultJsonContent);
-
-                    // Alert that the song has been added
-                    await DisplayAlert("Added song", "The song has been successfully added", "OK");
-                }
-                else
-                {
-                    string jsonContent = await File.ReadAllTextAsync(jsonFilePath);
-
-                    // Get JSON content and add it to the song list
-                    var songListWrapper = JsonSerializer.Deserialize<SongListWrapper>(jsonContent) ?? new SongListWrapper();
-
-                    // Check if the song is not already in the list before adding it
-                    if (!songListWrapper.Songs.Any(s => s.Title == song.Title && s.Artist == song.Artist && s.FilePath == song.FilePath))
-                    {
-                        // Add the new song to the list
-                        songListWrapper.Songs.Add(song);
-
-                        // Convert the new list to json
-                        string updatedJsonContent = JsonSerializer.Serialize(songListWrapper, new JsonSerializerOptions { WriteIndented = true });
-
-                        // Write the updated json to the json file
-                        await File.WriteAllTextAsync(jsonFilePath, updatedJsonContent);
-
-                        // Alert that the song has been added
-                        await DisplayAlert("Added song", "The song has been successfully added", "OK");
-                    }
-                    else
-                    {
-                        // Alert that the song is already in the list
-                        await DisplayAlert("Song already exists", "The song is already in the list", "OK");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", $"Error writing to JSON file: {ex.Message}", "OK");
-            }
-        }
-
-
+        
 
         public class SongListWrapper
         {
