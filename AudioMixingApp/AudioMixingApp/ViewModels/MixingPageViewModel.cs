@@ -39,6 +39,14 @@ public class MixingPageViewModel : INotifyPropertyChanged
     }
 
     /// <summary>
+    /// Toggles playback of song.
+    /// </summary>
+    public void TogglePlayback()
+    {
+        _player.TogglePlayback();
+    }
+
+    /// <summary>
     /// Play the song and update the slider values and labels
     /// </summary>
     public void PlaySound()
@@ -75,6 +83,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
     public void ChangeVolume(float volume)
     {
         _player.Output.Volume = volume;
+    }
+
+    public void SkipSong()
+    {
+        _player.SkipSong();
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
