@@ -38,9 +38,8 @@ public partial class MixingPage : ContentPage
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
-        
-        vm.AddSong("Possessed - The Exorcist.mp3");
-        vm.PlaySound();
+
+        vm.TogglePlayback();
     }
 
     /// <summary>
@@ -65,6 +64,12 @@ public partial class MixingPage : ContentPage
     {
         MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
         vm.PauseSliderUpdates = true;
+    }
+
+    private void SkipButtonFirstPlayer_OnClicked(object sender, EventArgs e)
+    {
+        MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
+        vm.SkipSong();
     }
 
     private void SongsPageButton_OnClicked(object sender, EventArgs e)
