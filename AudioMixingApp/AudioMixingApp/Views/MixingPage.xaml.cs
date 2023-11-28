@@ -37,9 +37,8 @@ public partial class MixingPage : ContentPage
     /// <param name="e"></param>
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
-        MixingPageViewModel vm = (MixingPageViewModel)BindingContext;
-
-        vm.TogglePlayback();
+        // _viewModel().AddSong("test2.mp3");
+        _viewModel().PlaySound();
     }
 
     /// <summary>
@@ -74,7 +73,7 @@ public partial class MixingPage : ContentPage
 
     private void SongsPageButton_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SongsPage());
+        Navigation.PushAsync(new SongsPage(_viewModel()._player));
     }
 
     private void FilterPageButton_OnClicked(object sender, EventArgs e)
@@ -85,5 +84,10 @@ public partial class MixingPage : ContentPage
     private void AboutPageButton_OnClicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new AboutPage());
+    }
+
+    private MixingPageViewModel _viewModel()
+    {
+        return (MixingPageViewModel)BindingContext;
     }
 }

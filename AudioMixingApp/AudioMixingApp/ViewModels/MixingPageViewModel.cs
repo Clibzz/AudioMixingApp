@@ -16,7 +16,7 @@ public class MixingPageViewModel : INotifyPropertyChanged
     private string _currentTimeString = "00:00:00";
     private string _totalTimeString = "00:00:00";
 
-    private readonly Player _player;
+    public readonly Player _player;
 
     public MixingPageViewModel()
     {
@@ -51,8 +51,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
     /// </summary>
     public void PlaySound()
     {
-        _player.PlaySongFromQueue(); //TODO: Hier nog ff naar kijken
-        // _player.TogglePlayback();
+        _player.PlaySongFromQueue();
+
+        if (_player.PlayingSong == null) return;
 
         TotalTime = (int)_player.PlayingSong.TotalTime.TotalSeconds;
         TotalTimeString = _player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
@@ -104,8 +105,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
         get => _currentTime;
         set
         {
-            _currentTime = value;
-            OnPropertyChanged(nameof(CurrentTime));
+            if (_currentTime != value)
+            {
+                _currentTime = value;
+                OnPropertyChanged(nameof(CurrentTime));
+            }
         }
     }
 

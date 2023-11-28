@@ -33,11 +33,6 @@ namespace AudioMixingApp
             
             // Adds the path to the song to the queue.
             SongQueue.Enqueue(song);
-            
-            if (SongQueue.Count == 1)
-            {
-                PlaySongFromQueue();
-            }
         }
 
         /// <summary>
@@ -61,27 +56,26 @@ namespace AudioMixingApp
         public void PlaySongFromQueue()
         {
             // Run the logic if there are 1 or more songs in the queue.
-            if (SongQueue.Count > 0)
+            if (SongQueue.Count <= 0) return;
+
+            // Get the next song in the queue.
+            string song = SongQueue.Dequeue();
+            // If the function gets called while a song is playing, stop playing the song so that the next song can play.
+            if (PlayingSong != null)
             {
-                // Get the next song in the queue.
-                string song = SongQueue.Dequeue();
-                // If the function gets called while a song is playing, stop playing the song so that the next song can play.
-                if (PlayingSong != null)
-                {
-                    Output.Stop();
-                }
-
-                // Prepare the song for playback.
-                PlayingSong = new(song);
-                Output.Init(PlayingSong);
-
-                // Start playback of the queued song.
-                Output.Play();
-
-                // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
-                // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
-                Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
+                Output.Stop();
             }
+
+            // Prepare the song for playback.
+            PlayingSong = new(song);
+            Output.Init(PlayingSong);
+
+            // Start playback of the queued song.
+            Output.Play();
+
+            // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
+            // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
+            Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
         }
 
         /// <summary>
