@@ -32,26 +32,27 @@
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
                     <ImageButton Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonFirstPlayer_OnClicked"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Slider x:Name="SliderVolume1"
-                    VerticalOptions="FillAndExpand"
+                <Slider VerticalOptions="FillAndExpand"
                     WidthRequest="185"
                     HeightRequest="29"
                     Rotation="-90"
                     Maximum="1.0" 
                     Minimum="0.0" 
-                    ValueChanged="SliderVolume1_OnDragCompleted" Value="0.5"/>
+                    ValueChanged="VolumeSliderA_OnDragCompleted" Value="0.5"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Slider x:Name="SliderVolume2"
-                    VerticalOptions="FillAndExpand"
-                    WidthRequest="185"
-                    HeightRequest="29"
-                    Rotation="-90" Value="0.5"/>
+                <Slider VerticalOptions="FillAndExpand"
+                        WidthRequest="185"
+                        HeightRequest="29"
+                        Rotation="-90"
+                        Maximum="1.0" 
+                        Minimum="0.0" 
+                        ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
@@ -62,8 +63,8 @@
                         VerticalOptions="Center" />
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
-                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20"></ImageButton>
+                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <Ellipse Fill="White"
@@ -74,7 +75,7 @@
                      Grid.Row="1"
                      Grid.Column="0">
                 <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButton_OnClicked" />
+                    <TapGestureRecognizer Tapped="FilterPageButtonA_OnClicked" />
                 </Ellipse.GestureRecognizers>
             </Ellipse>
 
@@ -113,7 +114,7 @@
                      Grid.Row="1"
                      Grid.Column="5">
                 <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButton_OnClicked" />
+                    <TapGestureRecognizer Tapped="FilterPageButtonB_OnClicked" />
                 </Ellipse.GestureRecognizers>
             </Ellipse>
 
@@ -131,8 +132,8 @@
                     WidthRequest="200"
                     Value="{Binding CurrentTime}"
                     Maximum="{Binding TotalTime}"
-                    DragStarted="Slider_OnDragStarted"
-                    DragCompleted="Slider_OnDragCompleted" />
+                    DragStarted="ProgressbarSliderA_OnDragStarted"
+                    DragCompleted="ProgressbarSliderA_OnDragCompleted" />
             
             <Label Grid.Row="2" 
                    Grid.Column="2" 
@@ -141,7 +142,7 @@
             
             <Label Grid.Row="2" 
                    Grid.Column="3" 
-                   Text="{Binding CurrentTimeString}"
+                   Text="0:00"
                    VerticalOptions="Center" 
                    HorizontalOptions="End"/>
             
@@ -151,14 +152,14 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
-                    Value="{Binding CurrentTime}"
-                    Maximum="{Binding TotalTime}"
-                    DragStarted="Slider_OnDragStarted"
-                    DragCompleted="Slider_OnDragCompleted" />
+                    Value="1"
+                    Maximum="20"
+                    DragStarted="ProgressbarSliderB_OnDragStarted"
+                    DragCompleted="ProgressbarSliderB_OnDragCompleted" />
             
             <Label Grid.Row="2" 
                    Grid.Column="5" 
-                   Text="{Binding TotalTimeString}"
+                   Text="0:00"
                    VerticalOptions="Center"/>
         </Grid>
         <StackLayout

@@ -120,8 +120,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
         get => _totalTime;
         set
         {
-            _totalTime = value;
-            OnPropertyChanged(nameof(TotalTime));
+            if (_totalTime != value)
+            {
+                _totalTime = value;
+                OnPropertyChanged(nameof(TotalTime));
+            }
         }
     }
 
@@ -130,8 +133,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
         get => _currentTimeString;
         set
         {
-            _currentTimeString = value;
-            OnPropertyChanged(nameof(CurrentTimeString));
+            if (_currentTimeString != value)
+            {
+                _currentTimeString = value;
+                OnPropertyChanged(nameof(CurrentTimeString));
+            }
         }
     }
 
@@ -140,8 +146,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
         get => _totalTimeString;
         set
         {
-            _totalTimeString = value;
-            OnPropertyChanged(nameof(TotalTimeString));
+            if (_totalTimeString != value)
+            {
+                _totalTimeString = value;
+                OnPropertyChanged(nameof(TotalTimeString));
+            }
         }
     }
 }

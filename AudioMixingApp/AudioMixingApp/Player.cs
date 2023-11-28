@@ -6,16 +6,12 @@ namespace AudioMixingApp
     public class Player
     {
         // The output device.
-        public WaveOutEvent Output { get; set; }
+        public WaveOutEvent Output { get; set; } = new();
+
         // The song.
         public AudioFileReader PlayingSong {  get; set; }
         // The queue for the songs.
-        public Queue<string> SongQueue {  get; set; }
-        public Player()
-        {
-            Output = new();
-            SongQueue = new();
-        }
+        public Queue<string> SongQueue {  get; set; } = new();
 
         /// <summary>
         /// Method <c>AddToQueue</c> adds a song to the queue.
