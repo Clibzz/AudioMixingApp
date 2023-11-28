@@ -95,8 +95,6 @@ namespace AudioMixingApp.Views
             await viewModel.AddSongToJsonFile(newSong);
         }
 
-        
-
         public class SongListWrapper
         {
             public List<Song> Songs { get; set; } = new List<Song>();

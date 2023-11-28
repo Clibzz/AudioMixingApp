@@ -37,7 +37,6 @@ public partial class MixingPage : ContentPage
     /// <param name="e"></param>
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
-        // _viewModel().AddSong("test2.mp3");
         _viewModel().PlaySound();
     }
 

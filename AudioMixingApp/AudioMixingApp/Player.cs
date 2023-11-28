@@ -96,6 +96,14 @@ namespace AudioMixingApp
         }
 
         /// <summary>
+        /// Pause the currently playing song
+        /// </summary>
+        public void Pause()
+        {
+            Output.Pause();
+        }
+
+        /// <summary>
         /// Method <c>SkipSong</c> goes to the next song by stopping the output so that the PlaybackStopped event is called.
         /// </summary>
         public void SkipSong()

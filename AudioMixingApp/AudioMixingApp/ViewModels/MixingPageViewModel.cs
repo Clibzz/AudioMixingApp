@@ -39,32 +39,34 @@ public class MixingPageViewModel : INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Toggles playback of song.
-    /// </summary>
-    public void TogglePlayback()
-    {
-        _player.TogglePlayback();
-    }
-
-    /// <summary>
     /// Play the song and update the slider values and labels
     /// </summary>
     public void PlaySound()
     {
-        _player.PlaySongFromQueue();
-
-        if (_player.PlayingSong == null) return;
-
-        TotalTime = (int)_player.PlayingSong.TotalTime.TotalSeconds;
-        TotalTimeString = _player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
-        
-        _timer.Elapsed += (sender, eventArgs) =>
+        //Play or pause if a song is already playing
+        if (_player.PlayingSong != null)
         {
-            if (PauseSliderUpdates) return;
-            
-            CurrentTime = (int)_player.PlayingSong.CurrentTime.TotalSeconds;
-            CurrentTimeString = _player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
-        };
+            _player.TogglePlayback();
+        }
+        else
+        {
+            //Get a song from the queue
+            _player.PlaySongFromQueue();
+
+            //If it couldn't get a song from the queue, it means the queue is empty, so stop.
+            if (_player.PlayingSong == null) return;
+
+            TotalTime = (int)_player.PlayingSong.TotalTime.TotalSeconds;
+            TotalTimeString = _player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
+
+            _timer.Elapsed += (sender, eventArgs) =>
+            {
+                if (PauseSliderUpdates) return;
+
+                CurrentTime = (int)_player.PlayingSong.CurrentTime.TotalSeconds;
+                CurrentTimeString = _player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
+            };
+        }
     }
 
     /// <summary>
