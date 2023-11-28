@@ -120,7 +120,7 @@
 
             <Label Grid.Row="2" 
                    Grid.Column="0" 
-                   Text="{Binding CurrentTimeString}"
+                   Text="{Binding CurrentTimeStringA}"
                    VerticalOptions="Center" 
                    HorizontalOptions="End"/>
             
@@ -130,19 +130,19 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
-                    Value="{Binding CurrentTime}"
-                    Maximum="{Binding TotalTime}"
+                    Value="{Binding CurrentTimeA}"
+                    Maximum="{Binding TotalTimeA}"
                     DragStarted="ProgressbarSliderA_OnDragStarted"
                     DragCompleted="ProgressbarSliderA_OnDragCompleted" />
             
             <Label Grid.Row="2" 
-                   Grid.Column="2" 
-                   Text="{Binding TotalTimeString}"
+                   Grid.Column="2"
+                   Text="{Binding TotalTimeStringA}"
                    VerticalOptions="Center" />
             
             <Label Grid.Row="2" 
                    Grid.Column="3" 
-                   Text="0:00"
+                   Text="{Binding CurrentTimeStringB}"
                    VerticalOptions="Center" 
                    HorizontalOptions="End"/>
             
@@ -152,14 +152,14 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
-                    Value="1"
-                    Maximum="20"
+                    Value="{Binding CurrentTimeB}"
+                    Maximum="{Binding TotalTimeB}"
                     DragStarted="ProgressbarSliderB_OnDragStarted"
                     DragCompleted="ProgressbarSliderB_OnDragCompleted" />
             
             <Label Grid.Row="2" 
-                   Grid.Column="5" 
-                   Text="0:00"
+                   Grid.Column="5"
+                   Text="{Binding TotalTimeStringB}"
                    VerticalOptions="Center"/>
         </Grid>
         <StackLayout
@@ -169,12 +169,15 @@
             Grid.Row="1">
 
             <StackLayout
+                HorizontalOptions="Fill"
                 VerticalOptions="Fill"
                 Padding="30"
-                BackgroundColor="#292929"
-                Grid.Row="1">
+                BackgroundColor="#292929">
 
-                <Button Text="Import" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButton_OnClicked"/>
+                <HorizontalStackLayout>
+                    <Button Text="Import A" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonA_OnClicked"/>
+                    <Button Text="Import B" HorizontalOptions="End" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonB_OnClicked"/>
+                </HorizontalStackLayout>
                 <StackLayout
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
