@@ -68,6 +68,9 @@
 
 	<ItemGroup>
 	  <Folder Include="Songs\" />
+	  <Compile Update="Views\EffectPage.xaml.cs">
+	    <DependentUpon>EffectPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\MainPage.xaml.cs">
 	    <DependentUpon>MainPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>

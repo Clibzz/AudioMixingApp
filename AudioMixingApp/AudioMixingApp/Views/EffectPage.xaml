@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AudioMixingApp.FilterPage"
-             Title="Filters"
-             BackgroundColor="DarkGray">
+             x:Class="AudioMixingApp.EffectPage"
+             Title="Effecten"
+             BackgroundColor="#424242">
 
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="About">
@@ -12,20 +12,10 @@
         </MenuBarItem>
     </ContentPage.MenuBarItems>
 
-    <VerticalStackLayout
-    Spacing="25"
-    Padding="30,0"
-    VerticalOptions="Start">
+    <VerticalStackLayout Padding="100,50,100,100">
+        <Label Text="About" FontSize="Large" FontAttributes="Bold"/>
 
-        <Label 
-        Margin="20"
-        Text="Filters"
-        TextColor="White"
-        FontSize="32"
-        FontAttributes="Bold"
-        HorizontalOptions="Center" />
-
-        <Grid BackgroundColor="Grey" Padding="50">
+        <Grid BackgroundColor="#292929" Padding="50">
             <Label Grid.Row="0" HeightRequest="800" Text="Reverb" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
             <Slider HeightRequest="785" WidthRequest="800" HorizontalOptions="CenterAndExpand"></Slider>
             <Label HeightRequest="800" Text="25" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
@@ -40,5 +30,4 @@
             <Label HeightRequest="500" Text="25" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
         </Grid>
     </VerticalStackLayout>
-
 </ContentPage>

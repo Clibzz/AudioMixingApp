@@ -3,7 +3,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AudioMixingApp.Views.MixingPage"
-             Title="Mixing page"
+             Title="Mixing"
              BackgroundColor="#424242">
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="About">
@@ -67,6 +67,7 @@
                     <ImageButton Source="next.png" HeightRequest="20"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
+            
             <Ellipse Fill="White"
                      WidthRequest="40"
                      HeightRequest="40"
@@ -75,9 +76,17 @@
                      Grid.Row="1"
                      Grid.Column="0">
                 <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButton_OnClicked" />
+                    <TapGestureRecognizer Tapped="EffectPageButton_OnClicked" />
                 </Ellipse.GestureRecognizers>
             </Ellipse>
+
+            <Label Text="Effecten"
+               Grid.Row="0"
+               Grid.Column="0"
+               HorizontalOptions="Center"
+               VerticalOptions="End"
+               TextColor="Black"
+               FontAttributes="Bold"/>
 
             <Label Text="Maneskin - Beggin'"
                    Grid.Row="1"
@@ -106,6 +115,14 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
+            
+            <Label Text="Effecten" 
+                   TextColor="Black" 
+                   HorizontalOptions="Center" 
+                   VerticalOptions="End" 
+                   Grid.Row="0" 
+                   FontAttributes="Bold"
+                   Grid.Column="5" />
             <Ellipse Fill="White"
                      WidthRequest="40"
                      HeightRequest="40"
@@ -114,7 +131,7 @@
                      Grid.Row="1"
                      Grid.Column="5">
                 <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButton_OnClicked" />
+                    <TapGestureRecognizer Tapped="EffectPageButton_OnClicked" />
                 </Ellipse.GestureRecognizers>
             </Ellipse>
 
@@ -133,7 +150,8 @@
                     Value="{Binding CurrentTime}"
                     Maximum="{Binding TotalTime}"
                     DragStarted="Slider_OnDragStarted"
-                    DragCompleted="Slider_OnDragCompleted" />
+                    DragCompleted="Slider_OnDragCompleted" InputTransparent="True" IsVisible="True"
+                    />
             
             <Label Grid.Row="2" 
                    Grid.Column="2" 
@@ -219,6 +237,5 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-
     </Grid>
 </ContentPage>

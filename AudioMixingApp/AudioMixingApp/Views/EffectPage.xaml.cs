@@ -2,9 +2,9 @@ using AudioMixingApp.Views;
 
 namespace AudioMixingApp;
 
-public partial class FilterPage : ContentPage
+public partial class EffectPage : ContentPage
 {
-	public FilterPage()
+	public EffectPage()
 	{
 		InitializeComponent();
 	}

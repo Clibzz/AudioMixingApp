@@ -60,9 +60,9 @@ public partial class MixingPage : ContentPage
         Navigation.PushAsync(new SongsPage());
     }
 
-    private void FilterPageButton_OnClicked(object sender, EventArgs e)
+    private void EffectPageButton_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new FilterPage());
+        Navigation.PushAsync(new EffectPage());
     }
 
     private void AboutPageButton_OnClicked(object sender, EventArgs e)

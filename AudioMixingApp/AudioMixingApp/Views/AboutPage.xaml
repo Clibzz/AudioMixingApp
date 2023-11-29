@@ -3,31 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AudioMixingApp.Views.AboutPage"
              Title="About"
-             BackgroundColor="DarkGray">
+             BackgroundColor="#424242">
 
     <ContentPage.MenuBarItems>
-        <MenuBarItem Text="About">
-            <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
+        <MenuBarItem Text="Mixing">
+            <MenuFlyoutItem Text="Mixing" Clicked="MixingPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
+        <MenuBarItem Text="Playlist">
+            <MenuFlyoutItem Text="Playlist" Clicked="PlaylistPageButton_OnClicked">
             </MenuFlyoutItem>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
 
-    <VerticalStackLayout
-    Spacing="25"
-    Padding="30,0"
-    VerticalOptions="Start">
-
-        <Label 
-        Margin="20"
-        Text="About"
-        TextColor="White"
-        FontSize="32"
-        FontAttributes="Bold"/>
-
-        <Grid RowDefinitions=".40*, .60*" BackgroundColor="Grey" Padding="50" HeightRequest="750">
-            <Label Grid.Row="0" Text="AudioMixingApp" TextColor="White" FontSize="32" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
-            <Label Grid.Row="1" Text="Created by Victor Peters, Yannieck Blaauw, Monique Sabong and Chris" TextColor="White" FontSize="32" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
-        </Grid>
+    <VerticalStackLayout Padding="100,50,100,100">
+        <Label Text="About" FontSize="Large" FontAttributes="Bold"/>
+        <Border Grid.Column="0" Stroke="#9DAAAF" StrokeThickness="1" HorizontalOptions="Center">
+            <Grid RowDefinitions=".40*, .60*" BackgroundColor="#292929" HeightRequest="500">
+                <Label Grid.Row="0" Text="AudioMixingApp" TextColor="White" FontSize="64" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
+                <Label Grid.Row="1" Text="Created by Victor Peters, Yannieck Blaauw, Monique Sabong and Chris Klunder" TextColor="White" FontSize="32" HorizontalTextAlignment="Center"></Label>
+            </Grid>
+        </Border>
     </VerticalStackLayout>
-
 </ContentPage>
