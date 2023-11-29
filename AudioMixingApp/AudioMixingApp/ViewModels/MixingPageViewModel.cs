@@ -33,11 +33,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
     /// </summary>
     /// <param name="playerChar">'A' or 'B'</param>
     /// <returns>PlayerA or PlayerB respectively</returns>
-    /// <exception cref="ArgumentOutOfRangeException"></exception>
+    /// <exception cref="ArgumentException"></exception>
     public Player GetPlayer(char playerChar)
     {
         if (playerChar != 'A' && playerChar != 'B')
-            throw new ArgumentOutOfRangeException();
+            throw new ArgumentException();
 
         return playerChar == 'A' ? _playerA : _playerB;
     }
@@ -57,6 +57,7 @@ public class MixingPageViewModel : INotifyPropertyChanged
     /// <summary>
     /// Play the song and update the slider values and labels
     /// </summary>
+    /// <param name="playerChar">'A' or 'B'</param>
     public void PlaySound(char playerChar)
     {
         Player player = GetPlayer(playerChar);
@@ -111,7 +112,7 @@ public class MixingPageViewModel : INotifyPropertyChanged
     /// <summary>
     /// Update the current time of the slider and start playing the song if its stopped
     /// </summary>
-    /// <param name="playerChar">'A' or 'B' for which player to execute the function to</param>
+    /// <param name="playerChar">'A' or 'B'</param>
     /// <param name="time"></param>
     public void UpdateCurrentTime(char playerChar, double time)
     {
@@ -126,11 +127,20 @@ public class MixingPageViewModel : INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Change the volume of a player
+    /// </summary>
+    /// <param name="player">'A' or 'B'</param>
+    /// <param name="volume">number from 0 to 1</param>
     public void ChangeVolume(char player, float volume)
     {
         GetPlayer(player).Output.Volume = volume;
     }
 
+    /// <summary>
+    /// Skip the currently playing song and play the next in the queue
+    /// </summary>
+    /// <param name="player">'A' or 'B'</param>
     public void SkipSong(char player)
     {
         GetPlayer(player).SkipSong();
