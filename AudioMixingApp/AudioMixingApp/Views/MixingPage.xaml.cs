@@ -57,6 +57,7 @@ public partial class MixingPage
     
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
+        _viewModel._playerA.AddToQueue("Possessed - The Exorcist.mp3");
         _viewModel.PlaySound('A');
     }
     
