@@ -1,10 +1,10 @@
-using AudioMixingApp.Views;
+using AudioMixingApp.Models;
 
-namespace AudioMixingApp;
+namespace AudioMixingApp.Views;
 
 public partial class FilterPage : ContentPage
 {
-	public FilterPage()
+	public FilterPage(Player player)
 	{
 		InitializeComponent();
 	}

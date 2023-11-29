@@ -18,6 +18,7 @@
                             <StackLayout BackgroundColor="#5F5F5F" Padding="10,10,10,10" FlowDirection="LeftToRight">
                                 <Label FontSize="Large" Text="{Binding Title}" />
                                 <Label FontSize="Medium" Text="{Binding Artist}" TextColor="Pink"/>
+                                <Button Text="im boutta blow" Clicked="Button_OnClicked"></Button>
                             </StackLayout>
                         </Border>
                     </DataTemplate>

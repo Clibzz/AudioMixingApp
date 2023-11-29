@@ -12,11 +12,13 @@ namespace AudioMixingApp.Views
 {
     public partial class SongsPage : ContentPage
     {
+        private readonly Player _player;
         public List<Song> Songs { get; set; } = new List<Song>();
         public SongsViewModel viewModel;
 
-        public SongsPage()
+        public SongsPage(Player player)
         {
+            _player = player;
             InitializeComponent();
             BindingContext = new SongsViewModel();
             viewModel = new SongsViewModel();
@@ -93,12 +95,14 @@ namespace AudioMixingApp.Views
             await viewModel.AddSongToJsonFile(newSong);
         }
 
-        
-
         public class SongListWrapper
         {
             public List<Song> Songs { get; set; } = new List<Song>();
         }
 
+        private void Button_OnClicked(object sender, EventArgs e)
+        {
+            _player.AddToQueue("test2.mp3");
+        }
     }
 }
