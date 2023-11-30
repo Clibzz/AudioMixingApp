@@ -1,17 +1,21 @@
-using System.Diagnostics;
 using AudioMixingApp.ViewModels;
+using NAudio.Wave;
 
 namespace AudioMixingApp.Views;
 
 public partial class MixingPage
 {
     private readonly MixingPageViewModel _viewModel;
+    private readonly ImageSource _playImageSource, _pausedImageSource;
     
     public MixingPage()
     {
         _viewModel = new MixingPageViewModel();
         BindingContext = _viewModel;
         InitializeComponent();
+
+        _playImageSource = ImageSource.FromFile("play.png");
+        _pausedImageSource = ImageSource.FromFile("paused.png");
     }
 
     /// <summary>
@@ -57,8 +61,13 @@ public partial class MixingPage
     
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
-        _viewModel._playerA.AddToQueue("Possessed - The Exorcist.mp3");
-        _viewModel.PlaySound('A');
+        _viewModel.PlaySoundWithPauseCheck('A');
+
+        ImageButton imageButton = (ImageButton)sender;
+        
+        imageButton.Source = _viewModel.GetPlaybackState('A') == PlaybackState.Playing
+            ? _pausedImageSource
+            : _playImageSource;
     }
     
     private void ProgressbarSliderA_OnDragCompleted(object sender, EventArgs e)
@@ -76,6 +85,12 @@ public partial class MixingPage
     {
         _viewModel.SkipSong('A');
     }
+
+    private void DeleteButtonA_OnClicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        _viewModel.DeleteFromQueue('A', button.ClassId);
+    }
     
     //////////////////////
     ////// PLAYER B //////
@@ -84,7 +99,6 @@ public partial class MixingPage
     private void FilterPageButtonB_OnClicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('B')));
-        Trace.WriteLine(sender);
     }
     
     private void VolumeSliderB_OnDragCompleted(object sender, ValueChangedEventArgs e)
@@ -94,25 +108,28 @@ public partial class MixingPage
     
     private void PlayButtonB_Clicked(object sender, EventArgs e)
     {
-        _viewModel.PlaySound('B');
-        Trace.WriteLine(sender);
+        _viewModel.PlaySoundWithPauseCheck('B');
     }
     
     private void ProgressbarSliderB_OnDragCompleted(object sender, EventArgs e)
     {
         _viewModel.UpdateCurrentTime('B', ((Slider)sender).Value);
         _viewModel.PauseSliderUpdatesB = false;
-        Trace.WriteLine(sender);
     }
 
     private void ProgressbarSliderB_OnDragStarted(object sender, EventArgs e)
     {
         _viewModel.PauseSliderUpdatesB = true;
-        Trace.WriteLine(sender);
     }
 
     private void SkipButtonB_OnClicked(object sender, EventArgs e)
-    {
+    { 
         _viewModel.SkipSong('B');
+    }
+
+    private void DeleteButtonB_OnClicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        _viewModel.DeleteFromQueue('B', button.ClassId);
     }
 }

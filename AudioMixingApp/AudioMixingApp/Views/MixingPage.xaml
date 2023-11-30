@@ -24,14 +24,14 @@
             Grid.Row="0">
             <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
                                  x:Name="CircleParent">
-                <Ellipse Fill="DarkBlue"
-                         WidthRequest="120"
-                         HeightRequest="120"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center" />
+                <Image Source="djpanel.png"
+                       WidthRequest="120"
+                       HeightRequest="120"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
-                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
+                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
                     <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
@@ -56,28 +56,26 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Ellipse Fill="DarkBlue"
-                        WidthRequest="120"
-                        HeightRequest="120"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
+                <Image Source="djpanel.png"
+                       WidthRequest="120"
+                       HeightRequest="120"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
-                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
+                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
                     <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <Ellipse Fill="White"
-                     WidthRequest="40"
-                     HeightRequest="40"
-                     HorizontalOptions="Center"
-                     VerticalOptions="Center"
-                     Grid.Row="1"
-                     Grid.Column="0">
-                <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButtonA_OnClicked" />
-                </Ellipse.GestureRecognizers>
-            </Ellipse>
+            
+            <ImageButton Source="filter.png"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Grid.Row="1"
+                         Grid.Column="0"
+                         Clicked="FilterPageButtonA_OnClicked"/>
 
             <Label Text="Maneskin - Beggin'"
                    Grid.Row="1"
@@ -106,17 +104,14 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
-            <Ellipse Fill="White"
-                     WidthRequest="40"
-                     HeightRequest="40"
-                     HorizontalOptions="Center"
-                     VerticalOptions="Center"
-                     Grid.Row="1"
-                     Grid.Column="5">
-                <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButtonB_OnClicked" />
-                </Ellipse.GestureRecognizers>
-            </Ellipse>
+            <ImageButton Source="filter.png"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Grid.Row="1"
+                         Grid.Column="5"
+                         Clicked="FilterPageButtonB_OnClicked"/>
 
             <Label Grid.Row="2" 
                    Grid.Column="0" 
@@ -163,28 +158,33 @@
                    VerticalOptions="Center"/>
         </Grid>
         <StackLayout
+            HorizontalOptions="Fill"
             VerticalOptions="Fill"
             Padding="30"
             BackgroundColor="#292929"
             Grid.Row="1">
-
-            <StackLayout
+            
+            <HorizontalStackLayout>
+                <Button Text="Import A" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonA_OnClicked"/>
+                <Button Text="Import B" HorizontalOptions="End" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonB_OnClicked"/>
+            </HorizontalStackLayout>
+            <Grid
+                ColumnDefinitions="*, *"
+                RowDefinitions="*"
+                ColumnSpacing="20"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"
-                Padding="30"
                 BackgroundColor="#292929">
-
-                <HorizontalStackLayout>
-                    <Button Text="Import A" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonA_OnClicked"/>
-                    <Button Text="Import B" HorizontalOptions="End" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonB_OnClicked"/>
-                </HorizontalStackLayout>
+                
                 <StackLayout
-                    VerticalOptions="FillAndExpand"
-                    HorizontalOptions="FillAndExpand"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill"
                     BackgroundColor="Black"
                     Padding="10">
 
-                    <ListView x:Name="SongsListView" HasUnevenRows="True">
+                    <ListView HasUnevenRows="True" HorizontalOptions="FillAndExpand" ItemsSource="{Binding PlayerAQueue}">
                         <ListView.Header>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -193,8 +193,53 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="Artist" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                <Label Text="Title" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Title" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Artist" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Duration" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Actions" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                            </Grid>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="{Binding Title}" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Artist}" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Duration}" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Button Text="Remove" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" Clicked="DeleteButtonA_OnClicked" ClassId="{Binding FilePath}"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="Black"
+                    Padding="10">
+
+                    <ListView HasUnevenRows="True" HorizontalOptions="FillAndExpand" ItemsSource="{Binding PlayerBQueue}">
+                        <ListView.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Title" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                <Label Text="Artist" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                 <Label Text="Duration" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                 <Label Text="Actions" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                             </Grid>
@@ -210,17 +255,17 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Text="{Binding Artist}" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                        <Label Text="{Binding Title}" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Title}" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Label Text="{Binding Artist}" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                         <Label Text="{Binding Duration}" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                        <Button Text="Action" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                                        <Button Text="Remove" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" Clicked="DeleteButtonB_OnClicked" ClassId="{Binding FilePath}"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
                 </StackLayout>
-            </StackLayout>
+            </Grid>
         </StackLayout>
 
     </Grid>
