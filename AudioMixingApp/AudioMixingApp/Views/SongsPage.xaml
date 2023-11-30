@@ -7,9 +7,11 @@
     <ScrollView>
         <StackLayout Padding="10, 100, 10, 10">
 
-            <!-- Add Song Button -->
-            <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddSongClicked"/>
-
+            <HorizontalStackLayout>
+                <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddSongClicked"/>
+                <Button Text="Add Multiple Songs" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddMultipleSongsClicked"/>
+            </HorizontalStackLayout>
+            
             <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
             <CollectionView ItemsSource="{Binding Songs}">
                 <CollectionView.ItemTemplate>
@@ -18,7 +20,7 @@
                             <StackLayout BackgroundColor="#5F5F5F" Padding="10,10,10,10" FlowDirection="LeftToRight">
                                 <Label FontSize="Large" Text="{Binding Title}" />
                                 <Label FontSize="Medium" Text="{Binding Artist}" TextColor="Pink"/>
-                                <Button Text="im boutta blow" Clicked="Button_OnClicked"></Button>
+                                <Button Text="Add to Queue" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="Button_OnClicked"></Button>
                             </StackLayout>
                         </Border>
                     </DataTemplate>

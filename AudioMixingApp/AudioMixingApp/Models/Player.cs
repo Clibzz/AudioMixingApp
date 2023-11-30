@@ -22,18 +22,14 @@ public class Player
     /// Method <c>AddToQueue</c> adds a song to the queue.
     /// </summary>
     /// <param name="songName">the name of the mp3 file that represents the song.</param>
-    public void AddToQueue(string songName)
+    public void AddToQueue(string filePath)
     {
         // Gets the path to the song.
-        string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
-
-        if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
-
-        string song = documentsPath + songName;
-        if (!File.Exists(song)) return;
-
-        // Adds the path to the song to the queue.
-        SongQueue.Enqueue(song);
+        if (!Directory.Exists(filePath))
+        {
+            // Adds the path to the song to the queue.
+            SongQueue.Enqueue(filePath);
+        }
     }
 
     /// <summary>
