@@ -9,6 +9,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
     private double _highValue;
     private double _midValue;
     private double _lowValue;
+    private double _flangerFactor;
 
     private void OnPropertyChanged(string propertyName)
     {
@@ -63,6 +64,19 @@ public class EffectPageViewModel : INotifyPropertyChanged
             {
                 _lowValue = value;
                 OnPropertyChanged(nameof(LowValue));
+            }
+        }
+    }
+
+    public double FlangerFactor
+    {
+        get => Math.Round(_flangerFactor, 4);
+        set
+        {
+            if (_flangerFactor != value)
+            {
+                _flangerFactor = value;
+                OnPropertyChanged(nameof(FlangerFactor));
             }
         }
     }

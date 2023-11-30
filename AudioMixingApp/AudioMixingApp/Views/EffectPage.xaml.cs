@@ -15,6 +15,7 @@ public partial class EffectPage : ContentPage
         ((EffectPageViewModel)BindingContext).HighValue = _player.Equalizer.HighValue;
         ((EffectPageViewModel)BindingContext).MidValue = _player.Equalizer.MidValue;
         ((EffectPageViewModel)BindingContext).LowValue = _player.Equalizer.LowValue;
+        ((EffectPageViewModel)BindingContext).FlangerFactor = _player.Flanger.FlangerFactor;
         InitializeComponent();
 	}
 
@@ -42,5 +43,10 @@ public partial class EffectPage : ContentPage
     private void LowsSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
     {
         _player.Equalizer.SetLows((float)e.NewValue);
+    }
+
+    private void FlangerSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        _player.Flanger.AdjustFlangerFactor((float)e.NewValue / 10);
     }
 }

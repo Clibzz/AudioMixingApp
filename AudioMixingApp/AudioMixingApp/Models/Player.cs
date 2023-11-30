@@ -17,6 +17,7 @@ public class Player
 
     public ReverbEffect Reverb {  get; set; }
     public Equalizer Equalizer { get; set; }
+    public FlangerEffect Flanger { get; set; }
 
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
@@ -67,7 +68,8 @@ public class Player
         PlayingSong = new(song);
         Reverb = new ReverbEffect(PlayingSong, 0.0f);
         Equalizer = new Equalizer(Reverb);
-        Output.Init(Equalizer);
+        Flanger = new FlangerEffect(Equalizer, 0.0f);
+        Output.Init(Flanger);
 
         // Start playback of the queued song.
         Output.Play();
