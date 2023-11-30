@@ -44,14 +44,14 @@ namespace AudioMixingApp.ViewModels
             {
                 string jsonContent = File.ReadAllText(jsonPath);
 
-                // Deserialize the JSON content into a class representing your JSON structure
+                // Deserialize the JSON content into a class representing the JSON structure
                 var songListWrapper = JsonSerializer.Deserialize<SongListWrapper>(jsonContent);
 
                 if (songListWrapper != null)
                 {
                     foreach (var song in songListWrapper.Songs)
                     {
-                        // Create a new Song instance and set its properties
+                        // Create a new Song instance
                         var newSong = new Song
                         {
                             Title = song.Title,
@@ -63,7 +63,6 @@ namespace AudioMixingApp.ViewModels
                     }
                 }
             }
-
             return loadedSongs;
         }
 
@@ -109,7 +108,6 @@ namespace AudioMixingApp.ViewModels
 
                     // Write the updated json to the json file
                     await File.WriteAllTextAsync(jsonFilePath, updatedJsonContent);
-
                 }
             }
         }

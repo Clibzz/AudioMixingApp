@@ -7,9 +7,11 @@
     <ScrollView>
         <StackLayout Padding="10, 100, 10, 10">
 
-            <!-- Add Song Button -->
-            <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddSongClicked"/>
-
+            <HorizontalStackLayout>
+                <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddSongClicked"/>
+                <Button Text="Add Multiple Songs" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddMultipleSongsClicked"/>
+            </HorizontalStackLayout>
+            
             <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
             <CollectionView ItemsSource="{Binding Songs}">
                 <CollectionView.ItemTemplate>
