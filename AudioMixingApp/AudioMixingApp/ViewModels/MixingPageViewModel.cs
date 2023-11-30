@@ -14,7 +14,7 @@ public class MixingPageViewModel : INotifyPropertyChanged
         _totalTimeStringB = "00:00";
 
     private readonly System.Timers.Timer _timer;
-    private readonly Player _playerA, _playerB;
+    public readonly Player _playerA, _playerB;
 
     public MixingPageViewModel()
     {

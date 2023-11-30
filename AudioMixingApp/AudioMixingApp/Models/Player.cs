@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using AudioMixingApp.Effects;
+using NAudio.Wave;
 using static System.Environment;
 
 namespace AudioMixingApp.Models;
@@ -13,6 +14,10 @@ public class Player
 
     // The queue for the songs.
     public Queue<string> SongQueue { get; set; } = new();
+
+    public ReverbEffect Reverb {  get; set; }
+    public Equalizer Equalizer { get; set; }
+    public FlangerEffect Flanger { get; set; }
 
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
@@ -61,7 +66,10 @@ public class Player
 
         // Prepare the song for playback.
         PlayingSong = new(song);
-        Output.Init(PlayingSong);
+        Reverb = new ReverbEffect(PlayingSong, 0.0f);
+        Equalizer = new Equalizer(Reverb);
+        Flanger = new FlangerEffect(Equalizer, 0.0f);
+        Output.Init(Flanger);
 
         // Start playback of the queued song.
         Output.Play();
