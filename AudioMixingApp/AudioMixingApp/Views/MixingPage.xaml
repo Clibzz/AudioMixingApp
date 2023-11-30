@@ -15,6 +15,7 @@
             </MenuFlyoutItem>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
+    
     <Grid
         RowDefinitions="3*, 2*"
         Padding="30"

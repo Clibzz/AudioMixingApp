@@ -5,13 +5,6 @@
              Title="Effecten"
              BackgroundColor="#424242">
 
-    <ContentPage.MenuBarItems>
-        <MenuBarItem Text="About">
-            <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
-            </MenuFlyoutItem>
-        </MenuBarItem>
-    </ContentPage.MenuBarItems>
-
     <VerticalStackLayout Padding="100,50,100,100">
         <Label Text="Effecten" FontSize="Large" FontAttributes="Bold"/>
 

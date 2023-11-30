@@ -6,23 +6,12 @@
 
     <ScrollView>
         <StackLayout Padding="100,50,100,100">
-            <StackLayout Orientation="Horizontal" Margin="10">
-                <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
-                <Button Text="Add Song"
-                    HorizontalOptions="Start"
-                    Margin="10,10,0,0"
-                    Padding="5"
-                    WidthRequest="100"
-                    CornerRadius="5"
-                    Clicked="OnAddSongClicked" HeightRequest="35"/>
-            </StackLayout>
-
             <HorizontalStackLayout>
-                <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddSongClicked"/>
-                <Button Text="Add Multiple Songs" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="OnAddMultipleSongsClicked"/>
+                <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
+                <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="5" Clicked="OnAddSongClicked" HeightRequest="35"/>
+                <Button Text="Add Multiple Songs" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="5" Clicked="OnAddMultipleSongsClicked" HeightRequest="35"/>
             </HorizontalStackLayout>
             
-            <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
             <CollectionView ItemsSource="{Binding Songs}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -30,7 +19,7 @@
                             <StackLayout BackgroundColor="#5F5F5F" Padding="10,10,10,10" FlowDirection="LeftToRight">
                                 <Label FontSize="Large" Text="{Binding Title}" />
                                 <Label FontSize="Medium" Text="{Binding Artist}" TextColor="Pink"/>
-                                <Button Text="Add to queue" Clicked="Button_OnClicked" MaximumWidthRequest="0" HorizontalOptions="StartAndExpand" MinimumWidthRequest="1460"></Button>
+                                <Button Text="Add to queue" Clicked="Button_OnClicked" MaximumWidthRequest="0" HorizontalOptions="StartAndExpand" MinimumWidthRequest="1280"></Button>
                             </StackLayout>
                         </Border>
                     </DataTemplate>
