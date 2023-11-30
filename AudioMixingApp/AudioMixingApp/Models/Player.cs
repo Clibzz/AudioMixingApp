@@ -7,6 +7,8 @@ public class Player
 {
     // The output device.
     public WaveOutEvent Output { get; set; } = new();
+    public event EventHandler<StoppedEventArgs> NextSongEvent;
+
 
     // The song.
     public AudioFileReader PlayingSong { get; set; }
@@ -74,7 +76,8 @@ public class Player
 
         // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
         // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
-        Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
+        // Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
+        Output.PlaybackStopped += NextSongEvent;
     }
     
     /// <summary>

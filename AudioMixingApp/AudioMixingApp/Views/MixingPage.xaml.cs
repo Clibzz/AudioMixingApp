@@ -61,7 +61,7 @@ public partial class MixingPage
     
     private void PlayButtonA_Clicked(object sender, EventArgs e)
     {
-        _viewModel.PlaySound('A');
+        _viewModel.PlaySoundWithPauseCheck('A');
 
         ImageButton imageButton = (ImageButton)sender;
         
@@ -108,7 +108,7 @@ public partial class MixingPage
     
     private void PlayButtonB_Clicked(object sender, EventArgs e)
     {
-        _viewModel.PlaySound('B');
+        _viewModel.PlaySoundWithPauseCheck('B');
     }
     
     private void ProgressbarSliderB_OnDragCompleted(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using AudioMixingApp.Models;
 using NAudio.Wave;
 
@@ -33,6 +34,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         _playerA.QueueUpdated += UpdateQueueA;
         _playerB.QueueUpdated += UpdateQueueB;
+
+        _playerA.NextSongEvent += (_, _) => PlaySound('A');
+        _playerB.NextSongEvent += (_, _) => PlaySound('B');
     }
     
     /// <summary>
@@ -101,11 +105,7 @@ public class MixingPageViewModel : INotifyPropertyChanged
     ////// PLAYBACK FUNCTIONALITIES //////
     //////////////////////////////////////
 
-    /// <summary>
-    /// Play the song and update the slider values and labels
-    /// </summary>
-    /// <param name="playerChar">'A' or 'B'</param>
-    public void PlaySound(char playerChar)
+    public void PlaySoundWithPauseCheck(char playerChar)
     {
         Player player = GetPlayer(playerChar);
         //Play or pause if a song is already playing
@@ -115,45 +115,62 @@ public class MixingPageViewModel : INotifyPropertyChanged
         }
         else
         {
-            //Get a song from the queue
-            player.PlaySongFromQueue();
+            PlaySound(playerChar);
+        }
+    }
 
-            //If it couldn't get a song from the queue, it means the queue is empty, so stop.
-            if (player.PlayingSong == null) return;
+    /// <summary>
+    /// Play the song and update the slider values and labels
+    /// </summary>
+    /// <param name="playerChar">'A' or 'B'</param>
+    private void PlaySound(char playerChar)
+    {
+        Player player = GetPlayer(playerChar);
 
-            int totalTime = (int)player.PlayingSong.TotalTime.TotalSeconds;
-            string totalTimeString = player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
+        //Get a song from the queue
+        player.PlaySongFromQueue();
+
+        //If it couldn't get a song from the queue, it means the queue is empty, so stop.
+        if (player.PlayingSong == null) return;
+
+        PauseSliderUpdatesA = false;
+        PauseSliderUpdatesB = false;
+
+        int totalTime = (int)player.PlayingSong.TotalTime.TotalSeconds;
+        string totalTimeString = player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
+
+        Trace.WriteLine(player.PlayingSong.TotalTime.TotalSeconds);
+        Trace.WriteLine(totalTimeString);
+
+        if (playerChar == 'A')
+        {
+            TotalTimeA = totalTime;
+            TotalTimeStringA = totalTimeString;
+        }
+        else
+        {
+            TotalTimeB = totalTime;
+            TotalTimeStringB = totalTimeString;
+        }
+
+        _timer.Elapsed += (sender, eventArgs) =>
+        {
+            if (PauseSliderUpdatesA) return;
+
+            int currentTime = (int)player.PlayingSong.CurrentTime.TotalSeconds;
+            string currentTimeString = player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
 
             if (playerChar == 'A')
             {
-                TotalTimeA = totalTime;
-                TotalTimeStringA = totalTimeString;
+                CurrentTimeA = currentTime;
+                CurrentTimeStringA = currentTimeString;
             }
             else
             {
-                TotalTimeB = totalTime;
-                TotalTimeStringB = totalTimeString;
+                CurrentTimeB = currentTime;
+                CurrentTimeStringB = currentTimeString;
             }
-
-            _timer.Elapsed += (sender, eventArgs) =>
-            {
-                if (PauseSliderUpdatesA) return;
-
-                int currentTime = (int)player.PlayingSong.CurrentTime.TotalSeconds;
-                string currentTimeString = player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
-
-                if (playerChar == 'A')
-                {
-                    CurrentTimeA = currentTime;
-                    CurrentTimeStringA = currentTimeString;
-                }
-                else
-                {
-                    CurrentTimeB = currentTime;
-                    CurrentTimeStringB = currentTimeString;
-                }
-            };
-        }
+        };
     }
 
     /// <summary>
@@ -191,6 +208,21 @@ public class MixingPageViewModel : INotifyPropertyChanged
     public void SkipSong(char player)
     {
         GetPlayer(player).SkipSong();
+        if (GetPlayer(player).SongQueue.Count == 0)
+        {
+            if (player == 'A')
+            {
+                CurrentTimeA = TotalTimeA;
+                CurrentTimeStringA = _totalTimeStringA;
+                PauseSliderUpdatesA = true;
+            }
+            else
+            {
+                CurrentTimeB = TotalTimeB;
+                CurrentTimeStringB = _totalTimeStringB;
+                PauseSliderUpdatesB = true;
+            }
+        }
     }
 
     //////////////////////
