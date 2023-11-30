@@ -29,11 +29,11 @@ namespace AudioMixingApp.Views
             var customFileType = new FilePickerFileType(
                 new Dictionary<DevicePlatform, IEnumerable<string>>
                 {
-            { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
-            { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
-            { DevicePlatform.WinUI, new[] { ".mp3" } },
-            { DevicePlatform.Tizen, new[] { "audio/*" } },
-            { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
+                { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
+                { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
+                { DevicePlatform.WinUI, new[] { ".mp3" } },
+                { DevicePlatform.Tizen, new[] { "audio/*" } },
+                { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
                 });
 
             PickOptions options = new()
