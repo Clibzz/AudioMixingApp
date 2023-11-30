@@ -24,6 +24,69 @@ namespace AudioMixingApp.Views
             viewModel = new SongsViewModel();
         }
 
+        private async void OnAddMultipleSongsClicked(object sender, EventArgs e)
+        {
+            var customFileType = new FilePickerFileType(
+                new Dictionary<DevicePlatform, IEnumerable<string>>
+                {
+            { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
+            { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
+            { DevicePlatform.WinUI, new[] { ".mp3" } },
+            { DevicePlatform.Tizen, new[] { "audio/*" } },
+            { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
+                });
+
+            PickOptions options = new()
+            {
+                PickerTitle = "Please select a mp3 file",
+                FileTypes = customFileType,
+            };
+
+            IEnumerable<FileResult> selectedFiles = await FilePicker.PickMultipleAsync(new PickOptions
+            {
+                PickerTitle = "Please select mp3 files",
+                FileTypes = customFileType,
+            });
+
+            if (selectedFiles == null || !selectedFiles.Any())
+            {
+                // User canceled the selection
+                return;
+            }
+
+            var viewModel = (SongsViewModel)BindingContext;
+
+            foreach (FileResult fileResult in selectedFiles)
+            {
+                // Get the selected file path
+                string filePath = fileResult.FullPath;
+
+                // Get metadata from the file using TagLib#
+                var file = TagLib.File.Create(filePath);
+                string artist = file.Tag.FirstPerformer;
+                string title = file.Tag.Title;
+
+                // Save the file to this path
+                string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
+
+                if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
+
+                string destinationPath = Path.Combine(documentsPath, Path.GetFileName(filePath));
+
+                // Copy the file to the destination path
+                File.Copy(filePath, destinationPath, true);
+
+                // Create a new Song object
+                var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath };
+
+                // Add to the collection
+                viewModel.Songs.Add(newSong);
+
+                // Save the song to JSON
+                await viewModel.AddSongToJsonFile(newSong);
+            }
+        }
+
         private async void OnAddSongClicked(object sender, EventArgs e)
         {
             string artist;
