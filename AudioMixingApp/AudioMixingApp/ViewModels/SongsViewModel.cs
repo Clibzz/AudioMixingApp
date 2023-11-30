@@ -70,7 +70,7 @@ namespace AudioMixingApp.ViewModels
         public async Task AddSongToJsonFile(Song song)
         {
             string jsonFilePath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
-           
+
             // Check if json file exists
             if (!File.Exists(jsonFilePath))
             {
