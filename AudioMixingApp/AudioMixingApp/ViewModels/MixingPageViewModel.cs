@@ -1,4 +1,6 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using AudioMixingApp.Models;
 using NAudio.Wave;
 
@@ -15,9 +17,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
     private readonly System.Timers.Timer _timer;
     private readonly Player _playerA, _playerB;
-
-    public Queue<Song> PlayerAQueue { get { return _playerA.SongQueue; } }
-    public Queue<Song> PlayerBQueue { get { return _playerB.SongQueue; } }
+    
+    public ObservableCollection<Song> PlayerAQueue { get; } = new();
+    public ObservableCollection<Song> PlayerBQueue { get; } = new();
 
     public MixingPageViewModel()
     {
@@ -29,11 +31,40 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         _playerA = new Player();
         _playerB = new Player();
-        
-        PlayerAQueue.Enqueue(new Song() {Title = "a", Artist = "b", Duration = TimeSpan.FromSeconds(10), FilePath = "c"});
-        PlayerAQueue.Enqueue(new Song() {Title = "d", Artist = "e", Duration = TimeSpan.FromSeconds(10), FilePath = "f"});
-        PlayerBQueue.Enqueue(new Song() {Title = "g", Artist = "h", Duration = TimeSpan.FromSeconds(10), FilePath = "i"});
-        PlayerBQueue.Enqueue(new Song() {Title = "j", Artist = "k", Duration = TimeSpan.FromSeconds(10), FilePath = "l"});
+
+        _playerA.QueueUpdated += UpdateQueueA;
+        _playerB.QueueUpdated += UpdateQueueB;
+    }
+    
+    /// <summary>
+    /// Event to trigger when queue A should be updated on the frontend
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void UpdateQueueA(object sender, EventArgs e)
+    {
+        PlayerAQueue.Clear();
+        foreach (var item in _playerA.SongQueue)
+        {
+            PlayerAQueue.Add(item);
+        }
+        OnPropertyChanged(nameof(PlayerAQueue));
+    }
+    
+    /// <summary>
+    /// Event to trigger when queue B should be updated on the frontend
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void UpdateQueueB(object sender, EventArgs e)
+    {
+        PlayerBQueue.Clear();
+        foreach (var item in _playerB.SongQueue)
+        {
+            Trace.WriteLine(item);
+            PlayerBQueue.Add(item);
+        }
+        OnPropertyChanged(nameof(PlayerBQueue));
     }
 
     /// <summary>

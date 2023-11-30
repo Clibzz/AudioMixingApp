@@ -13,7 +13,8 @@ public class Player
     public AudioFileReader PlayingSong { get; set; }
 
     // The queue for the songs.
-    public Queue<Song> SongQueue { get; set; } = new();
+    public Queue<Song> SongQueue = new();
+    public event EventHandler QueueUpdated;
 
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
@@ -31,6 +32,7 @@ public class Player
 
         // Adds the path to the song to the queue.
         SongQueue.Enqueue(new Song() { Title = "test", Artist = "ook test", Duration = TimeSpan.FromSeconds(69420), FilePath = song});
+        OnQueueUpdated();
     }
 
     /// <summary>
@@ -53,6 +55,7 @@ public class Player
 
         // Get the next song in the queue.
         Song song = SongQueue.Dequeue();
+        OnQueueUpdated();
         // If the function gets called while a song is playing, stop playing the song so that the next song can play.
         if (PlayingSong != null)
         {
@@ -69,6 +72,14 @@ public class Player
         // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
         // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
         Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
+    }
+    
+    /// <summary>
+    /// Trigger the event to update the queue to the frontend
+    /// </summary>
+    private void OnQueueUpdated()
+    {
+        QueueUpdated?.Invoke(this, EventArgs.Empty);
     }
 
     /// <summary>
