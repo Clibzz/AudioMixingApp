@@ -25,16 +25,16 @@ namespace AudioMixingApp.Views
         }
 
         private async void OnAddMultipleSongsClicked(object sender, EventArgs e)
-        {   
+        {
             var customFileType = new FilePickerFileType(
-            new Dictionary<DevicePlatform, IEnumerable<string>>
-            {
-                { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } }, // UTType values for iOS
-                { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } }, // MIME types for Android
-                { DevicePlatform.WinUI, new[] { ".mp3" } }, // File extension for Windows
-                { DevicePlatform.Tizen, new[] { "audio/*" } },
-                { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } }, // UTType values for macOS
-            });
+                new Dictionary<DevicePlatform, IEnumerable<string>>
+                {
+            { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
+            { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
+            { DevicePlatform.WinUI, new[] { ".mp3" } },
+            { DevicePlatform.Tizen, new[] { "audio/*" } },
+            { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
+                });
 
             PickOptions options = new()
             {
@@ -54,25 +54,38 @@ namespace AudioMixingApp.Views
                 return;
             }
 
-            foreach(FileResult fileResult in selectedFiles)
+            var viewModel = (SongsViewModel)BindingContext;
+
+            foreach (FileResult fileResult in selectedFiles)
             {
                 // Get the selected file path
-                string selectedFilePath = fileResult.FullPath;
+                string filePath = fileResult.FullPath;
 
                 // Get metadata from the file using TagLib#
-                var file = TagLib.File.Create(selectedFilePath);
+                var file = TagLib.File.Create(filePath);
                 string artist = file.Tag.FirstPerformer;
                 string title = file.Tag.Title;
 
+                // Save the file to this path
+                string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
+
+                if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
+
+                string destinationPath = Path.Combine(documentsPath, Path.GetFileName(filePath));
+
+                // Copy the file to the destination path
+                File.Copy(filePath, destinationPath, true);
+
                 // Create a new Song object
-                var newSong = new Song { Title = title, Artist = artist, FilePath = selectedFilePath };
+                var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath };
 
                 // Add to the collection
-                var viewModel = (SongsViewModel)BindingContext;
                 viewModel.Songs.Add(newSong);
+
+                // Save the song to JSON
+                await viewModel.AddSongToJsonFile(newSong);
             }
         }
-
 
         private async void OnAddSongClicked(object sender, EventArgs e)
         {
