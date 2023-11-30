@@ -29,11 +29,11 @@ namespace AudioMixingApp.Views
             var customFileType = new FilePickerFileType(
                 new Dictionary<DevicePlatform, IEnumerable<string>>
                 {
-            { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
-            { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
-            { DevicePlatform.WinUI, new[] { ".mp3" } },
-            { DevicePlatform.Tizen, new[] { "audio/*" } },
-            { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
+                { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
+                { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
+                { DevicePlatform.WinUI, new[] { ".mp3" } },
+                { DevicePlatform.Tizen, new[] { "audio/*" } },
+                { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
                 });
 
             PickOptions options = new()
@@ -163,9 +163,31 @@ namespace AudioMixingApp.Views
             public List<Song> Songs { get; set; } = new List<Song>();
         }
 
-        private void Button_OnClicked(object sender, EventArgs e)
+        private async void Button_OnClicked(object sender, EventArgs e)
         {
-            _player.AddToQueue("test2.mp3");
+            Button clickedButton = (Button)sender;
+
+            // Here u get the selected song object
+            Song selectedSong = (Song)clickedButton.BindingContext;
+
+            //get filepath
+            string FilePath = selectedSong.FilePath;
+
+            if (_player != null)
+            {
+                _player.AddToQueue(FilePath);
+           
+                //To check if its added to the queue
+                //int numberOfItemsInQueue = _player.SongQueue.Count;
+
+                //Alert that song has been added to the queue
+                await DisplayAlert("Success", $"{selectedSong.FilePath} is added to the queue successfully.", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to add song to the queue.", "OK");
+            }
         }
+
     }
 }
