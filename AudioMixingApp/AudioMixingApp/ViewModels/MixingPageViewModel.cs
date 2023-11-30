@@ -16,6 +16,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
     private readonly System.Timers.Timer _timer;
     private readonly Player _playerA, _playerB;
 
+    public Queue<Song> PlayerAQueue { get { return _playerA.SongQueue; } }
+    public Queue<Song> PlayerBQueue { get { return _playerB.SongQueue; } }
+
     public MixingPageViewModel()
     {
         _timer = new System.Timers.Timer
@@ -26,6 +29,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         _playerA = new Player();
         _playerB = new Player();
+        
+        PlayerAQueue.Enqueue(new Song() {Title = "a", Artist = "b", Duration = TimeSpan.FromSeconds(10), FilePath = "c"});
+        PlayerAQueue.Enqueue(new Song() {Title = "d", Artist = "e", Duration = TimeSpan.FromSeconds(10), FilePath = "f"});
+        PlayerBQueue.Enqueue(new Song() {Title = "g", Artist = "h", Duration = TimeSpan.FromSeconds(10), FilePath = "i"});
+        PlayerBQueue.Enqueue(new Song() {Title = "j", Artist = "k", Duration = TimeSpan.FromSeconds(10), FilePath = "l"});
     }
 
     /// <summary>

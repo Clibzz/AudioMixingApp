@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿using System.Collections;
+using NAudio.Wave;
 using static System.Environment;
 
 namespace AudioMixingApp.Models;
@@ -12,7 +13,7 @@ public class Player
     public AudioFileReader PlayingSong { get; set; }
 
     // The queue for the songs.
-    public Queue<string> SongQueue { get; set; } = new();
+    public Queue<Song> SongQueue { get; set; } = new();
 
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
@@ -29,22 +30,17 @@ public class Player
         if (!File.Exists(song)) return;
 
         // Adds the path to the song to the queue.
-        SongQueue.Enqueue(song);
+        SongQueue.Enqueue(new Song() { Title = "test", Artist = "ook test", Duration = TimeSpan.FromSeconds(69420), FilePath = song});
     }
 
     /// <summary>
     /// Method <c>RemoveFromQueue</c> removes a specific song from the queue.
     /// </summary>
-    /// <param name="songName">the name of the mp3 file that represents the song.</param>
+    /// <param name="filepath">the file path of the mp3 file that represents the song.</param>
     /// source: https://kodify.net/csharp/queue/remove/
-    public void RemoveFromQueue(string songName)
+    public void RemoveFromQueue(string filepath)
     {
-        // gets the path to the song.
-        string projectDirectory = Directory.GetParent(CurrentDirectory).Parent.Parent.FullName + @"\";
-        string pathToSongs = projectDirectory + @"Songs\";
-        string song = pathToSongs + songName;
-        // Removes the song from the queue.
-        SongQueue = new(SongQueue.Where(x => x != song));
+        SongQueue = new(SongQueue.Where(song => song.FilePath != filepath));
     }
 
     /// <summary>
@@ -56,7 +52,7 @@ public class Player
         if (SongQueue.Count <= 0) return;
 
         // Get the next song in the queue.
-        string song = SongQueue.Dequeue();
+        Song song = SongQueue.Dequeue();
         // If the function gets called while a song is playing, stop playing the song so that the next song can play.
         if (PlayingSong != null)
         {
@@ -64,7 +60,7 @@ public class Player
         }
 
         // Prepare the song for playback.
-        PlayingSong = new(song);
+        PlayingSong = new(song.FilePath);
         Output.Init(PlayingSong);
 
         // Start playback of the queued song.
