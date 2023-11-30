@@ -44,7 +44,8 @@ public partial class MixingPage
     private void PlaylistsPageButton_OnClicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new PlaylistPage());
-    
+    }
+
     //////////////////////
     ////// PLAYER A //////
     //////////////////////
