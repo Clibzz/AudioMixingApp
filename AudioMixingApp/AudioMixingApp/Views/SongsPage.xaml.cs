@@ -24,6 +24,56 @@ namespace AudioMixingApp.Views
             viewModel = new SongsViewModel();
         }
 
+        private async void OnAddMultipleSongsClicked(object sender, EventArgs e)
+        {   
+            var customFileType = new FilePickerFileType(
+            new Dictionary<DevicePlatform, IEnumerable<string>>
+            {
+                { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } }, // UTType values for iOS
+                { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } }, // MIME types for Android
+                { DevicePlatform.WinUI, new[] { ".mp3" } }, // File extension for Windows
+                { DevicePlatform.Tizen, new[] { "audio/*" } },
+                { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } }, // UTType values for macOS
+            });
+
+            PickOptions options = new()
+            {
+                PickerTitle = "Please select a mp3 file",
+                FileTypes = customFileType,
+            };
+
+            IEnumerable<FileResult> selectedFiles = await FilePicker.PickMultipleAsync(new PickOptions
+            {
+                PickerTitle = "Please select mp3 files",
+                FileTypes = customFileType,
+            });
+
+            if (selectedFiles == null || !selectedFiles.Any())
+            {
+                // User canceled the selection
+                return;
+            }
+
+            foreach(FileResult fileResult in selectedFiles)
+            {
+                // Get the selected file path
+                string selectedFilePath = fileResult.FullPath;
+
+                // Get metadata from the file using TagLib#
+                var file = TagLib.File.Create(selectedFilePath);
+                string artist = file.Tag.FirstPerformer;
+                string title = file.Tag.Title;
+
+                // Create a new Song object
+                var newSong = new Song { Title = title, Artist = artist, FilePath = selectedFilePath };
+
+                // Add to the collection
+                var viewModel = (SongsViewModel)BindingContext;
+                viewModel.Songs.Add(newSong);
+            }
+        }
+
+
         private async void OnAddSongClicked(object sender, EventArgs e)
         {
             string artist;
