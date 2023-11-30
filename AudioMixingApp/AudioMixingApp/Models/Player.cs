@@ -22,14 +22,14 @@ public class Player
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
     /// </summary>
-    /// <param name="filePath">the name of the mp3 file that represents the song.</param>
-    public void AddToQueue(string filePath)
+    /// <param name="song">the name of the mp3 file that represents the song.</param>
+    public void AddToQueue(Song song)
     {
         // Gets the path to the song.
-        if (!Directory.Exists(filePath))
+        if (!Directory.Exists(song.FilePath))
         {
             // Adds the path to the song to the queue.
-            SongQueue.Enqueue(new Song() { Title = "test", Artist = "ook test", Duration = TimeSpan.FromSeconds(69420), FilePath = filePath});
+            SongQueue.Enqueue(song);
         }
         OnQueueUpdated();
     }

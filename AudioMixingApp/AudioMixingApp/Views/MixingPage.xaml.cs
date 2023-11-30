@@ -1,4 +1,5 @@
 using AudioMixingApp.ViewModels;
+using NAudio.Wave;
 
 namespace AudioMixingApp.Views;
 
