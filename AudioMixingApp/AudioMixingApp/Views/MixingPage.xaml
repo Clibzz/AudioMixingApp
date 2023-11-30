@@ -101,7 +101,7 @@
                    TextColor="White"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
-            
+
             <Slider x:Name="SliderSongMixing"
                     VerticalOptions="Center"
                     WidthRequest="140"
@@ -109,8 +109,12 @@
                     Grid.Column="2"
                     Grid.ColumnSpan="2"
                     MinimumTrackColor="Blue"
-                    MaximumTrackColor="HotPink"/>
-            
+                    MaximumTrackColor="HotPink"
+                    Maximum="1.0" 
+                    Minimum="0.0" 
+                    Value="0.5"
+                    ValueChanged="FadeSlider_OnDragCompleted"/>
+
             <Label Text="Test test = THE test"
                    Grid.Row="1"
                    Grid.Column="4"

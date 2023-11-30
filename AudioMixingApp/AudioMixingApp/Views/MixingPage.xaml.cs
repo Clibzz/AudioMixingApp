@@ -46,10 +46,19 @@ public partial class MixingPage
         Navigation.PushAsync(new PlaylistPage());
     }
 
+    private void FadeSlider_OnDragCompleted(object sender, ValueChangedEventArgs e)
+    {
+        float volumeA = (float)e.NewValue;
+        float volumeB = 1.0f - volumeA;
+
+        _viewModel.ChangeVolume('A', volumeA);
+        _viewModel.ChangeVolume('B', volumeB);
+    }
+
     //////////////////////
     ////// PLAYER A //////
     //////////////////////
-    
+
     private void EffectPageButtonA_OnClicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('A')));
