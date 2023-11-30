@@ -24,14 +24,14 @@
             Grid.Row="0">
             <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
                                  x:Name="CircleParent">
-                <Ellipse Fill="DarkBlue"
-                         WidthRequest="120"
-                         HeightRequest="120"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center" />
+                <Image Source="djpanel.png"
+                       WidthRequest="120"
+                       HeightRequest="120"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
-                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
+                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
                     <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
@@ -56,28 +56,26 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Ellipse Fill="DarkBlue"
-                        WidthRequest="120"
-                        HeightRequest="120"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
+                <Image Source="djpanel.png"
+                       WidthRequest="120"
+                       HeightRequest="120"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                     <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
-                    <ImageButton Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
+                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
                     <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
-            <Ellipse Fill="White"
-                     WidthRequest="40"
-                     HeightRequest="40"
-                     HorizontalOptions="Center"
-                     VerticalOptions="Center"
-                     Grid.Row="1"
-                     Grid.Column="0">
-                <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButtonA_OnClicked" />
-                </Ellipse.GestureRecognizers>
-            </Ellipse>
+            
+            <ImageButton Source="filter.png"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Grid.Row="1"
+                         Grid.Column="0"
+                         Clicked="FilterPageButtonA_OnClicked"/>
 
             <Label Text="Maneskin - Beggin'"
                    Grid.Row="1"
@@ -106,17 +104,14 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
-            <Ellipse Fill="White"
-                     WidthRequest="40"
-                     HeightRequest="40"
-                     HorizontalOptions="Center"
-                     VerticalOptions="Center"
-                     Grid.Row="1"
-                     Grid.Column="5">
-                <Ellipse.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="FilterPageButtonB_OnClicked" />
-                </Ellipse.GestureRecognizers>
-            </Ellipse>
+            <ImageButton Source="filter.png"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         Grid.Row="1"
+                         Grid.Column="5"
+                         Clicked="FilterPageButtonB_OnClicked"/>
 
             <Label Grid.Row="2" 
                    Grid.Column="0" 

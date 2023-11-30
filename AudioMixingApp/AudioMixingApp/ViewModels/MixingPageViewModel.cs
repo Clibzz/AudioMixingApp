@@ -50,6 +50,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    public PlaybackState GetPlaybackState(char playerChar)
+    {
+        return GetPlayer(playerChar).Output.PlaybackState;
+    }
+
     //////////////////////////////////////
     ////// PLAYBACK FUNCTIONALITIES //////
     //////////////////////////////////////

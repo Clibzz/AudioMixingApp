@@ -78,7 +78,7 @@ public class Player
     /// <summary>
     /// Method <c>TogglePlayback</c> toggles the playback state of the song that is currently playing.
     /// </summary>
-    public void TogglePlayback()
+    public PlaybackState TogglePlayback()
     {
         // Pause the song if the song is not paused.
         if (Output.PlaybackState == PlaybackState.Playing)
@@ -90,6 +90,7 @@ public class Player
         {
             Output.Play();
         }
+        return Output.PlaybackState;
     }
 
     /// <summary>
