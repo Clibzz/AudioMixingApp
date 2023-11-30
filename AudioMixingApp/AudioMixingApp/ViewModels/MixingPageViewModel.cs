@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using AudioMixingApp.Models;
 using NAudio.Wave;
 
@@ -7,6 +8,8 @@ namespace AudioMixingApp.ViewModels;
 public class MixingPageViewModel : INotifyPropertyChanged
 {
     private int _currentTimeA, _totalTimeA, _currentTimeB, _totalTimeB;
+
+    private float _currentVolumeA = 0.5f, _currentVolumeB = 0.5f;
 
     private string _currentTimeStringA = "00:00",
         _totalTimeStringA = "00:00",
@@ -127,6 +130,19 @@ public class MixingPageViewModel : INotifyPropertyChanged
         }
     }
 
+    public void AudioFade(float value)
+    {
+        float newVolumeA = _currentVolumeA * (1.0f - (float)value);
+        float newVolumeB = _currentVolumeB * ((float)value);
+        Trace.WriteLine($"Volume a: {newVolumeA}");
+        Trace.WriteLine($"Volume b: {newVolumeB}");
+        //float volumeA = (float)e.NewValue;
+        //float volumeB = 1.0f - volumeA;
+
+        ChangeVolume('A', newVolumeA);
+        ChangeVolume('B', newVolumeB);
+    }
+
     /// <summary>
     /// Change the volume of a player
     /// </summary>
@@ -134,6 +150,14 @@ public class MixingPageViewModel : INotifyPropertyChanged
     /// <param name="volume">number from 0 to 1</param>
     public void ChangeVolume(char player, float volume)
     {
+        /*if (player == 'A')
+        {
+            _currentVolumeA = volume;
+        }
+        else
+        {
+            _currentVolumeB = volume;
+        }*/
         GetPlayer(player).Output.Volume = volume;
     }
 
