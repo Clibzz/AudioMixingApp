@@ -43,6 +43,7 @@ public class Player
     public void RemoveFromQueue(string filepath)
     {
         SongQueue = new(SongQueue.Where(song => song.FilePath != filepath));
+        OnQueueUpdated();
     }
 
     /// <summary>

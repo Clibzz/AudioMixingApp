@@ -1,6 +1,5 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using AudioMixingApp.Models;
 using NAudio.Wave;
 
@@ -61,7 +60,6 @@ public class MixingPageViewModel : INotifyPropertyChanged
         PlayerBQueue.Clear();
         foreach (var item in _playerB.SongQueue)
         {
-            Trace.WriteLine(item);
             PlayerBQueue.Add(item);
         }
         OnPropertyChanged(nameof(PlayerBQueue));
@@ -79,6 +77,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
             throw new ArgumentException();
 
         return playerChar == 'A' ? _playerA : _playerB;
+    }
+
+    public void DeleteFromQueue(char playerChar, string path)
+    {
+        GetPlayer(playerChar).RemoveFromQueue(path);
     }
     
     //Property changed event to update the frontend

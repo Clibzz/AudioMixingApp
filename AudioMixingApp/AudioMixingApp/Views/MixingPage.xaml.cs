@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using AudioMixingApp.ViewModels;
 using NAudio.Wave;
 
@@ -65,7 +64,7 @@ public partial class MixingPage
         _viewModel.PlaySound('A');
 
         ImageButton imageButton = (ImageButton)sender;
-        Trace.WriteLine(_viewModel.GetPlaybackState('A'));
+        
         imageButton.Source = _viewModel.GetPlaybackState('A') == PlaybackState.Playing
             ? _pausedImageSource
             : _playImageSource;
@@ -85,6 +84,12 @@ public partial class MixingPage
     private void SkipButtonA_OnClicked(object sender, EventArgs e)
     {
         _viewModel.SkipSong('A');
+    }
+
+    private void DeleteButtonA_OnClicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        _viewModel.DeleteFromQueue('A', button.ClassId);
     }
     
     //////////////////////
@@ -120,5 +125,11 @@ public partial class MixingPage
     private void SkipButtonB_OnClicked(object sender, EventArgs e)
     { 
         _viewModel.SkipSong('B');
+    }
+
+    private void DeleteButtonB_OnClicked(object sender, EventArgs e)
+    {
+        Button button = (Button)sender;
+        _viewModel.DeleteFromQueue('B', button.ClassId);
     }
 }
