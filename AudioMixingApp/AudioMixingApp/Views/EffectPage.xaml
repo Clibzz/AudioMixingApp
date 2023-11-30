@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AudioMixingApp.EffectPage"
+             x:Class="AudioMixingApp.Views.EffectPage"
              Title="Effecten"
              BackgroundColor="#424242">
 
@@ -13,7 +13,7 @@
     </ContentPage.MenuBarItems>
 
     <VerticalStackLayout Padding="100,50,100,100">
-        <Label Text="About" FontSize="Large" FontAttributes="Bold"/>
+        <Label Text="Effecten" FontSize="Large" FontAttributes="Bold"/>
 
         <Grid BackgroundColor="#292929" Padding="50">
             <Label Grid.Row="0" HeightRequest="800" Text="Reverb" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>

@@ -1,8 +1,4 @@
 using System.ComponentModel;
-using System.Configuration;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
-using AudioMixingApp.Effects;
 using AudioMixingApp.Models;
 using NAudio.Wave;
 
@@ -10,66 +6,43 @@ namespace AudioMixingApp.ViewModels;
 
 public class MixingPageViewModel : INotifyPropertyChanged
 {
-    private int _currentTime;
-    private int _totalTime;
-    private readonly System.Timers.Timer _timer;
-    private string _currentTimeString = "00:00:00";
-    private string _totalTimeString = "00:00:00";
+    private int _currentTimeA, _totalTimeA, _currentTimeB, _totalTimeB;
 
-    private readonly Player _player;
+    private string _currentTimeStringA = "00:00",
+        _totalTimeStringA = "00:00",
+        _currentTimeStringB = "00:00",
+        _totalTimeStringB = "00:00";
+
+    private readonly System.Timers.Timer _timer;
+    private readonly Player _playerA, _playerB;
 
     public MixingPageViewModel()
     {
-        _timer = new System.Timers.Timer();
-        _timer.Interval = 100;
+        _timer = new System.Timers.Timer
+        {
+            Interval = 100
+        };
         _timer.Start();
 
-        _player = new Player();
+        _playerA = new Player();
+        _playerB = new Player();
     }
 
     /// <summary>
-    /// Add an audio file to the queue
+    /// Get the player instance from the character representing it
     /// </summary>
-    /// <param name="filename">filename including file extension</param>
-    public void AddSong(string filename)
+    /// <param name="playerChar">'A' or 'B'</param>
+    /// <returns>PlayerA or PlayerB respectively</returns>
+    /// <exception cref="ArgumentException"></exception>
+    public Player GetPlayer(char playerChar)
     {
-        _player.AddToQueue(filename);
+        if (playerChar != 'A' && playerChar != 'B')
+            throw new ArgumentException();
+
+        return playerChar == 'A' ? _playerA : _playerB;
     }
-
-    /// <summary>
-    /// Play the song and update the slider values and labels
-    /// </summary>
-    public void PlaySound()
-    {
-        _player.PlaySongFromQueue(); //TODO: Hier nog ff naar kijken
-        // _player.TogglePlayback();
-
-        TotalTime = (int)_player.PlayingSong.TotalTime.TotalSeconds;
-        TotalTimeString = _player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
-        
-        _timer.Elapsed += (sender, eventArgs) =>
-        {
-            if (PauseSliderUpdates) return;
-            
-            CurrentTime = (int)_player.PlayingSong.CurrentTime.TotalSeconds;
-            CurrentTimeString = _player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
-        };
-    }
-
-    /// <summary>
-    /// Update the current time of the slider and start playing the song if its stopped
-    /// </summary>
-    /// <param name="time"></param>
-    public void UpdateCurrentTime(double time)
-    {
-        _player.PlayingSong.CurrentTime = TimeSpan.FromSeconds(time);
-
-        if (_player.Output.PlaybackState == PlaybackState.Stopped && _player.PlayingSong.CurrentTime != _player.PlayingSong.TotalTime)
-        {
-            _player.Output.Play();
-        }
-    }
-
+    
+    //Property changed event to update the frontend
     public event PropertyChangedEventHandler PropertyChanged;
 
     private void OnPropertyChanged(string propertyName)
@@ -77,45 +50,215 @@ public class MixingPageViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    public bool PauseSliderUpdates { get; set; }
+    //////////////////////////////////////
+    ////// PLAYBACK FUNCTIONALITIES //////
+    //////////////////////////////////////
 
-    public int CurrentTime
+    /// <summary>
+    /// Play the song and update the slider values and labels
+    /// </summary>
+    /// <param name="playerChar">'A' or 'B'</param>
+    public void PlaySound(char playerChar)
     {
-        get => _currentTime;
-        set
+        Player player = GetPlayer(playerChar);
+        //Play or pause if a song is already playing
+        if (player.PlayingSong != null)
         {
-            _currentTime = value;
-            OnPropertyChanged(nameof(CurrentTime));
+            player.TogglePlayback();
+        }
+        else
+        {
+            //Get a song from the queue
+            player.PlaySongFromQueue();
+
+            //If it couldn't get a song from the queue, it means the queue is empty, so stop.
+            if (player.PlayingSong == null) return;
+
+            int totalTime = (int)player.PlayingSong.TotalTime.TotalSeconds;
+            string totalTimeString = player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
+
+            if (playerChar == 'A')
+            {
+                TotalTimeA = totalTime;
+                TotalTimeStringA = totalTimeString;
+            }
+            else
+            {
+                TotalTimeB = totalTime;
+                TotalTimeStringB = totalTimeString;
+            }
+
+            _timer.Elapsed += (sender, eventArgs) =>
+            {
+                if (PauseSliderUpdatesA) return;
+
+                int currentTime = (int)player.PlayingSong.CurrentTime.TotalSeconds;
+                string currentTimeString = player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
+
+                if (playerChar == 'A')
+                {
+                    CurrentTimeA = currentTime;
+                    CurrentTimeStringA = currentTimeString;
+                }
+                else
+                {
+                    CurrentTimeB = currentTime;
+                    CurrentTimeStringB = currentTimeString;
+                }
+            };
         }
     }
 
-    public int TotalTime
+    /// <summary>
+    /// Update the current time of the slider and start playing the song if its stopped
+    /// </summary>
+    /// <param name="playerChar">'A' or 'B'</param>
+    /// <param name="time"></param>
+    public void UpdateCurrentTime(char playerChar, double time)
     {
-        get => _totalTime;
-        set
+        Player player = GetPlayer(playerChar);
+
+        player.PlayingSong.CurrentTime = TimeSpan.FromSeconds(time);
+
+        if (player.Output.PlaybackState == PlaybackState.Stopped &&
+            player.PlayingSong.CurrentTime != player.PlayingSong.TotalTime)
         {
-            _totalTime = value;
-            OnPropertyChanged(nameof(TotalTime));
+            player.Output.Play();
         }
     }
 
-    public string CurrentTimeString
+    /// <summary>
+    /// Change the volume of a player
+    /// </summary>
+    /// <param name="player">'A' or 'B'</param>
+    /// <param name="volume">number from 0 to 1</param>
+    public void ChangeVolume(char player, float volume)
     {
-        get => _currentTimeString;
+        GetPlayer(player).Output.Volume = volume;
+    }
+
+    /// <summary>
+    /// Skip the currently playing song and play the next in the queue
+    /// </summary>
+    /// <param name="player">'A' or 'B'</param>
+    public void SkipSong(char player)
+    {
+        GetPlayer(player).SkipSong();
+    }
+
+    //////////////////////
+    ////// PLAYER A //////
+    //////////////////////
+
+    public bool PauseSliderUpdatesA { get; set; }
+
+    public int CurrentTimeA
+    {
+        get => _currentTimeA;
         set
         {
-            _currentTimeString = value;
-            OnPropertyChanged(nameof(CurrentTimeString));
+            if (_currentTimeA != value)
+            {
+                _currentTimeA = value;
+                OnPropertyChanged(nameof(CurrentTimeA));
+            }
         }
     }
 
-    public string TotalTimeString
+    public int TotalTimeA
     {
-        get => _totalTimeString;
+        get => _totalTimeA;
         set
         {
-            _totalTimeString = value;
-            OnPropertyChanged(nameof(TotalTimeString));
+            if (_totalTimeA != value)
+            {
+                _totalTimeA = value;
+                OnPropertyChanged(nameof(TotalTimeA));
+            }
+        }
+    }
+
+    public string CurrentTimeStringA
+    {
+        get => _currentTimeStringA;
+        set
+        {
+            if (_currentTimeStringA != value)
+            {
+                _currentTimeStringA = value;
+                OnPropertyChanged(nameof(CurrentTimeStringA));
+            }
+        }
+    }
+
+    public string TotalTimeStringA
+    {
+        get => _totalTimeStringA;
+        set
+        {
+            if (_totalTimeStringA != value)
+            {
+                _totalTimeStringA = value;
+                OnPropertyChanged(nameof(TotalTimeStringA));
+            }
+        }
+    }
+
+    //////////////////////
+    ////// PLAYER B //////
+    //////////////////////
+
+    public bool PauseSliderUpdatesB { get; set; }
+
+    public int CurrentTimeB
+    {
+        get => _currentTimeB;
+        set
+        {
+            if (_currentTimeB != value)
+            {
+                _currentTimeB = value;
+                OnPropertyChanged(nameof(CurrentTimeB));
+            }
+        }
+    }
+
+    public int TotalTimeB
+    {
+        get => _totalTimeB;
+        set
+        {
+            if (_totalTimeB != value)
+            {
+                _totalTimeB = value;
+                OnPropertyChanged(nameof(TotalTimeB));
+            }
+        }
+    }
+
+    public string CurrentTimeStringB
+    {
+        get => _currentTimeStringB;
+        set
+        {
+            if (_currentTimeStringB != value)
+            {
+                _currentTimeStringB = value;
+                OnPropertyChanged(nameof(CurrentTimeStringB));
+            }
+        }
+    }
+
+    public string TotalTimeStringB
+    {
+        get => _totalTimeStringB;
+        set
+        {
+            if (_totalTimeStringB != value)
+            {
+                _totalTimeStringB = value;
+                OnPropertyChanged(nameof(TotalTimeStringB));
+            }
         }
     }
 }

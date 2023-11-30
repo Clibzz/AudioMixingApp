@@ -1,10 +1,10 @@
-using AudioMixingApp.Views;
+using AudioMixingApp.Models;
 
-namespace AudioMixingApp;
+namespace AudioMixingApp.Views;
 
 public partial class EffectPage : ContentPage
 {
-	public EffectPage()
+	public EffectPage(Player player)
 	{
 		InitializeComponent();
 	}

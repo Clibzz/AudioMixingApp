@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using AudioMixingApp.Models;
 
 namespace AudioMixingApp.ViewModels
 {
@@ -48,7 +47,7 @@ namespace AudioMixingApp.ViewModels
                     {
                         Title = song.Title,
                         Artist = song.Artist,
-                        Source = song.Source
+                        FilePath = song.FilePath
                     });
                 }
 
