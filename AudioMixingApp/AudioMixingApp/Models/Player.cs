@@ -1,6 +1,5 @@
-﻿using System.Collections;
+using AudioMixingApp.Effects;
 using NAudio.Wave;
-using static System.Environment;
 
 namespace AudioMixingApp.Models;
 
@@ -16,22 +15,22 @@ public class Player
     public Queue<Song> SongQueue = new();
     public event EventHandler QueueUpdated;
 
+    public ReverbEffect Reverb {  get; set; }
+    public Equalizer Equalizer { get; set; }
+    public FlangerEffect Flanger { get; set; }
+
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
     /// </summary>
-    /// <param name="songName">the name of the mp3 file that represents the song.</param>
-    public void AddToQueue(string songName)
+    /// <param name="filePath">the name of the mp3 file that represents the song.</param>
+    public void AddToQueue(string filePath)
     {
         // Gets the path to the song.
-        string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
-
-        if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
-
-        string song = documentsPath + songName;
-        if (!File.Exists(song)) return;
-
-        // Adds the path to the song to the queue.
-        SongQueue.Enqueue(new Song() { Title = "test", Artist = "ook test", Duration = TimeSpan.FromSeconds(69420), FilePath = song});
+        if (!Directory.Exists(filePath))
+        {
+            // Adds the path to the song to the queue.
+            SongQueue.Enqueue(new Song() { Title = "test", Artist = "ook test", Duration = TimeSpan.FromSeconds(69420), FilePath = filePath});
+        }
         OnQueueUpdated();
     }
 
@@ -65,7 +64,10 @@ public class Player
 
         // Prepare the song for playback.
         PlayingSong = new(song.FilePath);
-        Output.Init(PlayingSong);
+        Reverb = new ReverbEffect(PlayingSong, 0.0f);
+        Equalizer = new Equalizer(Reverb);
+        Flanger = new FlangerEffect(Equalizer, 0.0f);
+        Output.Init(Flanger);
 
         // Start playback of the queued song.
         Output.Play();
