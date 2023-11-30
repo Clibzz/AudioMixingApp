@@ -4,17 +4,17 @@ using System.Diagnostics;
 
 namespace AudioMixingApp.Views;
 
-public partial class FilterPage : ContentPage
+public partial class EffectPage : ContentPage
 {
     private readonly Player _player;
-	public FilterPage(Player player)
+	public EffectPage(Player player)
 	{
         _player = player;
-        BindingContext = new FilterPageViewModel();
-        ((FilterPageViewModel)BindingContext).ReverbFactor = _player.Reverb.ReverbFactor;
-        ((FilterPageViewModel)BindingContext).HighValue = _player.Equalizer.HighValue;
-        ((FilterPageViewModel)BindingContext).MidValue = _player.Equalizer.MidValue;
-        ((FilterPageViewModel)BindingContext).LowValue = _player.Equalizer.LowValue;
+        BindingContext = new EffectPageViewModel();
+        ((EffectPageViewModel)BindingContext).ReverbFactor = _player.Reverb.ReverbFactor;
+        ((EffectPageViewModel)BindingContext).HighValue = _player.Equalizer.HighValue;
+        ((EffectPageViewModel)BindingContext).MidValue = _player.Equalizer.MidValue;
+        ((EffectPageViewModel)BindingContext).LowValue = _player.Equalizer.LowValue;
         InitializeComponent();
 	}
 

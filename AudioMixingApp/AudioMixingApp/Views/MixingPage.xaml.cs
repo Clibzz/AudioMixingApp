@@ -47,7 +47,7 @@ public partial class MixingPage
     
     private void FilterPageButtonA_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new FilterPage(_viewModel.GetPlayer('A')));
+        Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('A')));
     }
     
     private void VolumeSliderA_OnDragCompleted(object sender, ValueChangedEventArgs e)
@@ -83,7 +83,7 @@ public partial class MixingPage
     
     private void FilterPageButtonB_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new FilterPage(_viewModel.GetPlayer('B')));
+        Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('B')));
         Trace.WriteLine(sender);
     }
     

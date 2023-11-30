@@ -65,6 +65,9 @@
 	    <DependentUpon>AboutPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
+	  <Compile Update="Views\EffectPage.xaml.cs">
+	    <DependentUpon>EffectPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\SongsPage.xaml.cs">
 	    <DependentUpon>SongsPage.xaml</DependentUpon>
 	  </Compile>

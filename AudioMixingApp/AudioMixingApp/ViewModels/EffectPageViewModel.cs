@@ -2,7 +2,7 @@
 
 namespace AudioMixingApp.ViewModels;
 
-public class FilterPageViewModel : INotifyPropertyChanged
+public class EffectPageViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler PropertyChanged;
     private double _reverbFactor;
@@ -17,7 +17,7 @@ public class FilterPageViewModel : INotifyPropertyChanged
 
     public double ReverbFactor
     {
-        get => _reverbFactor;
+        get => Math.Round(_reverbFactor, 4);
         set
         {
             if (_reverbFactor != value)
@@ -30,7 +30,7 @@ public class FilterPageViewModel : INotifyPropertyChanged
 
     public double HighValue
     {
-        get => _highValue;
+        get => Math.Round(_highValue, 4);
         set
         {
             if (_highValue != value)
@@ -43,7 +43,7 @@ public class FilterPageViewModel : INotifyPropertyChanged
 
     public double MidValue
     {
-        get => _midValue;
+        get => Math.Round(_midValue, 4);
         set
         {
             if (_midValue != value)
@@ -56,7 +56,7 @@ public class FilterPageViewModel : INotifyPropertyChanged
 
     public double LowValue
     {
-        get => _lowValue;
+        get => Math.Round(_lowValue, 4);
         set
         {
             if (_lowValue != value)
