@@ -165,7 +165,7 @@ namespace AudioMixingApp.Views
 
         private void Button_OnClicked(object sender, EventArgs e)
         {
-            _player.AddToQueue("test2.mp3");
+            _player.AddToQueue("Possessed - The Exorcist.mp3");
         }
     }
 }

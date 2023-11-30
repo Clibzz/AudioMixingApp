@@ -48,11 +48,7 @@ public partial class MixingPage
 
     private void FadeSlider_OnDragCompleted(object sender, ValueChangedEventArgs e)
     {
-        float volumeA = (float)e.NewValue;
-        float volumeB = 1.0f - volumeA;
-
-        _viewModel.ChangeVolume('A', volumeA);
-        _viewModel.ChangeVolume('B', volumeB);
+        _viewModel.AudioFade((float)e.NewValue);
     }
 
     //////////////////////
