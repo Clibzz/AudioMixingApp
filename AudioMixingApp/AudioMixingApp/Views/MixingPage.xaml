@@ -11,7 +11,7 @@
             </MenuFlyoutItem>
         </MenuBarItem>
         <MenuBarItem Text="Playlists">
-            <MenuFlyoutItem Text="Playlists" Clicked="PlaylistsPageButton_OnClicked">
+            <MenuFlyoutItem Text="Playlists">
             </MenuFlyoutItem>
         </MenuBarItem>
     </ContentPage.MenuBarItems>

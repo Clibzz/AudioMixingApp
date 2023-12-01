@@ -29,13 +29,13 @@
             <Label Grid.Column="0" HeightRequest="800" Text="Reverb" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
             <Slider Grid.Column="1" HeightRequest="785" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="0.35" Value="{Binding ReverbFactor}" ValueChanged="ReverbSlider_OnValueChanged"></Slider>
             <Label Grid.Column="2" HeightRequest="800" Text="{Binding ReverbFactor}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="700" Text="Highs" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Label Grid.Row="0" HeightRequest="700" Text="EQ Highs" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
             <Slider Grid.Column="1" HeightRequest="685" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding HighValue}" ValueChanged="HighsSlider_OnValueChanged"></Slider>
             <Label Grid.Column="2" HeightRequest="700" Text="{Binding HighValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Column="0"  HeightRequest="600" Text="Mids" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Label Grid.Column="0"  HeightRequest="600" Text="EQ Mids" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
             <Slider Grid.Column="1" HeightRequest="585" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding MidValue}" ValueChanged="MidsSlider_OnValueChanged"></Slider>
             <Label Grid.Column="2" HeightRequest="600" Text="{Binding MidValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="500" Text="Lows" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Label Grid.Row="0" HeightRequest="500" Text="EQ Lows" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
             <Slider Grid.Column="1" HeightRequest="485" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding LowValue}" ValueChanged="LowsSlider_OnValueChanged"></Slider>
             <Label Grid.Column="2" HeightRequest="500" Text="{Binding LowValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
             <Label Grid.Row="0" HeightRequest="400" Text="Flanger" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
