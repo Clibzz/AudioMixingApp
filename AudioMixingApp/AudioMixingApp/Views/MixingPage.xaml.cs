@@ -117,6 +117,12 @@ public partial class MixingPage
     private void PlayButtonB_Clicked(object sender, EventArgs e)
     {
         _viewModel.PlaySoundWithPauseCheck('B');
+
+        ImageButton imageButton = (ImageButton)sender;
+
+        imageButton.Source = _viewModel.GetPlaybackState('B') == PlaybackState.Playing
+            ? _pausedImageSource
+            : _playImageSource;
     }
     
     private void ProgressbarSliderB_OnDragCompleted(object sender, EventArgs e)

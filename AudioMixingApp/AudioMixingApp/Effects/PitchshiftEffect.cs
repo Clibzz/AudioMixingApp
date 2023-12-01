@@ -8,7 +8,7 @@ namespace AudioMixingApp.Effects
         // The song
         private readonly ISampleProvider _song;
         // The pitch value. 0.5f is one octave down, 1.0f is the normal pitch and 2.0f is an octave up.
-        public float PitchValue;
+        public float PitchValue { get; set; }
         // The pitchshifter. Source: https://github.com/naudio/NAudio/blob/master/Docs/SmbPitchShiftingSampleProvider.md
         private readonly SmbPitchShiftingSampleProvider _pitchShiftingSampleProvider;
         // The waveformat of the song. Contains information like the sample rate of the song, number of bits per sample, number of channels and the audio format.
@@ -32,6 +32,7 @@ namespace AudioMixingApp.Effects
         public void ChangePitchValue(float pitchValue)
         {
             _pitchShiftingSampleProvider.PitchFactor = pitchValue;
+            PitchValue = pitchValue;
         }
 
         /// <summary>
