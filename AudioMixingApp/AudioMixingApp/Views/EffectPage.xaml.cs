@@ -49,4 +49,9 @@ public partial class EffectPage : ContentPage
     {
         _player.Flanger.AdjustFlangerFactor((float)e.NewValue / 10);
     }
+
+    private void PitchshiftSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        _player.Pitchshifter.ChangePitchValue((float)e.NewValue);
+    }
 }

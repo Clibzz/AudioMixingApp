@@ -23,6 +23,7 @@ public class Player
     public ReverbEffect Reverb {  get; set; }
     public Equalizer Equalizer { get; set; }
     public FlangerEffect Flanger { get; set; }
+    public PitchshiftEffect Pitchshifter { get; set; }
 
     // Counter to give the songs in the queue a unique number
     private int _idCounter;
@@ -80,7 +81,8 @@ public class Player
         Reverb = new ReverbEffect(PlayingSong, 0.0f);
         Equalizer = new Equalizer(Reverb);
         Flanger = new FlangerEffect(Equalizer, 0.0f);
-        Output.Init(Flanger);
+        Pitchshifter = new PitchshiftEffect(Flanger, 1.0f);
+        Output.Init(Pitchshifter);
 
         // Start playback of the queued song.
         Output.Play();
