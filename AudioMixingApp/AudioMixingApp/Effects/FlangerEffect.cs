@@ -18,7 +18,7 @@ public class FlangerEffect : ISampleProvider
         this.FlangerFactor = Math.Max(0.0f, Math.Min(1.0f, flangerFactor));
 
         // Set delay time in milliseconds
-        int delayMilliseconds = 20; 
+        int delayMilliseconds = 3; 
 
         // Calculate delay samples based on the delay time and sample rate
         this.delaySamples = (int)((delayMilliseconds / 1000.0) * source.WaveFormat.SampleRate);
