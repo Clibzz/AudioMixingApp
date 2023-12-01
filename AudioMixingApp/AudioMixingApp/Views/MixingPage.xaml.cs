@@ -108,7 +108,7 @@ public partial class MixingPage
     /// </summary>
     private void PreviousButtonA_Clicked(object sender, EventArgs e)
     {
-        _viewModel.UpdateCurrentTime('A', 0.0);
+        if (!Object.Equals(_viewModel.GetPlayer('A').PlayingSong, null)) _viewModel.UpdateCurrentTime('A', 0.0);
     }
 
     //////////////////////
@@ -145,7 +145,7 @@ public partial class MixingPage
     
     private void ProgressbarSliderB_OnDragCompleted(object sender, EventArgs e)
     {
-        if (!Object.Equals(_viewModel.GetPlayer('A').PlayingSong, null))
+        if (!Object.Equals(_viewModel.GetPlayer('B').PlayingSong, null))
         {
             _viewModel.UpdateCurrentTime('B', ((Slider)sender).Value);
             _viewModel.PauseSliderUpdatesB = false;
@@ -154,7 +154,7 @@ public partial class MixingPage
 
     private void ProgressbarSliderB_OnDragStarted(object sender, EventArgs e)
     {
-        if (!Object.Equals(_viewModel.GetPlayer('A').PlayingSong, null)) _viewModel.PauseSliderUpdatesB = true;
+        if (!Object.Equals(_viewModel.GetPlayer('B').PlayingSong, null)) _viewModel.PauseSliderUpdatesB = true;
     }
 
     private void SkipButtonB_OnClicked(object sender, EventArgs e)
@@ -174,6 +174,6 @@ public partial class MixingPage
     /// </summary>
     private void PreviousButtonB_Clicked(object sender, EventArgs e)
     {
-        _viewModel.UpdateCurrentTime('B', 0.0);
+        if (!Object.Equals(_viewModel.GetPlayer('B').PlayingSong, null)) _viewModel.UpdateCurrentTime('B', 0.0);
     }
 }
