@@ -7,5 +7,4 @@ public class Song
     public string Artist { get; set; }
     public TimeSpan Duration { get; set; }
     public string FilePath { get; set; }
-
 }
