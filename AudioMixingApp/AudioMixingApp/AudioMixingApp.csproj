@@ -61,12 +61,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Songs\" />
+	  <Compile Update="Views\EffectPage.xaml.cs">
+	    <DependentUpon>EffectPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\AboutPage.xaml.cs">
 	    <DependentUpon>AboutPage.xaml</DependentUpon>
 	    <SubType>Code</SubType>
 	  </Compile>
-	  <Compile Update="Views\EffectPage.xaml.cs">
-	    <DependentUpon>EffectPage.xaml</DependentUpon>
+	  <Compile Update="Views\PlaylistPage.xaml.cs">
+	    <DependentUpon>PlaylistPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\SongsPage.xaml.cs">
 	    <DependentUpon>SongsPage.xaml</DependentUpon>
@@ -75,6 +79,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="NAudio" Version="2.2.1" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	  <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
 	  <PackageReference Include="Xamarin.Essentials" Version="1.8.0" />
 	</ItemGroup>

@@ -3,14 +3,19 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AudioMixingApp.Views.MixingPage"
-             Title="Mixing page"
+             Title="Mixing"
              BackgroundColor="#424242">
     <ContentPage.MenuBarItems>
         <MenuBarItem Text="About">
             <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
             </MenuFlyoutItem>
         </MenuBarItem>
+        <MenuBarItem Text="Playlists">
+            <MenuFlyoutItem Text="Playlists" Clicked="PlaylistsPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
     </ContentPage.MenuBarItems>
+    
     <Grid
         RowDefinitions="3*, 2*"
         Padding="30"
@@ -77,6 +82,14 @@
                          Grid.Column="0"
                          Clicked="EffectPageButtonA_OnClicked"/>
 
+            <Label Text="Effecten"
+               Grid.Row="0"
+               Grid.Column="0"
+               HorizontalOptions="Center"
+               VerticalOptions="End"
+               TextColor="Black"
+               FontAttributes="Bold"/>
+
             <Label Text="{Binding SongTitleA}"
                    Grid.Row="1"
                    Grid.Column="1"
@@ -85,7 +98,7 @@
                    TextColor="White"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
-            
+
             <Slider x:Name="SliderSongMixing"
                     VerticalOptions="Center"
                     WidthRequest="140"
@@ -93,7 +106,11 @@
                     Grid.Column="2"
                     Grid.ColumnSpan="2"
                     MinimumTrackColor="Blue"
-                    MaximumTrackColor="HotPink"/>
+                    MaximumTrackColor="HotPink"
+                    Maximum="1.0" 
+                    Minimum="0.0" 
+                    Value="0.5"
+                    ValueChanged="FadeSlider_OnDragCompleted"/>
             
             <Label Text="{Binding SongTitleB}"
                    Grid.Row="1"
@@ -184,21 +201,20 @@
                     BackgroundColor="Black"
                     Padding="10">
 
-                    <ListView HasUnevenRows="True" HorizontalOptions="FillAndExpand" ItemsSource="{Binding PlayerAQueue}">
-                        <ListView.Header>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Title" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                <Label Text="Artist" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                <Label Text="Duration" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                <Label Text="Actions" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                            </Grid>
-                        </ListView.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Title" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                        <Label Text="Artist" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                        <Label Text="Duration" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                        <Label Text="Actions" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
+                    </Grid>
+                    
+                    <ListView HasUnevenRows="True" HorizontalOptions="FillAndExpand" ItemsSource="{Binding PlayerAQueue}" MinimumHeightRequest="100">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
@@ -267,6 +283,5 @@
                 </StackLayout>
             </Grid>
         </StackLayout>
-
     </Grid>
 </ContentPage>

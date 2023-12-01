@@ -196,7 +196,7 @@ namespace AudioMixingApp.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void Button_OnClicked(object sender, EventArgs e)
+        private async void AddToQueue_OnClicked(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
 
@@ -218,5 +218,25 @@ namespace AudioMixingApp.Views
                 await DisplayAlert("Error", "Failed to add song to the queue.", "OK");
             }
         }
+
+        /// <summary>
+        /// Add a song to a playlist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public async void PlaylistBtn_OnClicked(Object sender, EventArgs e)
+        {
+            string playlistName = await Application.Current.MainPage.DisplayPromptAsync("New Playlist", "Enter the playlist name", "OK", "Cancel", keyboard: Keyboard.Text);
+
+            Button clickedButton = (Button)sender;
+
+            // Here u get the selected song object
+            Song selectedSong = (Song)clickedButton.BindingContext;
+            if (playlistName != null)
+            {
+                await viewModel.AddSongToPlaylist(playlistName, selectedSong);
+            }
+        }
+
     }
 }

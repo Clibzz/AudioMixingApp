@@ -5,6 +5,7 @@ namespace AudioMixingApp.Models;
 
 public class Player
 {
+    public float FadeVolume = 0.5f;
     // The output device.
     public WaveOutEvent Output { get; set; } = new();
     

@@ -45,7 +45,17 @@ public partial class MixingPage
     {
         Navigation.PushAsync(new AboutPage());
     }
-    
+
+    private void PlaylistsPageButton_OnClicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new PlaylistPage());
+    }
+
+    private void FadeSlider_OnDragCompleted(object sender, ValueChangedEventArgs e)
+    {
+        _viewModel.AudioFade((float)e.NewValue);
+    }
+
     //////////////////////
     ////// PLAYER A //////
     //////////////////////
