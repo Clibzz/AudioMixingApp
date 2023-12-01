@@ -8,7 +8,7 @@ namespace AudioMixingApp.ViewModels;
 
 public class MixingPageViewModel : INotifyPropertyChanged
 {
-    private int _currentTimeA, _totalTimeA, _currentTimeB, _totalTimeB;
+    private int _currentTimeA = 0, _totalTimeA = 1, _currentTimeB = 0, _totalTimeB = 1;
 
     private float _currentVolumeA = 0.5f, _currentVolumeB = 0.5f;
 
@@ -36,6 +36,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         _playerA.QueueUpdated += UpdateQueueA;
         _playerB.QueueUpdated += UpdateQueueB;
+        
+        _playerA.TitleUpdated += UpdateSongTitleA;
+        _playerB.TitleUpdated += UpdateSongTitleB;
 
         _playerA.NextSongEvent += (_, _) => PlaySound('A');
         _playerB.NextSongEvent += (_, _) => PlaySound('B');
@@ -361,4 +364,20 @@ public class MixingPageViewModel : INotifyPropertyChanged
             }
         }
     }
+
+    private void UpdateSongTitleA(object sender, EventArgs e)
+    {
+        SongTitleA = $"{_playerA.CurrentSong.Title} - {_playerA.CurrentSong.Artist}";
+        OnPropertyChanged(nameof(SongTitleA));
+    }
+    
+    private void UpdateSongTitleB(object sender, EventArgs e)
+    {
+        SongTitleB = $"{_playerB.CurrentSong.Title} - {_playerB.CurrentSong.Artist}";
+        OnPropertyChanged(nameof(SongTitleB));
+    }
+
+    public string SongTitleA { get; set; } = "<No song playing>";
+
+    public string SongTitleB { get; set; } = "<No song playing>";
 }

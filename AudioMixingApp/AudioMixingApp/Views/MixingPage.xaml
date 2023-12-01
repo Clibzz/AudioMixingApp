@@ -90,7 +90,7 @@
                TextColor="Black"
                FontAttributes="Bold"/>
 
-            <Label Text="Maneskin - Beggin'"
+            <Label Text="{Binding SongTitleA}"
                    Grid.Row="1"
                    Grid.Column="1"
                    HorizontalOptions="Fill"
@@ -111,8 +111,8 @@
                     Minimum="0.0" 
                     Value="0.5"
                     ValueChanged="FadeSlider_OnDragCompleted"/>
-
-            <Label Text="Test test = THE test"
+            
+            <Label Text="{Binding SongTitleB}"
                    Grid.Row="1"
                    Grid.Column="4"
                    HorizontalOptions="Fill"

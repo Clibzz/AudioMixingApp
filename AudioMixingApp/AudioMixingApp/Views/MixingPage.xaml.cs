@@ -1,5 +1,6 @@
 using AudioMixingApp.ViewModels;
 using NAudio.Wave;
+using System.Diagnostics;
 
 namespace AudioMixingApp.Views;
 
@@ -58,10 +59,17 @@ public partial class MixingPage
     //////////////////////
     ////// PLAYER A //////
     //////////////////////
-
-    private void EffectPageButtonA_OnClicked(object sender, EventArgs e)
+    
+    private async void EffectPageButtonA_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('A')));
+        if (!Object.Equals(_viewModel.GetPlayer('A').PlayingSong, null))
+        {
+            await Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('A')));
+        }
+        else
+        {
+            await DisplayAlert("Error", "No song is playing.", "OK");
+        }
     }
     
     private void VolumeSliderA_OnDragCompleted(object sender, ValueChangedEventArgs e)
@@ -82,13 +90,16 @@ public partial class MixingPage
     
     private void ProgressbarSliderA_OnDragCompleted(object sender, EventArgs e)
     {
-        _viewModel.UpdateCurrentTime('A', ((Slider)sender).Value);
-        _viewModel.PauseSliderUpdatesA = false;
+        if (!Object.Equals(_viewModel.GetPlayer('A').PlayingSong, null)) 
+        {
+            _viewModel.UpdateCurrentTime('A', ((Slider)sender).Value);
+            _viewModel.PauseSliderUpdatesA = false;
+        }
     }
 
     private void ProgressbarSliderA_OnDragStarted(object sender, EventArgs e)
     {
-        _viewModel.PauseSliderUpdatesA = true;
+        if (!Object.Equals(_viewModel.GetPlayer('A').PlayingSong, null)) _viewModel.PauseSliderUpdatesA = true;
     }
 
     private void SkipButtonA_OnClicked(object sender, EventArgs e)
@@ -107,16 +118,23 @@ public partial class MixingPage
     /// </summary>
     private void PreviousButtonA_Clicked(object sender, EventArgs e)
     {
-        _viewModel.UpdateCurrentTime('A', 0.0);
+        if (!Object.Equals(_viewModel.GetPlayer('A').PlayingSong, null)) _viewModel.UpdateCurrentTime('A', 0.0);
     }
 
     //////////////////////
     ////// PLAYER B //////
     //////////////////////
-    
-    private void EffectPageButtonB_OnClicked(object sender, EventArgs e)
+
+    private async void EffectPageButtonB_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('B')));
+        if (!Object.Equals(_viewModel.GetPlayer('B').PlayingSong, null))
+        {
+            await Navigation.PushAsync(new EffectPage(_viewModel.GetPlayer('B')));
+        }
+        else
+        {
+            await DisplayAlert("Error", "No song is playing.", "OK");
+        }
     }
     
     private void VolumeSliderB_OnDragCompleted(object sender, ValueChangedEventArgs e)
@@ -137,13 +155,16 @@ public partial class MixingPage
     
     private void ProgressbarSliderB_OnDragCompleted(object sender, EventArgs e)
     {
-        _viewModel.UpdateCurrentTime('B', ((Slider)sender).Value);
-        _viewModel.PauseSliderUpdatesB = false;
+        if (!Object.Equals(_viewModel.GetPlayer('B').PlayingSong, null))
+        {
+            _viewModel.UpdateCurrentTime('B', ((Slider)sender).Value);
+            _viewModel.PauseSliderUpdatesB = false;
+        }
     }
 
     private void ProgressbarSliderB_OnDragStarted(object sender, EventArgs e)
     {
-        _viewModel.PauseSliderUpdatesB = true;
+        if (!Object.Equals(_viewModel.GetPlayer('B').PlayingSong, null)) _viewModel.PauseSliderUpdatesB = true;
     }
 
     private void SkipButtonB_OnClicked(object sender, EventArgs e)
@@ -163,6 +184,6 @@ public partial class MixingPage
     /// </summary>
     private void PreviousButtonB_Clicked(object sender, EventArgs e)
     {
-        _viewModel.UpdateCurrentTime('B', 0.0);
+        if (!Object.Equals(_viewModel.GetPlayer('B').PlayingSong, null)) _viewModel.UpdateCurrentTime('B', 0.0);
     }
 }

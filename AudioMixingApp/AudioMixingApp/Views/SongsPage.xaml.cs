@@ -13,7 +13,6 @@ namespace AudioMixingApp.Views
     public partial class SongsPage : ContentPage
     {
         private readonly Player _player;
-        public List<Song> Songs { get; set; } = new List<Song>();
         public SongsViewModel viewModel;
 
         public SongsPage(Player player)
@@ -96,6 +95,11 @@ namespace AudioMixingApp.Views
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void OnAddSongClicked(object sender, EventArgs e)
         {
             string artist;
@@ -177,12 +181,21 @@ namespace AudioMixingApp.Views
             await viewModel.AddSongToJsonFile(newSong);
         }
 
-
+        /// <summary>
+        /// A wrapper class that encapsulates a list of songs.
+        /// Necessary for successful JSON deserialization into a list of songs,
+        /// as it provides a structured representation of the JSON data.
+        /// </summary>
         public class SongListWrapper
         {
             public List<Song> Songs { get; set; } = new List<Song>();
         }
 
+        /// <summary>
+        /// Button for adding a song to a queue. A or B
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void AddToQueue_OnClicked(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -198,7 +211,7 @@ namespace AudioMixingApp.Views
                 //int numberOfItemsInQueue = _player.SongQueue.Count;
 
                 //Alert that song has been added to the queue
-                await DisplayAlert("Success", $"{selectedSong.FilePath} is added to the queue successfully.", "OK");
+                await DisplayAlert("Success", $"{selectedSong.Title} is added to the queue successfully.", "OK");
             }
             else
             {

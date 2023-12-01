@@ -14,12 +14,18 @@ public class Player
 
     // The song.
     public AudioFileReader PlayingSong { get; set; }
+    
+    //Current playing song
+    public Song CurrentSong;
 
     // The queue for the songs.
     public Queue<Song> SongQueue = new();
     
     // Event triggered when the queue should be updated on the frontend
     public event EventHandler QueueUpdated;
+    
+    //Event triggered when the title should be updated
+    public event EventHandler TitleUpdated;
 
     public ReverbEffect Reverb {  get; set; }
     public Equalizer Equalizer { get; set; }
@@ -79,9 +85,18 @@ public class Player
 
         // Prepare the song for playback.
         PlayingSong = new(song.FilePath);
+        
+        // Make a reference to the currently playing song and trigger an event to update it to the frontend
+        CurrentSong = song;
+        TitleUpdated?.Invoke(this, EventArgs.Empty);
+        
+        // Add reverb effect.
         Reverb = new ReverbEffect(PlayingSong, 0.0f);
+        // Add equalizer effect.
         Equalizer = new Equalizer(Reverb);
+        // Add flanger effect.
         Flanger = new FlangerEffect(Equalizer, 0.0f);
+        // Add pitchshifter effect.
         Pitchshifter = new PitchshiftEffect(Flanger, 1.0f);
         Output.Init(Pitchshifter);
 
@@ -90,7 +105,6 @@ public class Player
 
         // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
         // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
-        // Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
         Output.PlaybackStopped += NextSongEvent;
     }
     
