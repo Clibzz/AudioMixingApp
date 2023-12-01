@@ -4,14 +4,14 @@ using System.Diagnostics;
 
 namespace AudioMixingApp.Views;
 
-public partial class MixingPage
+public partial class PlayerPage
 {
-    private readonly MixingPageViewModel _viewModel;
+    private readonly PlayerPageViewModel _viewModel;
     private readonly ImageSource _playImageSource, _pausedImageSource;
     
-    public MixingPage()
+    public PlayerPage()
     {
-        _viewModel = new MixingPageViewModel();
+        _viewModel = new PlayerPageViewModel();
         BindingContext = _viewModel;
         InitializeComponent();
 

@@ -6,7 +6,7 @@ using NAudio.Wave;
 
 namespace AudioMixingApp.ViewModels;
 
-public class MixingPageViewModel : INotifyPropertyChanged
+public class PlayerPageViewModel : INotifyPropertyChanged
 {
     private int _currentTimeA = 0, _totalTimeA = 1, _currentTimeB = 0, _totalTimeB = 1;
 
@@ -23,7 +23,7 @@ public class MixingPageViewModel : INotifyPropertyChanged
     public ObservableCollection<Song> PlayerAQueue { get; } = new();
     public ObservableCollection<Song> PlayerBQueue { get; } = new();
 
-    public MixingPageViewModel()
+    public PlayerPageViewModel()
     {
         _timer = new System.Timers.Timer
         {
@@ -144,9 +144,6 @@ public class MixingPageViewModel : INotifyPropertyChanged
         int totalTime = (int)player.PlayingSong.TotalTime.TotalSeconds;
         string totalTimeString = player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
 
-        Trace.WriteLine(player.PlayingSong.TotalTime.TotalSeconds);
-        Trace.WriteLine(totalTimeString);
-
         if (playerChar == 'A')
         {
             TotalTimeA = totalTime;
@@ -198,11 +195,7 @@ public class MixingPageViewModel : INotifyPropertyChanged
     {
         float newVolumeA = _currentVolumeA * (1.0f - (float)value);
         float newVolumeB = _currentVolumeB * ((float)value);
-        Trace.WriteLine($"Volume a: {newVolumeA}");
-        Trace.WriteLine($"Volume b: {newVolumeB}");
-        //float volumeA = (float)e.NewValue;
-        //float volumeB = 1.0f - volumeA;
-
+     
         ChangeVolume('A', newVolumeA);
         ChangeVolume('B', newVolumeB);
     }

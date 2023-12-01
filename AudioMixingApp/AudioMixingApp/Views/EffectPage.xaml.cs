@@ -28,7 +28,6 @@ public partial class EffectPage : ContentPage
     private void ReverbSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
     {
         _player.Reverb.ReverbFactor = (float)e.NewValue;
-        Trace.WriteLine(_player.Reverb.ReverbFactor);
     }
 
     private void HighsSlider_OnValueChanged(object sender, ValueChangedEventArgs e)

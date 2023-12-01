@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AudioMixingApp.Views.MixingPage"
+             x:Class="AudioMixingApp.Views.PlayerPage"
              Title="Mixing"
              BackgroundColor="#424242">
     <ContentPage.MenuBarItems>
@@ -81,14 +81,6 @@
                          Grid.Row="1"
                          Grid.Column="0"
                          Clicked="EffectPageButtonA_OnClicked"/>
-
-            <Label Text="Effecten"
-               Grid.Row="0"
-               Grid.Column="0"
-               HorizontalOptions="Center"
-               VerticalOptions="End"
-               TextColor="Black"
-               FontAttributes="Bold"/>
 
             <Label Text="{Binding SongTitleA}"
                    Grid.Row="1"
