@@ -16,6 +16,7 @@ public partial class EffectPage : ContentPage
         ((EffectPageViewModel)BindingContext).MidValue = _player.Equalizer.MidValue;
         ((EffectPageViewModel)BindingContext).LowValue = _player.Equalizer.LowValue;
         ((EffectPageViewModel)BindingContext).FlangerFactor = _player.Flanger.FlangerFactor;
+        ((EffectPageViewModel)BindingContext).PitchValue = _player.Pitchshifter.PitchValue;
         InitializeComponent();
 	}
 
