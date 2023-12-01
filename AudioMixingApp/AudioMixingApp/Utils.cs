@@ -8,7 +8,8 @@
         /// <returns>a JSON string containing the playlists</returns>
         public static string GetJSON()
         {
-            string path = "C:\\xampp\\htdocs\\school\\Jaar 3\\C#2 herkansing\\AudioMixingApp\\AudioMixingApp\\AudioMixingApp\\Playlists.json";
+            
+            string path = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\playlists.json";
             return File.ReadAllText(path);
         }
     }
