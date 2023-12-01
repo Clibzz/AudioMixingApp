@@ -56,9 +56,9 @@ namespace AudioMixingApp.ViewModels
                         {
                             Title = song.Title,
                             Artist = song.Artist,
-                            FilePath = song.FilePath
+                            FilePath = song.FilePath,
+                            Duration = song.Duration
                         };
-
                         loadedSongs.Add(newSong);
                     }
                 }
@@ -69,7 +69,7 @@ namespace AudioMixingApp.ViewModels
         public async Task AddSongToJsonFile(Song song)
         {
             string jsonFilePath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
-           
+
             // Check if json file exists
             if (!File.Exists(jsonFilePath))
             {
@@ -82,7 +82,8 @@ namespace AudioMixingApp.ViewModels
                 {
                     Title = song.Title,
                     Artist = song.Artist,
-                    FilePath = song.FilePath
+                    FilePath = song.FilePath,
+                    Duration = song.Duration
                 }
             }
                 }, new JsonSerializerOptions { WriteIndented = true });
