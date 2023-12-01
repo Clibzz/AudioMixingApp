@@ -30,7 +30,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonA_Clicked"></ImageButton>
                     <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
                     <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked"></ImageButton>
                 </HorizontalStackLayout>
@@ -62,7 +62,7 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonB_Clicked"></ImageButton>
                     <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
                     <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked"></ImageButton>
                 </HorizontalStackLayout>

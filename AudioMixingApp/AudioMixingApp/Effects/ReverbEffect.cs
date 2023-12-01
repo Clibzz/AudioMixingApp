@@ -26,7 +26,7 @@ namespace AudioMixingApp.Effects
         }
 
         /// <summary>
-        /// This function reads a specified amount of samples from the song.
+        /// This function reads a specified amount of samples from the song and applies reverb to the samples.
         /// </summary>
         /// <param name="buffer">The samples from the song</param>
         /// <param name="offset">The position from where the samples in the buffer will be read</param>
