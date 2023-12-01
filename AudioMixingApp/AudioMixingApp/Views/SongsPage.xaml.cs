@@ -206,5 +206,19 @@ namespace AudioMixingApp.Views
             }
         }
 
+        public async void PlaylistBtn_OnClicked(Object sender, EventArgs e)
+        {
+            string playlistName = await Application.Current.MainPage.DisplayPromptAsync("New Playlist", "Enter the playlist name", "OK", "Cancel", keyboard: Keyboard.Text);
+
+            Button clickedButton = (Button)sender;
+
+            // Here u get the selected song object
+            Song selectedSong = (Song)clickedButton.BindingContext;
+            if (playlistName != null)
+            {
+                await viewModel.AddSongToPlaylist(playlistName, selectedSong);
+            }
+        }
+
     }
 }

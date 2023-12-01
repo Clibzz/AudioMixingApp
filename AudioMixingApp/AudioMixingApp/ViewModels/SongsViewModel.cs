@@ -78,14 +78,14 @@ namespace AudioMixingApp.ViewModels
                 {
                     Songs = new[]
                     {
-                new
-                {
-                    Title = song.Title,
-                    Artist = song.Artist,
-                    FilePath = song.FilePath,
-                    Duration = song.Duration
-                }
-            }
+                        new
+                        {
+                            Title = song.Title,
+                            Artist = song.Artist,
+                            FilePath = song.FilePath,
+                            Duration = song.Duration
+                        }
+                    }
                 }, new JsonSerializerOptions { WriteIndented = true });
 
                 // Write default json structure to json file
@@ -111,6 +111,47 @@ namespace AudioMixingApp.ViewModels
                     await File.WriteAllTextAsync(jsonFilePath, updatedJsonContent);
                 }
             }
+        }
+
+        /// <summary>
+        /// Add a song to a playlist / create a playlist
+        /// </summary>
+        /// <param name="playlistName">The name of the (new) playlist</param>
+        /// <param name="song">The song that has to be added to the playlist</param>
+        /// <returns>A task that writes the json data to the playlists.json file</returns>
+        public async Task AddSongToPlaylist(string playlistName, Song song)
+        {
+            string jsonFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AudioMixingApp", "playlists.json");
+            // Read the playlist.json file
+            string existingJsonContent = File.Exists(jsonFilePath) ? await File.ReadAllTextAsync(jsonFilePath) : "";
+
+            // Create a JsonSerializerOptions allowing trailing commas (basically it means that there's a comma after the last element in an array)
+            var options = new JsonSerializerOptions
+            {
+                AllowTrailingCommas = true
+            };
+
+            // Deserialize existing data or create an entire new list for the playlists
+            var playlists = string.IsNullOrEmpty(existingJsonContent)
+                ? new List<Playlist>()
+                : JsonSerializer.Deserialize<List<Playlist>>(existingJsonContent, options);
+
+            // Try to look for the playlist, if it doesn't exist, create a new one
+            Playlist inputPlaylist = playlists.Find(p => p.Name == playlistName);
+            if (inputPlaylist == null)
+            {
+                inputPlaylist = new Playlist { Name = playlistName, Songs = new List<Song>() };
+                playlists.Add(inputPlaylist);
+            }
+
+            // Add the song to the given playlist
+            inputPlaylist.Songs.Add(song);
+
+            // Serialize the updated playlist data
+            string updatedJsonData = JsonSerializer.Serialize(playlists, new JsonSerializerOptions { WriteIndented = true });
+
+            // Add the updated json to the playlists.json
+            await File.WriteAllTextAsync(jsonFilePath, updatedJsonData);
         }
     }
 }
