@@ -75,7 +75,7 @@
                          VerticalOptions="Center"
                          Grid.Row="1"
                          Grid.Column="0"
-                         Clicked="FilterPageButtonA_OnClicked"/>
+                         Clicked="EffectPageButtonA_OnClicked"/>
 
             <Label Text="Maneskin - Beggin'"
                    Grid.Row="1"
@@ -111,7 +111,7 @@
                          VerticalOptions="Center"
                          Grid.Row="1"
                          Grid.Column="5"
-                         Clicked="FilterPageButtonB_OnClicked"/>
+                         Clicked="EffectPageButtonB_OnClicked"/>
 
             <Label Grid.Row="2" 
                    Grid.Column="0" 

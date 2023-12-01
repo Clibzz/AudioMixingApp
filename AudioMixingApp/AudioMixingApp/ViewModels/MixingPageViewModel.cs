@@ -8,7 +8,7 @@ namespace AudioMixingApp.ViewModels;
 
 public class MixingPageViewModel : INotifyPropertyChanged
 {
-    private int _currentTimeA, _totalTimeA, _currentTimeB, _totalTimeB;
+    private int _currentTimeA = 0, _totalTimeA = 1, _currentTimeB = 0, _totalTimeB = 1;
 
     private string _currentTimeStringA = "00:00",
         _totalTimeStringA = "00:00",

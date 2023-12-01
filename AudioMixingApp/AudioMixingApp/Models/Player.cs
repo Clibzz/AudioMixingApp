@@ -78,9 +78,13 @@ public class Player
 
         // Prepare the song for playback.
         PlayingSong = new(song.FilePath);
+        // Add reverb effect.
         Reverb = new ReverbEffect(PlayingSong, 0.0f);
+        // Add equalizer effect.
         Equalizer = new Equalizer(Reverb);
+        // Add flanger effect.
         Flanger = new FlangerEffect(Equalizer, 0.0f);
+        // Add pitchshifter effect.
         Pitchshifter = new PitchshiftEffect(Flanger, 1.0f);
         Output.Init(Pitchshifter);
 
@@ -89,7 +93,6 @@ public class Player
 
         // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
         // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
-        // Output.PlaybackStopped += (sender, e) => PlaySongFromQueue();
         Output.PlaybackStopped += NextSongEvent;
     }
     
