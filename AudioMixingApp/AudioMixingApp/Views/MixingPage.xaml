@@ -214,7 +214,7 @@
                                         <Label Text="{Binding Title}" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                         <Label Text="{Binding Artist}" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                         <Label Text="{Binding Duration}" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                        <Button Text="Remove" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" Clicked="DeleteButtonA_OnClicked" ClassId="{Binding FilePath}"/>
+                                        <Button Text="Remove" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" Clicked="DeleteButtonA_OnClicked" ClassId="{Binding Id}"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>
@@ -258,7 +258,7 @@
                                         <Label Text="{Binding Title}" Grid.Column="0" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                         <Label Text="{Binding Artist}" Grid.Column="1" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
                                         <Label Text="{Binding Duration}" Grid.Column="2" Padding="8" HorizontalOptions="CenterAndExpand" TextColor="White" />
-                                        <Button Text="Remove" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" Clicked="DeleteButtonB_OnClicked" ClassId="{Binding FilePath}"/>
+                                        <Button Text="Remove" Grid.Column="3" Padding="8" HorizontalOptions="CenterAndExpand" Clicked="DeleteButtonB_OnClicked" ClassId="{Binding Id}"/>
                                     </Grid>
                                 </ViewCell>
                             </DataTemplate>

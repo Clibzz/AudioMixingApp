@@ -89,7 +89,7 @@ public partial class MixingPage
     private void DeleteButtonA_OnClicked(object sender, EventArgs e)
     {
         Button button = (Button)sender;
-        _viewModel.DeleteFromQueue('A', button.ClassId);
+        _viewModel.DeleteFromQueue('A', int.Parse(button.ClassId));
     }
     
     //////////////////////
@@ -130,6 +130,6 @@ public partial class MixingPage
     private void DeleteButtonB_OnClicked(object sender, EventArgs e)
     {
         Button button = (Button)sender;
-        _viewModel.DeleteFromQueue('B', button.ClassId);
+        _viewModel.DeleteFromQueue('B', int.Parse(button.ClassId));
     }
 }
