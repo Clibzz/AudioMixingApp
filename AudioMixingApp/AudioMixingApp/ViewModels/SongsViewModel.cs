@@ -36,6 +36,11 @@ namespace AudioMixingApp.ViewModels
             Songs = LoadSongsFromJsonFile(jsonPath);
         }
 
+        /// <summary>
+        /// loads all the songs from the json
+        /// </summary>
+        /// <param name="jsonFilePath"></param>
+        /// <returns></returns>
         private ObservableCollection<Song> LoadSongsFromJsonFile(string jsonFilePath)
         {
             ObservableCollection<Song> loadedSongs = new ObservableCollection<Song>();
@@ -66,6 +71,11 @@ namespace AudioMixingApp.ViewModels
             return loadedSongs;
         }
 
+        /// <summary>
+        /// Method that adds song(s) to the JSON file
+        /// </summary>
+        /// <param name="song"></param>
+        /// <returns></returns>
         public async Task AddSongToJsonFile(Song song)
         {
             string jsonFilePath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
@@ -78,14 +88,14 @@ namespace AudioMixingApp.ViewModels
                 {
                     Songs = new[]
                     {
-                new
-                {
-                    Title = song.Title,
-                    Artist = song.Artist,
-                    FilePath = song.FilePath,
-                    Duration = song.Duration
-                }
-            }
+                        new
+                        {
+                            Title = song.Title,
+                            Artist = song.Artist,
+                            FilePath = song.FilePath,
+                            Duration = song.Duration
+                        }
+                    }
                 }, new JsonSerializerOptions { WriteIndented = true });
 
                 // Write default json structure to json file
