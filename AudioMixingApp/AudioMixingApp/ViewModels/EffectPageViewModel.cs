@@ -10,6 +10,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
     private double _midValue;
     private double _lowValue;
     private double _flangerFactor;
+    private double _pitchValue;
 
     private void OnPropertyChanged(string propertyName)
     {
@@ -77,6 +78,19 @@ public class EffectPageViewModel : INotifyPropertyChanged
             {
                 _flangerFactor = value;
                 OnPropertyChanged(nameof(FlangerFactor));
+            }
+        }
+    }
+
+    public double PitchValue
+    {
+        get => Math.Round(_pitchValue, 4);
+        set
+        {
+            if (_pitchValue != value)
+            {
+                _pitchValue = value;
+                OnPropertyChanged(nameof(PitchValue));
             }
         }
     }

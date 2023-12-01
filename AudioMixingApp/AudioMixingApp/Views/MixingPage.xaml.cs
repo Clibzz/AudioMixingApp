@@ -101,7 +101,15 @@ public partial class MixingPage
         Button button = (Button)sender;
         _viewModel.DeleteFromQueue('A', int.Parse(button.ClassId));
     }
-    
+
+    /// <summary>
+    /// Restarts the current playing song.
+    /// </summary>
+    private void PreviousButtonA_Clicked(object sender, EventArgs e)
+    {
+        _viewModel.UpdateCurrentTime('A', 0.0);
+    }
+
     //////////////////////
     ////// PLAYER B //////
     //////////////////////
@@ -119,6 +127,12 @@ public partial class MixingPage
     private void PlayButtonB_Clicked(object sender, EventArgs e)
     {
         _viewModel.PlaySoundWithPauseCheck('B');
+
+        ImageButton imageButton = (ImageButton)sender;
+
+        imageButton.Source = _viewModel.GetPlaybackState('B') == PlaybackState.Playing
+            ? _pausedImageSource
+            : _playImageSource;
     }
     
     private void ProgressbarSliderB_OnDragCompleted(object sender, EventArgs e)
@@ -141,5 +155,14 @@ public partial class MixingPage
     {
         Button button = (Button)sender;
         _viewModel.DeleteFromQueue('B', int.Parse(button.ClassId));
+    }
+
+
+    /// <summary>
+    /// Restarts the current playing song.
+    /// </summary>
+    private void PreviousButtonB_Clicked(object sender, EventArgs e)
+    {
+        _viewModel.UpdateCurrentTime('B', 0.0);
     }
 }

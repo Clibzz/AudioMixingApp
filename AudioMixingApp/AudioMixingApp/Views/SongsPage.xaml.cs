@@ -66,6 +66,15 @@ namespace AudioMixingApp.Views
                 string artist = file.Tag.FirstPerformer;
                 string title = file.Tag.Title;
 
+                TimeSpan seconds = file.Properties.Duration;
+
+                //format hh:mm:ss
+                string formattedDuration = $"{(int)seconds.TotalHours:D2}:{seconds.Minutes:D2}:{seconds.Seconds:D2}";
+
+                string format = "hh\\:mm\\:ss";
+
+                TimeSpan duration = TimeSpan.ParseExact(formattedDuration, format, null);
+
                 // Save the file to this path
                 string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
 
@@ -77,7 +86,7 @@ namespace AudioMixingApp.Views
                 File.Copy(filePath, destinationPath, true);
 
                 // Create a new Song object
-                var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath };
+                var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath, Duration = duration};
 
                 // Add to the collection
                 viewModel.Songs.Add(newSong);
@@ -138,6 +147,16 @@ namespace AudioMixingApp.Views
             // Get the file path and save it in the existing 'filePath' variable
             filePath = fileResult.FullPath;
 
+            var file = TagLib.File.Create(filePath);
+            TimeSpan seconds = file.Properties.Duration;
+
+            //format hh:mm:ss
+            string formattedDuration = $"{(int)seconds.TotalHours:D2}:{seconds.Minutes:D2}:{seconds.Seconds:D2}";
+
+            string format = "hh\\:mm\\:ss";
+
+            TimeSpan duration = TimeSpan.ParseExact(formattedDuration, format, null);
+
             // Save the file to this path
             string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
 
@@ -150,13 +169,14 @@ namespace AudioMixingApp.Views
 
             // Add to the collection
             var viewModel = (SongsViewModel)BindingContext;
-            var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath };
+            var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath, Duration = duration };
 
             viewModel.Songs.Add(newSong);
 
             // add song to JSON file
             await viewModel.AddSongToJsonFile(newSong);
         }
+
 
         public class SongListWrapper
         {

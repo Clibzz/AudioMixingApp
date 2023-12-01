@@ -157,17 +157,15 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         _timer.Elapsed += (sender, eventArgs) =>
         {
-            if (PauseSliderUpdatesA) return;
-
             int currentTime = (int)player.PlayingSong.CurrentTime.TotalSeconds;
             string currentTimeString = player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
 
-            if (playerChar == 'A')
+            if (playerChar == 'A' && !PauseSliderUpdatesA)
             {
                 CurrentTimeA = currentTime;
                 CurrentTimeStringA = currentTimeString;
             }
-            else
+            else if (playerChar == 'B' && !PauseSliderUpdatesB)
             {
                 CurrentTimeB = currentTime;
                 CurrentTimeStringB = currentTimeString;
