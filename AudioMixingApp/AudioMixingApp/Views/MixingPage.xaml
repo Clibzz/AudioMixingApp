@@ -77,7 +77,7 @@
                          Grid.Column="0"
                          Clicked="EffectPageButtonA_OnClicked"/>
 
-            <Label Text="Maneskin - Beggin'"
+            <Label Text="{Binding SongTitleA}"
                    Grid.Row="1"
                    Grid.Column="1"
                    HorizontalOptions="Fill"
@@ -95,7 +95,7 @@
                     MinimumTrackColor="Blue"
                     MaximumTrackColor="HotPink"/>
             
-            <Label Text="Test test = THE test"
+            <Label Text="{Binding SongTitleB}"
                    Grid.Row="1"
                    Grid.Column="4"
                    HorizontalOptions="Fill"
