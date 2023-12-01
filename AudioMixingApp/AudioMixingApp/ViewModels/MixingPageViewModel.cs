@@ -214,14 +214,6 @@ public class MixingPageViewModel : INotifyPropertyChanged
     /// <param name="volume">number from 0 to 1</param>
     public void ChangeVolume(char player, float volume)
     {
-        /*if (player == 'A')
-        {
-            _currentVolumeA = volume;
-        }
-        else
-        {
-            _currentVolumeB = volume;
-        }*/
         GetPlayer(player).Output.Volume = volume;
     }
 
