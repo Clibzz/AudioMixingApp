@@ -7,7 +7,7 @@ public class FlangerEffect : ISampleProvider
     private readonly int delaySamples;
     private readonly float[] delayBuffer;
     private int delayBufferPosition;
-    private float flangerFactor;
+    public float FlangerFactor;
 
     public FlangerEffect(ISampleProvider source, float flangerFactor)
     {
@@ -15,7 +15,7 @@ public class FlangerEffect : ISampleProvider
         this.source = source;
 
         //Adjustable factor to adjust intensivity of flanger. Min = 0.0, Max = 1.0
-        this.flangerFactor = Math.Max(0.0f, Math.Min(1.0f, flangerFactor));
+        this.FlangerFactor = Math.Max(0.0f, Math.Min(1.0f, flangerFactor));
 
         // Set delay time in milliseconds
         int delayMilliseconds = 20; 
@@ -37,7 +37,7 @@ public class FlangerEffect : ISampleProvider
     public void AdjustFlangerFactor(float factor)
     {
         //valid range (0.0 to 1.0)
-        this.flangerFactor = Math.Max(0.0f, Math.Min(1.0f, factor));
+        this.FlangerFactor = Math.Max(0.0f, Math.Min(1.0f, factor));
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public class FlangerEffect : ISampleProvider
         {
             float input = buffer[offset + n];
             // Calculate modulation value with sinus
-            float modulation = (float)Math.Sin(2 * Math.PI * flangerFactor * n / source.WaveFormat.SampleRate);
+            float modulation = (float)Math.Sin(2 * Math.PI * FlangerFactor * n / source.WaveFormat.SampleRate);
 
             // Calculates amount of delayed samples
             int modulatedDelaySamples = delaySamples + (int)(modulation * delaySamples / 2);

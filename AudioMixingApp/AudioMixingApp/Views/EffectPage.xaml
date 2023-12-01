@@ -5,22 +5,43 @@
              Title="Effecten"
              BackgroundColor="#424242">
 
-    <VerticalStackLayout Padding="100,50,100,100">
-        <Label Text="Effecten" FontSize="Large" FontAttributes="Bold"/>
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="About">
+            <MenuFlyoutItem Text="About" Clicked="AboutPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
 
-        <Grid BackgroundColor="#292929" Padding="50">
-            <Label Grid.Row="0" HeightRequest="800" Text="Reverb" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider HeightRequest="785" WidthRequest="800" HorizontalOptions="CenterAndExpand"></Slider>
-            <Label HeightRequest="800" Text="25" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="700" Text="Filter" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider HeightRequest="685" WidthRequest="800" HorizontalOptions="CenterAndExpand"></Slider>
-            <Label HeightRequest="700" Text="25" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="600" Text="BPM" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider HeightRequest="585" WidthRequest="800" HorizontalOptions="CenterAndExpand"></Slider>
-            <Label HeightRequest="600" Text="25" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="500" Text="Flanger" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider HeightRequest="485" WidthRequest="800" HorizontalOptions="CenterAndExpand"></Slider>
-            <Label HeightRequest="500" Text="25" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+    <VerticalStackLayout
+    Spacing="25"
+    Padding="30,0"
+    VerticalOptions="Start">
+
+        <Label 
+        Margin="20"
+        Text="Filters"
+        TextColor="White"
+        FontSize="32"
+        FontAttributes="Bold"
+        HorizontalOptions="Center" />
+
+        <Grid BackgroundColor="Grey" Padding="50" ColumnDefinitions="150, *, 100">
+            <Label Grid.Column="0" HeightRequest="800" Text="Reverb" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Slider Grid.Column="1" HeightRequest="785" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="0.3" Value="{Binding ReverbFactor}" ValueChanged="ReverbSlider_OnValueChanged"></Slider>
+            <Label Grid.Column="2" HeightRequest="800" Text="{Binding ReverbFactor}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+            <Label Grid.Row="0" HeightRequest="700" Text="Highs" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Slider Grid.Column="1" HeightRequest="685" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding HighValue}" ValueChanged="HighsSlider_OnValueChanged"></Slider>
+            <Label Grid.Column="2" HeightRequest="700" Text="{Binding HighValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+            <Label Grid.Column="0"  HeightRequest="600" Text="Mids" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Slider Grid.Column="1" HeightRequest="585" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding MidValue}" ValueChanged="MidsSlider_OnValueChanged"></Slider>
+            <Label Grid.Column="2" HeightRequest="600" Text="{Binding MidValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+            <Label Grid.Row="0" HeightRequest="500" Text="Lows" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Slider Grid.Column="1" HeightRequest="485" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding LowValue}" ValueChanged="LowsSlider_OnValueChanged"></Slider>
+            <Label Grid.Column="2" HeightRequest="500" Text="{Binding LowValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+            <Label Grid.Row="0" HeightRequest="400" Text="Flanger" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+            <Slider Grid.Column="1" HeightRequest="385" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding FlangerFactor}" ValueChanged="FlangerSlider_OnValueChanged"></Slider>
+            <Label Grid.Column="2" HeightRequest="400" Text="{Binding FlangerFactor}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
         </Grid>
     </VerticalStackLayout>
+
 </ContentPage>

@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using AudioMixingApp.Models;
@@ -18,6 +19,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
     private readonly System.Timers.Timer _timer;
     private readonly Player _playerA, _playerB;
+    
+    public ObservableCollection<Song> PlayerAQueue { get; } = new();
+    public ObservableCollection<Song> PlayerBQueue { get; } = new();
 
     public MixingPageViewModel()
     {
@@ -29,6 +33,42 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         _playerA = new Player();
         _playerB = new Player();
+
+        _playerA.QueueUpdated += UpdateQueueA;
+        _playerB.QueueUpdated += UpdateQueueB;
+
+        _playerA.NextSongEvent += (_, _) => PlaySound('A');
+        _playerB.NextSongEvent += (_, _) => PlaySound('B');
+    }
+    
+    /// <summary>
+    /// Event to trigger when queue A should be updated on the frontend
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void UpdateQueueA(object sender, EventArgs e)
+    {
+        PlayerAQueue.Clear();
+        foreach (var item in _playerA.SongQueue)
+        {
+            PlayerAQueue.Add(item);
+        }
+        OnPropertyChanged(nameof(PlayerAQueue));
+    }
+    
+    /// <summary>
+    /// Event to trigger when queue B should be updated on the frontend
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void UpdateQueueB(object sender, EventArgs e)
+    {
+        PlayerBQueue.Clear();
+        foreach (var item in _playerB.SongQueue)
+        {
+            PlayerBQueue.Add(item);
+        }
+        OnPropertyChanged(nameof(PlayerBQueue));
     }
 
     /// <summary>
@@ -44,6 +84,11 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         return playerChar == 'A' ? _playerA : _playerB;
     }
+
+    public void DeleteFromQueue(char playerChar, int id)
+    {
+        GetPlayer(playerChar).RemoveFromQueue(id);
+    }
     
     //Property changed event to update the frontend
     public event PropertyChangedEventHandler PropertyChanged;
@@ -53,15 +98,16 @@ public class MixingPageViewModel : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
+    public PlaybackState GetPlaybackState(char playerChar)
+    {
+        return GetPlayer(playerChar).Output.PlaybackState;
+    }
+
     //////////////////////////////////////
     ////// PLAYBACK FUNCTIONALITIES //////
     //////////////////////////////////////
 
-    /// <summary>
-    /// Play the song and update the slider values and labels
-    /// </summary>
-    /// <param name="playerChar">'A' or 'B'</param>
-    public void PlaySound(char playerChar)
+    public void PlaySoundWithPauseCheck(char playerChar)
     {
         Player player = GetPlayer(playerChar);
         //Play or pause if a song is already playing
@@ -71,45 +117,62 @@ public class MixingPageViewModel : INotifyPropertyChanged
         }
         else
         {
-            //Get a song from the queue
-            player.PlaySongFromQueue();
+            PlaySound(playerChar);
+        }
+    }
 
-            //If it couldn't get a song from the queue, it means the queue is empty, so stop.
-            if (player.PlayingSong == null) return;
+    /// <summary>
+    /// Play the song and update the slider values and labels
+    /// </summary>
+    /// <param name="playerChar">'A' or 'B'</param>
+    private void PlaySound(char playerChar)
+    {
+        Player player = GetPlayer(playerChar);
 
-            int totalTime = (int)player.PlayingSong.TotalTime.TotalSeconds;
-            string totalTimeString = player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
+        //Get a song from the queue
+        player.PlaySongFromQueue();
+
+        //If it couldn't get a song from the queue, it means the queue is empty, so stop.
+        if (player.PlayingSong == null) return;
+
+        PauseSliderUpdatesA = false;
+        PauseSliderUpdatesB = false;
+
+        int totalTime = (int)player.PlayingSong.TotalTime.TotalSeconds;
+        string totalTimeString = player.PlayingSong.TotalTime.ToString(@"hh\:mm\:ss");
+
+        Trace.WriteLine(player.PlayingSong.TotalTime.TotalSeconds);
+        Trace.WriteLine(totalTimeString);
+
+        if (playerChar == 'A')
+        {
+            TotalTimeA = totalTime;
+            TotalTimeStringA = totalTimeString;
+        }
+        else
+        {
+            TotalTimeB = totalTime;
+            TotalTimeStringB = totalTimeString;
+        }
+
+        _timer.Elapsed += (sender, eventArgs) =>
+        {
+            if (PauseSliderUpdatesA) return;
+
+            int currentTime = (int)player.PlayingSong.CurrentTime.TotalSeconds;
+            string currentTimeString = player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
 
             if (playerChar == 'A')
             {
-                TotalTimeA = totalTime;
-                TotalTimeStringA = totalTimeString;
+                CurrentTimeA = currentTime;
+                CurrentTimeStringA = currentTimeString;
             }
             else
             {
-                TotalTimeB = totalTime;
-                TotalTimeStringB = totalTimeString;
+                CurrentTimeB = currentTime;
+                CurrentTimeStringB = currentTimeString;
             }
-
-            _timer.Elapsed += (sender, eventArgs) =>
-            {
-                if (PauseSliderUpdatesA) return;
-
-                int currentTime = (int)player.PlayingSong.CurrentTime.TotalSeconds;
-                string currentTimeString = player.PlayingSong.CurrentTime.ToString(@"hh\:mm\:ss");
-
-                if (playerChar == 'A')
-                {
-                    CurrentTimeA = currentTime;
-                    CurrentTimeStringA = currentTimeString;
-                }
-                else
-                {
-                    CurrentTimeB = currentTime;
-                    CurrentTimeStringB = currentTimeString;
-                }
-            };
-        }
+        };
     }
 
     /// <summary>
@@ -168,6 +231,21 @@ public class MixingPageViewModel : INotifyPropertyChanged
     public void SkipSong(char player)
     {
         GetPlayer(player).SkipSong();
+        if (GetPlayer(player).SongQueue.Count == 0)
+        {
+            if (player == 'A')
+            {
+                CurrentTimeA = TotalTimeA;
+                CurrentTimeStringA = _totalTimeStringA;
+                PauseSliderUpdatesA = true;
+            }
+            else
+            {
+                CurrentTimeB = TotalTimeB;
+                CurrentTimeStringB = _totalTimeStringB;
+                PauseSliderUpdatesB = true;
+            }
+        }
     }
 
     //////////////////////

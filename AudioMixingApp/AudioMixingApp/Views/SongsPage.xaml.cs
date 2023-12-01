@@ -170,12 +170,9 @@ namespace AudioMixingApp.Views
             // Here u get the selected song object
             Song selectedSong = (Song)clickedButton.BindingContext;
 
-            //get filepath
-            string FilePath = selectedSong.FilePath;
-
             if (_player != null)
             {
-                _player.AddToQueue(FilePath);
+                _player.AddToQueue(selectedSong);
            
                 //To check if its added to the queue
                 //int numberOfItemsInQueue = _player.SongQueue.Count;

@@ -11,6 +11,10 @@ public class Equalizer : ISampleProvider
     private readonly BiQuadFilter _midFilter;
     private readonly BiQuadFilter _highFilter;
 
+    public float HighValue;
+    public float MidValue;
+    public float LowValue;
+
     public Equalizer(ISampleProvider source)
     {
         _source = source;
@@ -42,18 +46,21 @@ public class Equalizer : ISampleProvider
         }
     }
 
-    public void SetLows(int value)
+    public void SetLows(float value)
     {
         _lowFilter.SetPeakingEq(_source.WaveFormat.SampleRate, 100, 1, value);
+        LowValue = value;
     }
 
-    public void SetMids(int value)
+    public void SetMids(float value)
     {
-        _lowFilter.SetPeakingEq(_source.WaveFormat.SampleRate, 1000, 1, value);
+        _midFilter.SetPeakingEq(_source.WaveFormat.SampleRate, 1000, 1, value);
+        MidValue = value;
     }
-
-    public void SetHighs(int value)
+    
+    public void SetHighs(float value)
     {
-        _lowFilter.SetPeakingEq(_source.WaveFormat.SampleRate, 5000, 1, value);
+        _highFilter.SetPeakingEq(_source.WaveFormat.SampleRate, 5000, 1, value);
+        HighValue = value;
     }
 }
