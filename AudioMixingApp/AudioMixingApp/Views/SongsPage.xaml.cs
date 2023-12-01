@@ -183,7 +183,7 @@ namespace AudioMixingApp.Views
             public List<Song> Songs { get; set; } = new List<Song>();
         }
 
-        private async void Button_OnClicked(object sender, EventArgs e)
+        private async void AddToQueue_OnClicked(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
 
@@ -206,6 +206,11 @@ namespace AudioMixingApp.Views
             }
         }
 
+        /// <summary>
+        /// Add a song to a playlist
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public async void PlaylistBtn_OnClicked(Object sender, EventArgs e)
         {
             string playlistName = await Application.Current.MainPage.DisplayPromptAsync("New Playlist", "Enter the playlist name", "OK", "Cancel", keyboard: Keyboard.Text);
