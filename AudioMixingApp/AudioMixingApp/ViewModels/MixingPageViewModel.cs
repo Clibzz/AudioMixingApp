@@ -83,9 +83,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
         return playerChar == 'A' ? _playerA : _playerB;
     }
 
-    public void DeleteFromQueue(char playerChar, string path)
+    public void DeleteFromQueue(char playerChar, int id)
     {
-        GetPlayer(playerChar).RemoveFromQueue(path);
+        GetPlayer(playerChar).RemoveFromQueue(id);
     }
     
     //Property changed event to update the frontend

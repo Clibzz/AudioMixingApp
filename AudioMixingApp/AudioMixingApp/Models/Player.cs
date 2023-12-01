@@ -7,19 +7,25 @@ public class Player
 {
     // The output device.
     public WaveOutEvent Output { get; set; } = new();
+    
+    // Event triggered when the next song should play.
     public event EventHandler<StoppedEventArgs> NextSongEvent;
-
 
     // The song.
     public AudioFileReader PlayingSong { get; set; }
 
     // The queue for the songs.
     public Queue<Song> SongQueue = new();
+    
+    // Event triggered when the queue should be updated on the frontend
     public event EventHandler QueueUpdated;
 
     public ReverbEffect Reverb {  get; set; }
     public Equalizer Equalizer { get; set; }
     public FlangerEffect Flanger { get; set; }
+
+    // Counter to give the songs in the queue a unique number
+    private int _idCounter;
 
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
@@ -30,20 +36,23 @@ public class Player
         // Gets the path to the song.
         if (!Directory.Exists(song.FilePath))
         {
-            // Adds the path to the song to the queue.
-            SongQueue.Enqueue(song);
+            // Add the song to the queue as a new song object.
+            SongQueue.Enqueue(new Song() {Artist = song.Artist, FilePath = song.FilePath, Id = _idCounter, Title = song.Title, Duration = song.Duration});
+            _idCounter++;
+            
+            //Update the queue on the frontend
+            OnQueueUpdated();
         }
-        OnQueueUpdated();
     }
 
     /// <summary>
     /// Method <c>RemoveFromQueue</c> removes a specific song from the queue.
     /// </summary>
-    /// <param name="filepath">the file path of the mp3 file that represents the song.</param>
+    /// <param name="id">the id of the mp3 file that represents the song.</param>
     /// source: https://kodify.net/csharp/queue/remove/
-    public void RemoveFromQueue(string filepath)
+    public void RemoveFromQueue(int id)
     {
-        SongQueue = new(SongQueue.Where(song => song.FilePath != filepath));
+        SongQueue = new(SongQueue.Where(song => song.Id != id));
         OnQueueUpdated();
     }
 
@@ -57,7 +66,9 @@ public class Player
 
         // Get the next song in the queue.
         Song song = SongQueue.Dequeue();
+        //Update the queue on the frontend
         OnQueueUpdated();
+        
         // If the function gets called while a song is playing, stop playing the song so that the next song can play.
         if (PlayingSong != null)
         {
