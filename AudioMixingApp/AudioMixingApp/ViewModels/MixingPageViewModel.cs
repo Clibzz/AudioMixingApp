@@ -34,6 +34,9 @@ public class MixingPageViewModel : INotifyPropertyChanged
 
         _playerA.QueueUpdated += UpdateQueueA;
         _playerB.QueueUpdated += UpdateQueueB;
+        
+        _playerA.TitleUpdated += UpdateSongTitleA;
+        _playerB.TitleUpdated += UpdateSongTitleB;
 
         _playerA.NextSongEvent += (_, _) => PlaySound('A');
         _playerB.NextSongEvent += (_, _) => PlaySound('B');
@@ -338,4 +341,20 @@ public class MixingPageViewModel : INotifyPropertyChanged
             }
         }
     }
+
+    private void UpdateSongTitleA(object sender, EventArgs e)
+    {
+        SongTitleA = $"{_playerA.CurrentSong.Title} - {_playerA.CurrentSong.Artist}";
+        OnPropertyChanged(nameof(SongTitleA));
+    }
+    
+    private void UpdateSongTitleB(object sender, EventArgs e)
+    {
+        SongTitleB = $"{_playerB.CurrentSong.Title} - {_playerB.CurrentSong.Artist}";
+        OnPropertyChanged(nameof(SongTitleB));
+    }
+
+    public string SongTitleA { get; set; } = "<No song playing>";
+
+    public string SongTitleB { get; set; } = "<No song playing>";
 }
