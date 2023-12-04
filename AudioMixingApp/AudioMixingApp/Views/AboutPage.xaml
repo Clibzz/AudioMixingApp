@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioMixingApp.Views.AboutPage"
+             Title="About"
+             BackgroundColor="#424242">
+
+    <VerticalStackLayout Padding="100,50,100,100">
+        <Label Text="About" FontSize="Large" FontAttributes="Bold"/>
+        <Border Grid.Column="0" Stroke="#9DAAAF" StrokeThickness="1" HorizontalOptions="Center">
+            <Grid RowDefinitions=".40*, .60*" BackgroundColor="#292929" HeightRequest="500">
+                <Label Grid.Row="0" Text="AudioMixingApp" TextColor="White" FontSize="64" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
+                <Label Grid.Row="1" Text="Created by Victor Peters, Yannieck Blaauw, Monique Sabong and Chris Klunder" TextColor="White" FontSize="32" HorizontalTextAlignment="Center"></Label>
+            </Grid>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AudioMixingApp.Views.PlaylistPage"
+             Title="Playlist"
+             BackgroundColor="#424242">
+
+    <ScrollView>
+        <StackLayout Padding="100,50,100,100">
+            <Label Text="Playlists" FontSize="Large" FontAttributes="Bold"/>
+            <CollectionView BackgroundColor="#292929" ItemsSource="{Binding PlaylistsCollection}" x:Name="collectionView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Border Grid.Column="0" Stroke="#9DAAAF" StrokeThickness="1" HorizontalOptions="Center">
+                                <StackLayout Margin="10" FlowDirection="LeftToRight">
+                                    <Label Text="{Binding Name}" FontSize="Large" TextColor="LightGray" FontAttributes="Bold" Margin="10,0,0,10" />
+                                    <ListView ItemsSource="{Binding Songs}" HeightRequest="200">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout Margin="0" Padding="0">
+                                                        <Frame BorderColor="Black" BackgroundColor="DimGray" CornerRadius="5">
+                                                            <StackLayout Margin="10, 5, 15, 5">
+                                                                <Label TextColor="White" Text="{Binding Title}" FontSize="Medium" />
+                                                                <Label TextColor="White" Text="{Binding Artist}" FontSize="Small" />
+                                                            </StackLayout>
+                                                        </Frame>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackLayout>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,11 +1,16 @@
-﻿namespace AudioMixingApp;
+﻿using AudioMixingApp.Effects;
+using NAudio.Wave;
+
+namespace AudioMixingApp;
+
+using Views;
 
 public partial class App : Application
 {
-	public App()
-	{
-		InitializeComponent();
+    public App()
+    {
+        InitializeComponent();
 
-		MainPage = new AppShell();
-	}
+        MainPage = new NavigationPage(new PlayerPage());
+    }
 }
