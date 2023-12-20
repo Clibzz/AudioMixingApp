@@ -91,18 +91,16 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
-            <Slider x:Name="SliderSongMixing"
-                    VerticalOptions="Center"
+            <Slider VerticalOptions="Center"
                     WidthRequest="140"
                     Grid.Row="1"
                     Grid.Column="2"
                     Grid.ColumnSpan="2"
                     MinimumTrackColor="Blue"
                     MaximumTrackColor="HotPink"
-                    Maximum="1.0" 
-                    Minimum="0.0" 
-                    Value="0.5"
-                    ValueChanged="FadeSlider_OnDragCompleted"/>
+                    Minimum="0" 
+                    Maximum="1"
+                    ValueChanged="FadeSlider_OnValueChanged"/>
             
             <Label Text="{Binding SongTitleB}"
                    Grid.Row="1"

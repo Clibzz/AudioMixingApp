@@ -1,5 +1,6 @@
 using AudioMixingApp.Effects;
 using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace AudioMixingApp.Models;
 
@@ -14,6 +15,8 @@ public class Player
 
     // The song.
     public AudioFileReader PlayingSong { get; set; }
+
+    private readonly DirectSoundOut _directSoundOut;
     
     //Current playing song
     public Song CurrentSong;
@@ -34,6 +37,11 @@ public class Player
 
     // Counter to give the songs in the queue a unique number
     private int _idCounter;
+
+    public Player(DirectSoundOut directSoundOut)
+    {
+        _directSoundOut = directSoundOut;
+    }
 
     /// <summary>
     /// Method <c>AddToQueue</c> adds a song to the queue.
@@ -80,7 +88,7 @@ public class Player
         // If the function gets called while a song is playing, stop playing the song so that the next song can play.
         if (PlayingSong != null)
         {
-            Output.Stop();
+            _directSoundOut.Stop();
         }
 
         // Prepare the song for playback.
@@ -98,14 +106,19 @@ public class Player
         Flanger = new FlangerEffect(Equalizer, 0.0f);
         // Add pitchshifter effect.
         Pitchshifter = new PitchshiftEffect(Flanger, 1.0f);
-        Output.Init(Pitchshifter);
+
+        // List<ISampleProvider> list = new List<ISampleProvider> { Pitchshifter };
+        // MixingSampleProvider mixer = new MixingSampleProvider(list);
+        // _directSoundOut.
 
         // Start playback of the queued song.
-        Output.Play();
+        
+        // Output.Play();
+        _directSoundOut.Play();
 
         // Subscribe to the PlaybackStopped event to go to the next song if the song has ended using recursion.
         // source: https://stackoverflow.com/questions/11272872/naudio-how-to-tell-playback-is-completed
-        Output.PlaybackStopped += NextSongEvent;
+        _directSoundOut.PlaybackStopped += NextSongEvent;
     }
     
     /// <summary>

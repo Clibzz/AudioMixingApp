@@ -51,9 +51,9 @@ public partial class PlayerPage
         Navigation.PushAsync(new PlaylistPage());
     }
 
-    private void FadeSlider_OnDragCompleted(object sender, ValueChangedEventArgs e)
+    private void FadeSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
     {
-        _viewModel.AudioFade((float)e.NewValue);
+        _viewModel.AudioFade(e.NewValue);
     }
 
     //////////////////////

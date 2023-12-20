@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using AudioMixingApp.Models;
 using NAudio.Wave;
+using NAudio.Wave.SampleProviders;
 
 namespace AudioMixingApp.ViewModels;
 
@@ -23,6 +24,8 @@ public class PlayerPageViewModel : INotifyPropertyChanged
     public ObservableCollection<Song> PlayerAQueue { get; } = new();
     public ObservableCollection<Song> PlayerBQueue { get; } = new();
 
+    public readonly DirectSoundOut DirectSoundOut = new(DirectSoundOut.DSDEVID_DefaultPlayback);
+
     public PlayerPageViewModel()
     {
         _timer = new System.Timers.Timer
@@ -30,9 +33,11 @@ public class PlayerPageViewModel : INotifyPropertyChanged
             Interval = 100
         };
         _timer.Start();
-
-        _playerA = new Player();
-        _playerB = new Player();
+        
+        MixingSampleProvider mixer = new MixingSampleProvider(new ISampleProvider[] {null, null});
+        DirectSoundOut.Init(mixer);
+        _playerA = new Player(DirectSoundOut);
+        _playerB = new Player(DirectSoundOut);
 
         _playerA.QueueUpdated += UpdateQueueA;
         _playerB.QueueUpdated += UpdateQueueB;
@@ -191,13 +196,32 @@ public class PlayerPageViewModel : INotifyPropertyChanged
         }
     }
 
-    public void AudioFade(float value)
+    public void AudioFade(double value)
     {
-        float newVolumeA = _currentVolumeA * (1.0f - (float)value);
-        float newVolumeB = _currentVolumeB * ((float)value);
-     
-        ChangeVolume('A', newVolumeA);
-        ChangeVolume('B', newVolumeB);
+        Trace.WriteLine("Value: " + value);
+        
+        double newVolumeA = 1 - value;
+        double newVolumeB = value;
+
+        Trace.WriteLine("A: " + newVolumeA);
+        Trace.WriteLine("B: " + newVolumeB);
+        
+        
+        GetPlayer('A').Output.Volume = (float)newVolumeA;
+        GetPlayer('B').Output.Volume = (float)newVolumeB;
+        
+        Trace.WriteLine(GetPlayer('A').Output);
+        Trace.WriteLine(GetPlayer('B').Output);
+
+        
+        Trace.WriteLine("A vol: " + GetPlayer('A').Output.Volume);
+        Trace.WriteLine("B vol: " + GetPlayer('B').Output.Volume);
+        
+        // float newVolumeA = _currentVolumeA * (1.0f - (float)value);
+        // float newVolumeB = _currentVolumeB * ((float)value);
+
+        // ChangeVolume('A', newVolumeA);
+        // ChangeVolume('B', newVolumeB);
     }
 
     /// <summary>
