@@ -85,6 +85,7 @@ public class Player
 
         // Prepare the song for playback.
         PlayingSong = new(song.FilePath);
+        PlayingSong.Volume = 0.5f;
         
         // Make a reference to the currently playing song and trigger an event to update it to the frontend
         CurrentSong = song;
