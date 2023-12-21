@@ -207,7 +207,10 @@ public class PlayerPageViewModel : INotifyPropertyChanged
     /// <param name="volume">number from 0 to 1</param>
     public void ChangeVolume(char player, float volume)
     {
-        GetPlayer(player).Output.Volume = volume;
+        if (GetPlayer(player).PlayingSong != null)
+        {
+            GetPlayer(player).PlayingSong.Volume = volume;
+        }
     }
 
     /// <summary>

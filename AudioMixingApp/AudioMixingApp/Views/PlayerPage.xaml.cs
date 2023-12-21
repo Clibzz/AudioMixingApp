@@ -75,6 +75,7 @@ public partial class PlayerPage
     private void VolumeSliderA_OnDragCompleted(object sender, ValueChangedEventArgs e)
     {
         _viewModel.ChangeVolume('A', (float)e.NewValue);
+        _viewModel.GetPlayer('A').currentVolume = (float)e.NewValue;
     }
     
     private void PlayButtonA_Clicked(object sender, EventArgs e)
@@ -140,6 +141,7 @@ public partial class PlayerPage
     private void VolumeSliderB_OnDragCompleted(object sender, ValueChangedEventArgs e)
     {
         _viewModel.ChangeVolume('B', (float)e.NewValue);
+        _viewModel.GetPlayer('B').currentVolume = (float)e.NewValue;
     }
     
     private void PlayButtonB_Clicked(object sender, EventArgs e)

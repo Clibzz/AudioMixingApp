@@ -102,7 +102,7 @@
                     Maximum="1.0" 
                     Minimum="0.0" 
                     Value="0.5"
-                    ValueChanged="FadeSlider_OnDragCompleted"/>
+                    />
             
             <Label Text="{Binding SongTitleB}"
                    Grid.Row="1"
