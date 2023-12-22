@@ -29,7 +29,8 @@
             Grid.Row="0">
             <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
                                  x:Name="CircleParent">
-                <Image Source="djpanel.png"
+                <Label FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,10" TextColor="RoyalBlue">Player A</Label>
+                <Image Source="djpanelA.png"
                        WidthRequest="120"
                        HeightRequest="120"
                        HorizontalOptions="Center"
@@ -46,9 +47,10 @@
                     WidthRequest="185"
                     HeightRequest="29"
                     Rotation="-90"
-                    Maximum="1.0" 
+                    Maximum="1.0"
                     Minimum="0.0" 
                     ValueChanged="VolumeSliderA_OnDragCompleted" Value="0.5"/>
+                <Label Rotation="90" Padding="0, 40, 0, 0" HorizontalOptions="Center" VerticalOptions="Center">Volume A</Label>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
@@ -57,13 +59,15 @@
                         WidthRequest="185"
                         HeightRequest="29"
                         Rotation="-90"
-                        Maximum="1.0" 
+                        Maximum="1.0"
                         Minimum="0.0" 
-                        ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5"/>
+                        ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5" />
+                <Label Rotation="-90" Padding="0, 40, 0, 0" HorizontalOptions="Center" VerticalOptions="Center">Volume B</Label>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Image Source="djpanel.png"
+                <Label FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,10" TextColor="HotPink">Player B</Label>
+                <Image Source="djpanelB.png"
                        WidthRequest="120"
                        HeightRequest="120"
                        HorizontalOptions="Center"
@@ -75,14 +79,16 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             
-            <ImageButton Source="filter.png"
-                         WidthRequest="40"
-                         HeightRequest="40"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         Grid.Row="1"
-                         Grid.Column="0"
-                         Clicked="EffectPageButtonA_OnClicked"/>
+            <VerticalStackLayout HorizontalOptions="Fill"
+                                 VerticalOptions="Center"
+                                 Grid.Row="1"
+                                 Grid.Column="0">
+                <ImageButton Source="filter.png"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Clicked="EffectPageButtonA_OnClicked" />
+                <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
+            </VerticalStackLayout>
 
             <Label Text="{Binding SongTitleA}"
                    Grid.Row="1"
@@ -99,7 +105,7 @@
                     Grid.Row="1"
                     Grid.Column="2"
                     Grid.ColumnSpan="2"
-                    MinimumTrackColor="Blue"
+                    MinimumTrackColor="RoyalBlue"
                     MaximumTrackColor="HotPink"
                     Maximum="1.0" 
                     Minimum="0.0" 
@@ -116,14 +122,16 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
-            <ImageButton Source="filter.png"
-                         WidthRequest="40"
-                         HeightRequest="40"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         Grid.Row="1"
-                         Grid.Column="5"
-                         Clicked="EffectPageButtonB_OnClicked"/>
+            <VerticalStackLayout HorizontalOptions="Fill"
+                                 VerticalOptions="Center"
+                                 Grid.Row="1"
+                                 Grid.Column="5">
+                <ImageButton Source="filter.png"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Clicked="EffectPageButtonB_OnClicked" />
+                <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
+            </VerticalStackLayout>
 
             <Label Grid.Row="2" 
                    Grid.Column="0" 
