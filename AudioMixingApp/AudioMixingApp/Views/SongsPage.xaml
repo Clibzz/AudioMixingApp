@@ -20,8 +20,9 @@
                                 <Label FontSize="Large" Text="{Binding Title}" />
                                 <Label FontSize="Medium" Text="{Binding Artist}" TextColor="Pink"/>
                                 <HorizontalStackLayout>
-                                    <Button Text="Add to Queue" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="AddToQueue_OnClicked"></Button>
-                                    <Button Text="Add to Playlist" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start"></Button>
+                                    <Button Text="Add to Queue A" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="AddToQueueA_OnClicked"></Button>
+                                    <Button Text="Add to Queue B" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="AddToQueueB_OnClicked"></Button>
+                                    <Button Text="Add to Playlist" Margin="20,10,0,20" WidthRequest="150" HorizontalOptions="Start"></Button>
                                 </HorizontalStackLayout>
                             </StackLayout>
                         </Border>
