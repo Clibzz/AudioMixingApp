@@ -54,7 +54,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Songs\" />
 	  <Compile Update="Views\EffectPage.xaml.cs">
 	    <DependentUpon>EffectPage.xaml</DependentUpon>
 	  </Compile>
