@@ -12,12 +12,13 @@ namespace AudioMixingApp.Views
 {
     public partial class SongsPage : ContentPage
     {
-        private readonly Player _player;
+        private readonly Player _playerA, _playerB;
         public SongsViewModel viewModel;
 
-        public SongsPage(Player player)
+        public SongsPage(Player playerA, Player playerB)
         {
-            _player = player;
+            _playerA = playerA;
+            _playerB = playerB;
             InitializeComponent();
             BindingContext = new SongsViewModel();
             viewModel = new SongsViewModel();
@@ -190,25 +191,22 @@ namespace AudioMixingApp.Views
         {
             public List<Song> Songs { get; set; } = new List<Song>();
         }
-
+        
         /// <summary>
         /// Button for adding a song to a queue. A or B
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void AddToQueue_OnClicked(object sender, EventArgs e)
+        /// <param name="sender">The button component</param>
+        /// <param name="player">The player to add to</param>
+        private async void AddToQueue(object sender, Player player)
         {
             Button clickedButton = (Button)sender;
 
             // Here u get the selected song object
             Song selectedSong = (Song)clickedButton.BindingContext;
 
-            if (_player != null)
+            if (player != null)
             {
-                _player.AddToQueue(selectedSong);
-           
-                //To check if its added to the queue
-                //int numberOfItemsInQueue = _player.SongQueue.Count;
+                player.AddToQueue(selectedSong);
 
                 //Alert that song has been added to the queue
                 await DisplayAlert("Success", $"{selectedSong.Title} is added to the queue successfully.", "OK");
@@ -217,6 +215,16 @@ namespace AudioMixingApp.Views
             {
                 await DisplayAlert("Error", "Failed to add song to the queue.", "OK");
             }
+        }
+        
+        private void AddToQueueA_OnClicked(object sender, EventArgs e)
+        {
+            AddToQueue(sender, _playerA);
+        }
+        
+        private void AddToQueueB_OnClicked(object sender, EventArgs e)
+        {
+            AddToQueue(sender, _playerB);
         }
 
         /// <summary>

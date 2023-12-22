@@ -31,14 +31,9 @@ public partial class PlayerPage
         DjPanel.WidthRequest = DjPanel.Height * 2.5;
     }
     
-    private void SongsPageButtonA_OnClicked(object sender, EventArgs e)
+    private void SongsPageButton_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SongsPage(_viewModel.GetPlayer('A')));
-    }
-    
-    private void SongsPageButtonB_OnClicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new SongsPage(_viewModel.GetPlayer('B')));
+        Navigation.PushAsync(new SongsPage(_viewModel.GetPlayer('A'), _viewModel.GetPlayer('B')));
     }
 
     private void AboutPageButton_OnClicked(object sender, EventArgs e)
