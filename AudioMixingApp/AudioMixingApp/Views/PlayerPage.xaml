@@ -41,7 +41,8 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Slider VerticalOptions="FillAndExpand"
+                <Slider x:Name="VolumeASlider"
+                    VerticalOptions="FillAndExpand"
                     WidthRequest="185"
                     HeightRequest="29"
                     Rotation="-90"
@@ -51,7 +52,8 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Slider VerticalOptions="FillAndExpand"
+                <Slider x:Name="VolumeBSlider"
+                        VerticalOptions="FillAndExpand"
                         WidthRequest="185"
                         HeightRequest="29"
                         Rotation="-90"
@@ -91,7 +93,7 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
-            <Slider x:Name="SliderSongMixing"
+            <Slider x:Name="FadeSlider"
                     VerticalOptions="Center"
                     WidthRequest="140"
                     Grid.Row="1"
@@ -102,6 +104,7 @@
                     Maximum="1.0" 
                     Minimum="0.0" 
                     Value="0.5"
+                    ValueChanged="FadeSlider_OnValueChanged"
                     />
             
             <Label Text="{Binding SongTitleB}"

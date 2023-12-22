@@ -191,13 +191,16 @@ public class PlayerPageViewModel : INotifyPropertyChanged
         }
     }
 
-    public void AudioFade(float value)
+    public void AudioFade(float value, float volA, float volB)
     {
-        float newVolumeA = _currentVolumeA * (1.0f - (float)value);
-        float newVolumeB = _currentVolumeB * ((float)value);
+        float newVolumeA = value;
+        float newVolumeB = 1 - value;
+        
+        // float newVolumeA = _currentVolumeA * (1.0f - (float)value);
+        // float newVolumeB = _currentVolumeB * ((float)value);
      
-        ChangeVolume('A', newVolumeA);
-        ChangeVolume('B', newVolumeB);
+        ChangeVolume('A', newVolumeA * volA);
+        ChangeVolume('B', newVolumeB * volB);
     }
 
     /// <summary>
