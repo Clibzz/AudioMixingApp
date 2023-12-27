@@ -24,6 +24,30 @@ namespace AudioMixingApp.Views
             viewModel = new SongsViewModel();
         }
 
+        /// <summary>
+        /// Method that gets the meta data from the selected mp3 file
+        /// </summary>
+        /// <param name="fileResult"></param>
+        /// <returns></returns>
+        private (string Artist, string Title, TimeSpan Duration, string FilePath) GetSongMetadata(FileResult fileResult)
+        {
+            string filePath = fileResult.FullPath;
+
+            // Get metadata from the file using TagLib#
+            var file = TagLib.File.Create(filePath);
+            string artist = file.Tag.FirstPerformer;
+            string title = file.Tag.Title;
+
+            TimeSpan seconds = file.Properties.Duration;
+
+            // Format hh:mm:ss
+            string formattedDuration = $"{(int)seconds.TotalHours:D2}:{seconds.Minutes:D2}:{seconds.Seconds:D2}";
+            string format = "hh\\:mm\\:ss";
+            TimeSpan duration = TimeSpan.ParseExact(formattedDuration, format, null);
+
+            return (artist, title, duration, filePath);
+        }
+
         private async void OnAddMultipleSongsClicked(object sender, EventArgs e)
         {
             var customFileType = new FilePickerFileType(
@@ -58,22 +82,12 @@ namespace AudioMixingApp.Views
 
             foreach (FileResult fileResult in selectedFiles)
             {
-                // Get the selected file path
-                string filePath = fileResult.FullPath;
-
-                // Get metadata from the file using TagLib#
-                var file = TagLib.File.Create(filePath);
-                string artist = file.Tag.FirstPerformer;
-                string title = file.Tag.Title;
-
-                TimeSpan seconds = file.Properties.Duration;
-
-                //format hh:mm:ss
-                string formattedDuration = $"{(int)seconds.TotalHours:D2}:{seconds.Minutes:D2}:{seconds.Seconds:D2}";
-
-                string format = "hh\\:mm\\:ss";
-
-                TimeSpan duration = TimeSpan.ParseExact(formattedDuration, format, null);
+                // Get metadata of mp3 file
+                var metadata = GetSongMetadata(fileResult);
+                string artist = metadata.Artist;
+                string title = metadata.Title;
+                TimeSpan duration = metadata.Duration;
+                string filePath = metadata.FilePath;
 
                 // Save the file to this path
                 string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
@@ -86,7 +100,7 @@ namespace AudioMixingApp.Views
                 File.Copy(filePath, destinationPath, true);
 
                 // Create a new Song object
-                var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath, Duration = duration};
+                var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath, Duration = duration };
 
                 // Add to the collection
                 viewModel.Songs.Add(newSong);
@@ -96,15 +110,8 @@ namespace AudioMixingApp.Views
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private async void OnAddSongClicked(object sender, EventArgs e)
         {
-            string filePath;
-
             FileResult fileResult;
 
             do
@@ -120,43 +127,28 @@ namespace AudioMixingApp.Views
                     return; // Exit the method if the user canceled
                 }
 
-                // File validation on .mp3 extension
-                if (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase))
+                // Common functionality for checking file and MIME type
+                if (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase) ||
+                    !string.Equals(fileResult.ContentType, "audio/mpeg", StringComparison.OrdinalIgnoreCase))
                 {
-                    // Error message, wrong file
+                    // Error message, wrong file or MIME type
                     await DisplayAlert("Error", "Please select a valid .mp3 file.", "OK");
                     return;
-                }
-
-                // MIME type validation
-                if (!string.Equals(fileResult.ContentType, "audio/mpeg", StringComparison.OrdinalIgnoreCase))
-                {
-                    // Error message, wrong MIME type
-                    await DisplayAlert("Error", "Please select a valid audio file.", "OK");
-                    return; 
                 }
             }
             while (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase));
 
-            // Get the file path and save it in the existing 'filePath' variable
-            filePath = fileResult.FullPath;
-
-            var file = TagLib.File.Create(filePath);
-            string artist = file.Tag.FirstPerformer;
-            string title = file.Tag.Title;
-
-            TimeSpan seconds = file.Properties.Duration;
-
-            //format hh:mm:ss
-            string formattedDuration = $"{(int)seconds.TotalHours:D2}:{seconds.Minutes:D2}:{seconds.Seconds:D2}";
-
-            string format = "hh\\:mm\\:ss";
-
-            TimeSpan duration = TimeSpan.ParseExact(formattedDuration, format, null);
+            // get meta data of mp3 file.
+            var metadata = GetSongMetadata(fileResult);
+            string artist = metadata.Artist;
+            string title = metadata.Title;
+            TimeSpan duration = metadata.Duration;
+            string filePath = metadata.FilePath;
 
             // Save the file to this path
             string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
 
+            // If directory to save not exists, create the directory
             if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
 
             string destinationPath = Path.Combine(documentsPath, Path.GetFileName(filePath));
@@ -173,7 +165,6 @@ namespace AudioMixingApp.Views
             // add song to JSON file
             await viewModel.AddSongToJsonFile(newSong);
         }
-
 
         /// <summary>
         /// A wrapper class that encapsulates a list of songs.
@@ -238,6 +229,5 @@ namespace AudioMixingApp.Views
                 await viewModel.AddSongToPlaylist(playlistName, selectedSong);
             }
         }
-
     }
 }
