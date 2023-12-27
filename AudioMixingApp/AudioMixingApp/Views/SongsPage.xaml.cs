@@ -103,27 +103,7 @@ namespace AudioMixingApp.Views
         /// <param name="e"></param>
         private async void OnAddSongClicked(object sender, EventArgs e)
         {
-            string artist;
-            string title;
             string filePath;
-
-            do
-            {
-                artist = await DisplayPromptAsync("Add Song", "Enter Artist name:");
-
-                if (artist == null) return; // User canceled, exit method
-
-                title = await DisplayPromptAsync("Add Song", "Enter Title:");
-
-                if (title == null) return; // Check if the user canceled
-
-                // Show an error message if the artist or title is empty
-                if (string.IsNullOrWhiteSpace(artist) || string.IsNullOrWhiteSpace(title))
-                {
-                    await DisplayAlert("Error", "Please enter a valid artist and title.", "OK");
-                }
-            }
-            while (string.IsNullOrWhiteSpace(artist) || string.IsNullOrWhiteSpace(title));
 
             FileResult fileResult;
 
@@ -145,6 +125,7 @@ namespace AudioMixingApp.Views
                 {
                     // Error message, wrong file
                     await DisplayAlert("Error", "Please select a valid .mp3 file.", "OK");
+                    return;
                 }
 
                 // MIME type validation
@@ -152,7 +133,7 @@ namespace AudioMixingApp.Views
                 {
                     // Error message, wrong MIME type
                     await DisplayAlert("Error", "Please select a valid audio file.", "OK");
-                    continue; // Restart the loop to prompt the user again
+                    return; 
                 }
             }
             while (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase));
@@ -161,6 +142,9 @@ namespace AudioMixingApp.Views
             filePath = fileResult.FullPath;
 
             var file = TagLib.File.Create(filePath);
+            string artist = file.Tag.FirstPerformer;
+            string title = file.Tag.Title;
+
             TimeSpan seconds = file.Properties.Duration;
 
             //format hh:mm:ss
@@ -189,6 +173,7 @@ namespace AudioMixingApp.Views
             // add song to JSON file
             await viewModel.AddSongToJsonFile(newSong);
         }
+
 
         /// <summary>
         /// A wrapper class that encapsulates a list of songs.
