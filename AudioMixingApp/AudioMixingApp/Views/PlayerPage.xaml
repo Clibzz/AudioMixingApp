@@ -194,14 +194,15 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"
                 BackgroundColor="#292929">
-                
+
                 <StackLayout
                     Grid.Column="0"
                     Grid.Row="0"
                     VerticalOptions="Fill"
                     HorizontalOptions="Fill"
                     BackgroundColor="Black"
-                    Padding="10">
+                    Padding="10"
+                    HeightRequest="150">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -245,7 +246,8 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="Black"
-                    Padding="10">
+                    Padding="10"
+                    HeightRequest="150">
 
                     <ListView HasUnevenRows="True" HorizontalOptions="FillAndExpand" ItemsSource="{Binding PlayerBQueue}">
                         <ListView.Header>
