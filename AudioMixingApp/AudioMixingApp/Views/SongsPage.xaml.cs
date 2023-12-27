@@ -146,6 +146,14 @@ namespace AudioMixingApp.Views
                     // Error message, wrong file
                     await DisplayAlert("Error", "Please select a valid .mp3 file.", "OK");
                 }
+
+                // MIME type validation
+                if (!string.Equals(fileResult.ContentType, "audio/mpeg", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Error message, wrong MIME type
+                    await DisplayAlert("Error", "Please select a valid audio file.", "OK");
+                    continue; // Restart the loop to prompt the user again
+                }
             }
             while (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase));
 
