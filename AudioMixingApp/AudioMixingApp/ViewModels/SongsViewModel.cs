@@ -9,7 +9,7 @@ namespace AudioMixingApp.ViewModels
     public class SongsViewModel
     {
         ObservableCollection<Song> songs;
-        string jsonPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
+        string jsonPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\songs.json";
 
         public ObservableCollection<Song> Songs
         {
