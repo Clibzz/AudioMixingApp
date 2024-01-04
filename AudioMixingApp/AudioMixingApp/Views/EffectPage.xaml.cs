@@ -1,6 +1,5 @@
 using AudioMixingApp.Models;
 using AudioMixingApp.ViewModels;
-using System.Diagnostics;
 
 namespace AudioMixingApp.Views;
 
@@ -53,5 +52,41 @@ public partial class EffectPage : ContentPage
     private void PitchshiftSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
     {
         _player.Pitchshifter.ChangePitchValue((float)e.NewValue);
+    }
+
+    private void ReverbResetButton_OnClicked(object sender, EventArgs e)
+    {
+        _player.Reverb.ReverbFactor = 0.0f;
+        ((EffectPageViewModel)BindingContext).ReverbFactor = 0.0f;
+    }
+
+    private void HighsResetButton_OnClicked(object sender, EventArgs e)
+    {
+        _player.Equalizer.SetHighs(0.0f);
+        ((EffectPageViewModel)BindingContext).HighValue = 0.0f;
+    }
+
+    private void MidsResetButton_OnClicked(object sender, EventArgs e)
+    {
+        _player.Equalizer.SetMids(0.0f);
+        ((EffectPageViewModel)BindingContext).MidValue = 0.0f;
+    }
+
+    private void LowsResetButton_OnClicked(object sender, EventArgs e)
+    {
+        _player.Equalizer.SetLows(0.0f);
+        ((EffectPageViewModel)BindingContext).LowValue = 0.0f;
+    }
+
+    private void FlangerResetButton_OnClicked(object sender, EventArgs e)
+    {
+        _player.Flanger.AdjustFlangerFactor(0.0f);
+        ((EffectPageViewModel)BindingContext).FlangerFactor = 0.0f;
+    }
+
+    private void PitchShiftResetButton_OnClicked(object sender, EventArgs e)
+    {
+        _player.Pitchshifter.ChangePitchValue(1.0f);
+        ((EffectPageViewModel)BindingContext).PitchValue = 1.0f;
     }
 }

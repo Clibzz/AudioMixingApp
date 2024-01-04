@@ -19,7 +19,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
 
     public double ReverbFactor
     {
-        get => Math.Round(_reverbFactor, 4);
+        get => Math.Round(_reverbFactor, 2);
         set
         {
             if (_reverbFactor != value)
@@ -32,7 +32,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
 
     public double HighValue
     {
-        get => Math.Round(_highValue, 4);
+        get => Math.Round(_highValue, 2);
         set
         {
             if (_highValue != value)
@@ -45,7 +45,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
 
     public double MidValue
     {
-        get => Math.Round(_midValue, 4);
+        get => Math.Round(_midValue, 2);
         set
         {
             if (_midValue != value)
@@ -58,7 +58,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
 
     public double LowValue
     {
-        get => Math.Round(_lowValue, 4);
+        get => Math.Round(_lowValue, 2);
         set
         {
             if (_lowValue != value)
@@ -71,7 +71,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
 
     public double FlangerFactor
     {
-        get => Math.Round(_flangerFactor, 4);
+        get => Math.Round(_flangerFactor, 2);
         set
         {
             if (_flangerFactor != value)
@@ -84,7 +84,7 @@ public class EffectPageViewModel : INotifyPropertyChanged
 
     public double PitchValue
     {
-        get => Math.Round(_pitchValue, 4);
+        get => Math.Round(_pitchValue, 2);
         set
         {
             if (_pitchValue != value)
