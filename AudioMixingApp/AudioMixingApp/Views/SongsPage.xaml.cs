@@ -227,6 +227,7 @@ namespace AudioMixingApp.Views
             if (playlistName != null)
             {
                 await viewModel.AddSongToPlaylist(playlistName, selectedSong);
+                await DisplayAlert("Success", $"{selectedSong.Title} is added to the playlist {playlistName} successfully.", "OK");
             }
         }
     }
