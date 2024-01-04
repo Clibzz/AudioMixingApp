@@ -78,7 +78,7 @@ namespace AudioMixingApp.ViewModels
         /// <returns></returns>
         public async Task AddSongToJsonFile(Song song)
         {
-            string jsonFilePath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
+            string jsonFilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\songs.json";
 
             // Check if json file exists
             if (!File.Exists(jsonFilePath))
@@ -131,7 +131,7 @@ namespace AudioMixingApp.ViewModels
         /// <returns>A task that writes the json data to the playlists.json file</returns>
         public async Task AddSongToPlaylist(string playlistName, Song song)
         {
-            string jsonFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AudioMixingApp", "playlists.json");
+            string jsonFilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\playlists.json";
             // Read the playlist.json file
             string existingJsonContent = File.Exists(jsonFilePath) ? await File.ReadAllTextAsync(jsonFilePath) : "";
 
