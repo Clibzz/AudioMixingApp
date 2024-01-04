@@ -90,7 +90,7 @@ namespace AudioMixingApp.Views
                 string filePath = metadata.FilePath;
 
                 // Save the file to this path
-                string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
+                string documentsPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\Songs\";
 
                 if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
 
@@ -146,7 +146,7 @@ namespace AudioMixingApp.Views
             string filePath = metadata.FilePath;
 
             // Save the file to this path
-            string documentsPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\Songs\";
+            string documentsPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\Songs\";
 
             // If directory to save not exists, create the directory
             if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
