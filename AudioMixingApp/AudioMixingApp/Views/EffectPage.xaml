@@ -25,25 +25,43 @@
         FontAttributes="Bold"
         HorizontalOptions="Center" />
 
-        <Grid BackgroundColor="Grey" Padding="50" ColumnDefinitions="150, *, 100">
-            <Label Grid.Column="0" HeightRequest="800" Text="Reverb" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider Grid.Column="1" HeightRequest="785" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="0.35" Value="{Binding ReverbFactor}" ValueChanged="ReverbSlider_OnValueChanged"></Slider>
-            <Label Grid.Column="2" HeightRequest="800" Text="{Binding ReverbFactor}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="700" Text="EQ Highs" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider Grid.Column="1" HeightRequest="685" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding HighValue}" ValueChanged="HighsSlider_OnValueChanged"></Slider>
-            <Label Grid.Column="2" HeightRequest="700" Text="{Binding HighValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Column="0"  HeightRequest="600" Text="EQ Mids" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider Grid.Column="1" HeightRequest="585" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding MidValue}" ValueChanged="MidsSlider_OnValueChanged"></Slider>
-            <Label Grid.Column="2" HeightRequest="600" Text="{Binding MidValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="500" Text="EQ Lows" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider Grid.Column="1" HeightRequest="485" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding LowValue}" ValueChanged="LowsSlider_OnValueChanged"></Slider>
-            <Label Grid.Column="2" HeightRequest="500" Text="{Binding LowValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="400" Text="Flanger" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider Grid.Column="1" HeightRequest="385" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding FlangerFactor}" ValueChanged="FlangerSlider_OnValueChanged"></Slider>
-            <Label Grid.Column="2" HeightRequest="400" Text="{Binding FlangerFactor}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
-            <Label Grid.Row="0" HeightRequest="300" Text="Pitchshift" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
-            <Slider Grid.Column="1" HeightRequest="285" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="2" Value="{Binding PitchValue}" ValueChanged="PitchshiftSlider_OnValueChanged"></Slider>
-            <Label Grid.Column="2" HeightRequest="300" Text="{Binding PitchValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+        <Grid BackgroundColor="Grey" Padding="50" RowDefinitions="70, 70, 70, 70, 70, 70">
+            <Grid ColumnDefinitions="150, *, 100, 125" Grid.Row="0">
+                <Label Grid.Column="0" Text="Reverb" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+                <Slider Grid.Column="1" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="0.35" Value="{Binding ReverbFactor}" ValueChanged="ReverbSlider_OnValueChanged"></Slider>
+                <Label Grid.Column="2" Text="{Binding ReverbFactor}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+                <Button Grid.Column="3" Text="reset" TextColor="Black" FontSize="32" VerticalOptions="Start" Clicked="ReverbResetButton_OnClicked"></Button>
+            </Grid>
+            <Grid ColumnDefinitions="150, *, 100, 125" Grid.Row="1">
+                <Label Grid.Row="0" Text="EQ Highs" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+                <Slider Grid.Column="1" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding HighValue}" ValueChanged="HighsSlider_OnValueChanged"></Slider>
+                <Label Grid.Column="2" Text="{Binding HighValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+                <Button Grid.Column="3" Text="reset" TextColor="Black" FontSize="32" VerticalOptions="Start" Clicked="HighsResetButton_OnClicked"></Button>
+            </Grid>
+            <Grid ColumnDefinitions="150, *, 100, 125" Grid.Row="2">
+                <Label Grid.Column="0" Text="EQ Mids" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+                <Slider Grid.Column="1" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding MidValue}" ValueChanged="MidsSlider_OnValueChanged"></Slider>
+                <Label Grid.Column="2" Text="{Binding MidValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+                <Button Grid.Column="3" Text="reset" TextColor="Black" FontSize="32" VerticalOptions="Start" Clicked="MidsResetButton_OnClicked"></Button>
+            </Grid>
+            <Grid ColumnDefinitions="150, *, 100, 125" Grid.Row="3">
+                <Label Grid.Row="0" Text="EQ Lows" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+                <Slider Grid.Column="1" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding LowValue}" ValueChanged="LowsSlider_OnValueChanged"></Slider>
+                <Label Grid.Column="2" Text="{Binding LowValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+                <Button Grid.Column="3" Text="reset" TextColor="Black" FontSize="32" VerticalOptions="Start" Clicked="LowsResetButton_OnClicked"></Button>
+            </Grid>
+            <Grid ColumnDefinitions="150, *, 100, 125" Grid.Row="4">
+                <Label Grid.Row="0" Text="Flanger" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+                <Slider Grid.Column="1" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="10" Value="{Binding FlangerFactor}" ValueChanged="FlangerSlider_OnValueChanged"></Slider>
+                <Label Grid.Column="2" Text="{Binding FlangerFactor}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+                <Button Grid.Column="3" Text="reset" TextColor="Black" FontSize="32" VerticalOptions="Start" Clicked="FlangerResetButton_OnClicked"></Button>
+            </Grid>
+            <Grid ColumnDefinitions="150, *, 100, 125" Grid.Row="5">
+                <Label Grid.Row="0" Text="Pitchshift" TextColor="White" FontSize="32" HorizontalTextAlignment="Start"></Label>
+                <Slider Grid.Column="1" WidthRequest="800" HorizontalOptions="CenterAndExpand" Minimum="0" Maximum="2" Value="{Binding PitchValue}" ValueChanged="PitchshiftSlider_OnValueChanged"></Slider>
+                <Label Grid.Column="2" Text="{Binding PitchValue}" TextColor="White" FontSize="32" HorizontalTextAlignment="End"/>
+                <Button Grid.Column="3" Text="reset" TextColor="Black" FontSize="32" VerticalOptions="Start" Clicked="PitchShiftResetButton_OnClicked"></Button>
+            </Grid>
         </Grid>
     </VerticalStackLayout>
 
