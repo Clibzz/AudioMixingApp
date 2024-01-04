@@ -8,8 +8,7 @@
         /// <returns>a JSON string containing the playlists</returns>
         public static string GetJSON()
         {
-            
-            string path = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\playlists.json";
+            string path = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\playlists.json";
             return File.ReadAllText(path);
         }
     }
