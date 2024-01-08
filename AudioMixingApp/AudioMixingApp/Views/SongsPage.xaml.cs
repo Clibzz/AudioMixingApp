@@ -29,23 +29,27 @@ namespace AudioMixingApp.Views
         /// </summary>
         /// <param name="fileResult"></param>
         /// <returns></returns>
-        private (string Artist, string Title, TimeSpan Duration, string FilePath) GetSongMetadata(FileResult fileResult)
+        private void GetSongMetadata(FileResult fileResult, out string artist, out string title, out TimeSpan duration, out string filePath)
         {
-            string filePath = fileResult.FullPath;
+            filePath = fileResult.FullPath;
 
-            // Get metadata from the file using TagLib#
+            // Get metadata from the file using TagLib
             var file = TagLib.File.Create(filePath);
-            string artist = file.Tag.FirstPerformer;
-            string title = file.Tag.Title;
+            artist = file.Tag.FirstPerformer;
+            title = file.Tag.Title;
+
+            //If metadata artist or title is null then return message
+            if (string.IsNullOrEmpty(artist) || string.IsNullOrEmpty(title))
+            {
+                DisplayAlert("Metadata Missing", "Artist or Title is missing in the metadata.", "OK");
+            }
 
             TimeSpan seconds = file.Properties.Duration;
 
             // Format hh:mm:ss
             string formattedDuration = $"{(int)seconds.TotalHours:D2}:{seconds.Minutes:D2}:{seconds.Seconds:D2}";
             string format = "hh\\:mm\\:ss";
-            TimeSpan duration = TimeSpan.ParseExact(formattedDuration, format, null);
-
-            return (artist, title, duration, filePath);
+            duration = TimeSpan.ParseExact(formattedDuration, format, null);
         }
 
         private async void OnAddMultipleSongsClicked(object sender, EventArgs e)
@@ -82,12 +86,17 @@ namespace AudioMixingApp.Views
 
             foreach (FileResult fileResult in selectedFiles)
             {
+                string artist, title, filePath;
+                TimeSpan duration;
+
                 // Get metadata of mp3 file
-                var metadata = GetSongMetadata(fileResult);
-                string artist = metadata.Artist;
-                string title = metadata.Title;
-                TimeSpan duration = metadata.Duration;
-                string filePath = metadata.FilePath;
+                GetSongMetadata(fileResult, out artist, out title, out duration, out filePath);
+
+                // Skip processing if metadata is missing
+                if (string.IsNullOrEmpty(artist) || string.IsNullOrEmpty(title))
+                {
+                    continue;
+                }
 
                 // Save the file to this path
                 string documentsPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\Songs\";
@@ -119,11 +128,11 @@ namespace AudioMixingApp.Views
                 var customFileType = new FilePickerFileType(
                 new Dictionary<DevicePlatform, IEnumerable<string>>
                 {
-                    { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
-                    { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
-                    { DevicePlatform.WinUI, new[] { ".mp3" } },
-                    { DevicePlatform.Tizen, new[] { "audio/*" } },
-                    { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
+                { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
+                { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
+                { DevicePlatform.WinUI, new[] { ".mp3" } },
+                { DevicePlatform.Tizen, new[] { "audio/*" } },
+                { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
                 });
 
                 var options = new PickOptions
@@ -148,35 +157,41 @@ namespace AudioMixingApp.Views
                     await DisplayAlert("Error", "Please select a valid .mp3 file.", "OK");
                     return;
                 }
+
+                // Get metadata of mp3 file.
+                string artist, title, filePath;
+                TimeSpan duration;
+
+                GetSongMetadata(fileResult, out artist, out title, out duration, out filePath);
+
+                // Check if metadata is missing
+                if (string.IsNullOrEmpty(artist) || string.IsNullOrEmpty(title))
+                {
+                    // Exit the method if metadata is missing
+                    return;
+                }
+
+                // Save the file to this path
+                string documentsPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\Songs\";
+
+                // If directory to save not exists, create the directory
+                if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
+
+                string destinationPath = Path.Combine(documentsPath, Path.GetFileName(filePath));
+
+                // Copy the file to the destination path
+                File.Copy(filePath, destinationPath, true);
+
+                // Add to the collection
+                var viewModel = (SongsViewModel)BindingContext;
+                var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath, Duration = duration };
+
+                viewModel.Songs.Add(newSong);
+
+                // add song to JSON file
+                await viewModel.AddSongToJsonFile(newSong);
             }
             while (!fileResult.FileName.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase));
-
-            // get meta data of mp3 file.
-            var metadata = GetSongMetadata(fileResult);
-            string artist = metadata.Artist;
-            string title = metadata.Title;
-            TimeSpan duration = metadata.Duration;
-            string filePath = metadata.FilePath;
-
-            // Save the file to this path
-            string documentsPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\Songs\";
-
-            // If directory to save not exists, create the directory
-            if (!Directory.Exists(documentsPath)) Directory.CreateDirectory(documentsPath);
-
-            string destinationPath = Path.Combine(documentsPath, Path.GetFileName(filePath));
-
-            // Copy the file to the destination path
-            File.Copy(filePath, destinationPath, true);
-
-            // Add to the collection
-            var viewModel = (SongsViewModel)BindingContext;
-            var newSong = new Song { Title = title, Artist = artist, FilePath = destinationPath, Duration = duration };
-
-            viewModel.Songs.Add(newSong);
-
-            // add song to JSON file
-            await viewModel.AddSongToJsonFile(newSong);
         }
 
         /// <summary>
