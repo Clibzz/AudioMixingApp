@@ -50,6 +50,8 @@
                     Maximum="1.0"
                     Minimum="0.0" 
                     Margin="40,0,0,0"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     ValueChanged="VolumeSliderA_OnDragCompleted" Value="0.5"/>
 
                 <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
@@ -72,6 +74,8 @@
                     Maximum="1.0"
                     Minimum="0.0" 
                     Margin="0,0,40,0"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5" />
 
                 <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
@@ -163,6 +167,8 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     Value="{Binding CurrentTimeA}"
                     Maximum="{Binding TotalTimeA}"
                     DragStarted="ProgressbarSliderA_OnDragStarted"
@@ -185,6 +191,8 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     Value="{Binding CurrentTimeB}"
                     Maximum="{Binding TotalTimeB}"
                     DragStarted="ProgressbarSliderB_OnDragStarted"
