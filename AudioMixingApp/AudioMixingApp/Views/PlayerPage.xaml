@@ -36,9 +36,9 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonA_Clicked"></ImageButton>
-                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonA_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked" BackgroundColor="#424242"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
@@ -73,9 +73,9 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonB_Clicked"></ImageButton>
-                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonB_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked" BackgroundColor="#424242"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             
@@ -86,7 +86,7 @@
                 <ImageButton Source="filter.png"
                              WidthRequest="40"
                              HeightRequest="40"
-                             Clicked="EffectPageButtonA_OnClicked" />
+                             Clicked="EffectPageButtonA_OnClicked" BackgroundColor="#424242" />
                 <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
             </VerticalStackLayout>
 
@@ -129,7 +129,7 @@
                 <ImageButton Source="filter.png"
                              WidthRequest="40"
                              HeightRequest="40"
-                             Clicked="EffectPageButtonB_OnClicked" />
+                             Clicked="EffectPageButtonB_OnClicked" BackgroundColor="#424242" />
                 <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
             </VerticalStackLayout>
 
