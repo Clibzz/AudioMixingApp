@@ -49,20 +49,38 @@
                     Rotation="-90"
                     Maximum="1.0"
                     Minimum="0.0" 
+                    Margin="40,0,0,0"
                     ValueChanged="VolumeSliderA_OnDragCompleted" Value="0.5"/>
-                <Label Rotation="90" Padding="0, 40, 0, 0" HorizontalOptions="Center" VerticalOptions="Center">Volume A</Label>
+
+                <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Volume A"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
+
+
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
                 <Slider x:Name="VolumeBSlider"
-                        VerticalOptions="FillAndExpand"
-                        WidthRequest="185"
-                        HeightRequest="29"
-                        Rotation="-90"
-                        Maximum="1.0"
-                        Minimum="0.0" 
-                        ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5" />
-                <Label Rotation="-90" Padding="0, 40, 0, 0" HorizontalOptions="Center" VerticalOptions="Center">Volume B</Label>
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="185"
+                    HeightRequest="29"
+                    Rotation="-90"
+                    Maximum="1.0"
+                    Minimum="0.0" 
+                    Margin="0,0,40,0"
+                    ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5" />
+
+                <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Volume B"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
