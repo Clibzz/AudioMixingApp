@@ -116,10 +116,23 @@ namespace AudioMixingApp.Views
 
             do
             {
-                fileResult = await FilePicker.PickAsync(new PickOptions
+                var customFileType = new FilePickerFileType(
+                new Dictionary<DevicePlatform, IEnumerable<string>>
+                {
+                    { DevicePlatform.iOS, new[] { "public.audio", "public.mp3" } },
+                    { DevicePlatform.Android, new[] { "audio/mpeg", "audio/*", "application/octet-stream" } },
+                    { DevicePlatform.WinUI, new[] { ".mp3" } },
+                    { DevicePlatform.Tizen, new[] { "audio/*" } },
+                    { DevicePlatform.macOS, new[] { "public.audio", "public.mp3" } },
+                });
+
+                var options = new PickOptions
                 {
                     PickerTitle = "Pick an audio file",
-                });
+                    FileTypes = customFileType,
+                };
+
+                fileResult = await FilePicker.PickAsync(options);
 
                 // Check if the user canceled
                 if (fileResult == null)
