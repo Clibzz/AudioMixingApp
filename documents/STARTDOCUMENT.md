@@ -43,7 +43,7 @@ De onderste helft van het scherm is de queue. Hier in staan alle nummers die mom
 
 ### Song page
 
-Een nummer kan in de queue gezet worden in de song pagina. Deze pagina is te vinden door op de Import knop de drukken. Op de song pagina kan één of meerdere nummers geimporteerd worden. Dit is te doen met de knoppen links bovenin. Hier wordt gevraagd om een titel, artiest en mp3 bestand in het geval dan de enkele song import. Bij de multiple song import wordt de metedata van het mp3 bestand gebruikt om deze data uit te halen. Het grootste gedeelte van de pagina is het song overzicht. Hierin staan alle geimporteerde nummers. Elk geimporteerde nummer heeft een knop om ze aan de queue toe te voegen.
+Een nummer kan in de queue gezet worden in de song pagina. Deze pagina is te vinden door op de Import knop de drukken. Op de song pagina kan een nummer toegevoegd worden aan de queue door op "Add to queue A/B" te drukken. Dit voegt het nummer toe aan queue A of B afhankelijk van de knop. Op de song pagina kan één of meerdere nummers geimporteerd worden. Dit is te doen met de knoppen links bovenin. Hier wordt gevraagd om een titel, artiest en mp3 bestand in het geval dan de enkele song import. Bij de multiple song import wordt de metedata van het mp3 bestand gebruikt om deze data uit te halen. Het grootste gedeelte van de pagina is het song overzicht. Hierin staan alle geimporteerde nummers. Elk geimporteerde nummer heeft een knop om ze aan de queue toe te voegen.
 
 ### Filter page
 
