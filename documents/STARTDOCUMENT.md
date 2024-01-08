@@ -41,13 +41,15 @@ Onder de afbeelding van de record player staan de audio controls. Deze komen vri
 
 De onderste helft van het scherm is de queue. Hier in staan alle nummers die momenteel in de wachtrij staan om afgespeeld te worden. Ook hier is weer een linker (A) en rechter (B) queue voor beide players. Ook kan een nummer handmatig uit de queue gehaald worden. Als een nummer aan de beurt is in de queue (boven aan staat) en het nummer wordt afgespeeld wordt het nummer automatisch uit de queue gehaald.
 
-### Song page
+### Song pagina
 
 Een nummer kan in de queue gezet worden in de song pagina. Deze pagina is te vinden door op de Import knop de drukken. Op de song pagina kan een nummer toegevoegd worden aan de queue door op "Add to queue A/B" te drukken. Dit voegt het nummer toe aan queue A of B afhankelijk van de knop. Op de song pagina kan één of meerdere nummers geimporteerd worden. Dit is te doen met de knoppen links bovenin. Hier wordt gevraagd om een titel, artiest en mp3 bestand in het geval dan de enkele song import. Bij de multiple song import wordt de metedata van het mp3 bestand gebruikt om deze data uit te halen. Het grootste gedeelte van de pagina is het song overzicht. Hierin staan alle geimporteerde nummers. Elk geimporteerde nummer heeft een knop om ze aan de queue toe te voegen.
 
-### Filter page
+### Playlist pagina
 
-Zoals eerder genoemd, deze pagina is naar toe te navigeren door op de knop te drukken naast de nummer titel en artiest op de player page. Op deze pagina zijn verschillende effecten aan te passen. De effecten zijn: reverb, equalizer (highs, mids en lows boosts), flanger en pitchshift. Deze effecten staan uitgelegd in het hoofdstuk [Geluidseffecten](#geluidseffecten). De effecten kunnen alleen aangepast worden als er momenteel een nummer speelt. Effecten worden gereset wanneer een nieuw nummer afspeeld.
+### Filter pagina
+
+Zoals eerder genoemd, deze pagina is naar toe te navigeren door op de knop te drukken naast de nummer titel en artiest op de player pagina. Op deze pagina zijn verschillende effecten aan te passen. De effecten zijn: reverb, equalizer (highs, mids en lows boosts), flanger en pitchshift. Deze effecten staan uitgelegd in het hoofdstuk [Geluidseffecten](#geluidseffecten). De effecten kunnen alleen aangepast worden als er momenteel een nummer speelt. Effecten worden gereset wanneer een nieuw nummer afspeeld.
 
 ## Klassendiagram
 
