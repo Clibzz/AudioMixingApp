@@ -36,9 +36,9 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonA_Clicked"></ImageButton>
-                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonA_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked" BackgroundColor="#424242"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
@@ -49,20 +49,42 @@
                     Rotation="-90"
                     Maximum="1.0"
                     Minimum="0.0" 
+                    Margin="40,0,0,0"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     ValueChanged="VolumeSliderA_OnDragCompleted" Value="0.5"/>
-                <Label Rotation="90" Padding="0, 40, 0, 0" HorizontalOptions="Center" VerticalOptions="Center">Volume A</Label>
+
+                <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Volume A"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
+
+
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
                 <Slider x:Name="VolumeBSlider"
-                        VerticalOptions="FillAndExpand"
-                        WidthRequest="185"
-                        HeightRequest="29"
-                        Rotation="-90"
-                        Maximum="1.0"
-                        Minimum="0.0" 
-                        ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5" />
-                <Label Rotation="-90" Padding="0, 40, 0, 0" HorizontalOptions="Center" VerticalOptions="Center">Volume B</Label>
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="185"
+                    HeightRequest="29"
+                    Rotation="-90"
+                    Maximum="1.0"
+                    Minimum="0.0" 
+                    Margin="0,0,40,0"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
+                    ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5" />
+
+                <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Volume B"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
@@ -73,9 +95,9 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonB_Clicked"></ImageButton>
-                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonB_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked" BackgroundColor="#424242"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             
@@ -86,7 +108,7 @@
                 <ImageButton Source="filter.png"
                              WidthRequest="40"
                              HeightRequest="40"
-                             Clicked="EffectPageButtonA_OnClicked" />
+                             Clicked="EffectPageButtonA_OnClicked" BackgroundColor="#424242" />
                 <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
             </VerticalStackLayout>
 
@@ -129,7 +151,7 @@
                 <ImageButton Source="filter.png"
                              WidthRequest="40"
                              HeightRequest="40"
-                             Clicked="EffectPageButtonB_OnClicked" />
+                             Clicked="EffectPageButtonB_OnClicked" BackgroundColor="#424242" />
                 <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
             </VerticalStackLayout>
 
@@ -145,6 +167,8 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     Value="{Binding CurrentTimeA}"
                     Maximum="{Binding TotalTimeA}"
                     DragStarted="ProgressbarSliderA_OnDragStarted"
@@ -167,6 +191,8 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     Value="{Binding CurrentTimeB}"
                     Maximum="{Binding TotalTimeB}"
                     DragStarted="ProgressbarSliderB_OnDragStarted"

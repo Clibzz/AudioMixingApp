@@ -6,13 +6,16 @@
 
     <ScrollView>
         <StackLayout Padding="100,50,100,100">
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,0,0,20">
                 <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
                 <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="5" Clicked="OnAddSongClicked" HeightRequest="35"/>
                 <Button Text="Add Multiple Songs" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="5" Clicked="OnAddMultipleSongsClicked" HeightRequest="35"/>
             </HorizontalStackLayout>
             
             <CollectionView ItemsSource="{Binding Songs}">
+                <CollectionView.EmptyView>
+                    <Label BackgroundColor="#292929" Padding="20" Text="There currently are no songs to display" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border Stroke="#2F2F2F" StrokeThickness="1" HorizontalOptions="Center" WidthRequest="1720">
