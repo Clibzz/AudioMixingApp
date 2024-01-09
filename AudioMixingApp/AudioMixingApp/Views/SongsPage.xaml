@@ -1,7 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AudioMixingApp.Views.SongsPage"
-             Title="SongsPage"
+             Title="Songs"
              BackgroundColor="#3F3F3F">
 
     <ScrollView>
@@ -19,7 +19,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border Stroke="#2F2F2F" StrokeThickness="1" HorizontalOptions="Center" WidthRequest="1720">
-                            <StackLayout BackgroundColor="#5F5F5F" Padding="10,10,10,10" FlowDirection="LeftToRight">
+                            <StackLayout BackgroundColor="#5F5F5F" Padding="10" FlowDirection="LeftToRight">
                                 <Label FontSize="Large" Text="{Binding Title}" />
                                 <Label FontSize="Medium" Text="{Binding Artist}" TextColor="Pink"/>
                                 <HorizontalStackLayout>

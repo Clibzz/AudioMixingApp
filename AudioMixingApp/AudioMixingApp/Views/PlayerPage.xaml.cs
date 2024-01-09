@@ -1,6 +1,5 @@
 using AudioMixingApp.ViewModels;
 using NAudio.Wave;
-using System.Diagnostics;
 
 namespace AudioMixingApp.Views;
 
@@ -43,7 +42,7 @@ public partial class PlayerPage
 
     private void PlaylistsPageButton_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new PlaylistPage());
+        Navigation.PushAsync(new PlaylistPage(_viewModel.GetPlayer('A'), _viewModel.GetPlayer('B')));
     }
 
     private void FadeSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
