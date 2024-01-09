@@ -8,9 +8,10 @@
     <VerticalStackLayout Padding="100,50,100,100">
         <Label Text="About" FontSize="Large" FontAttributes="Bold"/>
         <Border Grid.Column="0" Stroke="#9DAAAF" StrokeThickness="1" HorizontalOptions="Center">
-            <Grid RowDefinitions=".40*, .60*" BackgroundColor="#292929" HeightRequest="500">
-                <Label Grid.Row="0" Text="AudioMixingApp" TextColor="White" FontSize="64" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"></Label>
-                <Label Grid.Row="1" Text="Created by Victor Peters, Yannieck Blaauw, Monique Sabong and Chris Klunder" TextColor="White" FontSize="32" HorizontalTextAlignment="Center"></Label>
+            <Grid RowDefinitions=".40*, .60*" BackgroundColor="#292929" HeightRequest="400">
+                <Label Grid.Row="0" Text="AudioMixingApp" TextColor="White" FontSize="64" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Start"/>
+                <Label Grid.Row="1" Text="The AudioMixingApp has been created by Victor Peters, Yannieck Blaauw, Monique Sabong and Chris Klunder for a project for C#2" TextColor="White" FontSize="32" HorizontalTextAlignment="Center"/>
+                <Label Grid.Row="1" Margin="50" Text="A seperate file has been added to the teams environment with the controls of the application" TextColor="White" FontSize="26" HorizontalTextAlignment="Center" VerticalTextAlignment="End"/>
             </Grid>
         </Border>
     </VerticalStackLayout>

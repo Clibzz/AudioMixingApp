@@ -1,14 +1,14 @@
 ﻿using AudioMixingApp.Models;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Newtonsoft.Json;
-using System.Text.Json;
 
 namespace AudioMixingApp.ViewModels
 {
     internal class PlaylistsViewModel
     {
         ObservableCollection<Playlist> playlistsCollection;
+
         public ObservableCollection<Playlist> PlaylistsCollection
         {
             get { return playlistsCollection; }

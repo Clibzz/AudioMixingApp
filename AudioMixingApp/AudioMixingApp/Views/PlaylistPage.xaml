@@ -34,6 +34,10 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
+                                    <HorizontalStackLayout Margin="10,10,0,10" HorizontalOptions="End">
+                                        <Button Text="Add to Queue A"  HorizontalOptions="EndAndExpand" Clicked="AddToQueueA_OnClicked" />
+                                        <Button Text="Add to Queue B"  HorizontalOptions="EndAndExpand" Clicked="AddToQueueB_OnClicked" />
+                                    </HorizontalStackLayout>
                                 </StackLayout>
                             </Border>
                         </Grid>

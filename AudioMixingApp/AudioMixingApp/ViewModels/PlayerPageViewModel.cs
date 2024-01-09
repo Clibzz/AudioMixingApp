@@ -1,8 +1,7 @@
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using AudioMixingApp.Models;
 using NAudio.Wave;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace AudioMixingApp.ViewModels;
 
