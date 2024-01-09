@@ -47,6 +47,8 @@ Een nummer kan in de queue gezet worden in de song pagina. Deze pagina is te vin
 
 ### Playlist pagina
 
+Een nummer kan in een afspeellijst gezet worden vanuit de song pagina. Een nummer kan worden toegevoegd door op "Add to playlist" te drukken. Hier wordt vervolgens om een afspeellijst naam gevraagd. Als een afspeellijst bestaat wordt het nummer daar aan toegevoegd. Als de afspeellijst niet bestaat wordt er een nieuwe aangemaakt met deze naam. Vervolgens krijgt de gebruiker een melding dat het nummer is toegevoegd. Dit nummer is dan terug te vinden in de afspeellijst op de afspeellijst pagina. Vanuit deze pagina kan een nummer ook toegevoegd worden aan queue A en queue B.
+
 ### Filter pagina
 
 Zoals eerder genoemd, deze pagina is naar toe te navigeren door op de knop te drukken naast de nummer titel en artiest op de player pagina. Op deze pagina zijn verschillende effecten aan te passen. De effecten zijn: reverb, equalizer (highs, mids en lows boosts), flanger en pitchshift. Deze effecten staan uitgelegd in het hoofdstuk [Geluidseffecten](#geluidseffecten). De effecten kunnen alleen aangepast worden als er momenteel een nummer speelt. Effecten worden gereset wanneer een nieuw nummer afspeeld.
