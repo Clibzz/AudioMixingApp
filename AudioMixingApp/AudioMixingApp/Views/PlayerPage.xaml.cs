@@ -68,7 +68,7 @@ public partial class PlayerPage
     
     private void VolumeSliderA_OnDragCompleted(object sender, ValueChangedEventArgs e)
     {
-        float newValue = (float)e.NewValue *  (FadeSlider != null ? 1 - (float)FadeSlider.Value : 1);
+        float newValue = (float)e.NewValue *  (FadeSlider != null ? (float)FadeSlider.Value : 1);
         
         _viewModel.ChangeVolume('A', newValue);
         _viewModel.GetPlayer('A').currentVolume = newValue;
@@ -136,7 +136,7 @@ public partial class PlayerPage
     
     private void VolumeSliderB_OnDragCompleted(object sender, ValueChangedEventArgs e)
     {  
-        float newValue = (float)e.NewValue *  (FadeSlider != null ? (float)FadeSlider.Value : 1);
+        float newValue = (float)e.NewValue *  (FadeSlider != null ? 1 - (float)FadeSlider.Value : 1);
         
         _viewModel.ChangeVolume('B', newValue);
         _viewModel.GetPlayer('B').currentVolume = newValue;
