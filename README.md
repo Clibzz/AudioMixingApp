@@ -1,6 +1,6 @@
 # AudioMixingApp
 
-[> Startdocument van **Monique Sabong**, **Yannieck Blaauw**, **Victor Peters** en **Chris Klunder**.](./documents/STARTDOCUMENT.MD)
+[> Startdocument van **Monique Sabong**, **Yannieck Blaauw**, **Victor Peters** en **Chris Klunder**.](./documents/STARTDOCUMENT.md)
 
 ## Installatie handleiding
 Hieronder staan de stappen die genomen worden om gebruik te kunnen maken van de applicatie.
