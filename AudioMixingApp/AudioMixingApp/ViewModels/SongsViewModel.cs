@@ -40,12 +40,12 @@ namespace AudioMixingApp.ViewModels
         /// loads all the songs from the json
         /// </summary>
         /// <param name="jsonFilePath"></param>
-        /// <returns></returns>
+        /// <returns>The songs from the json file</returns>
         private ObservableCollection<Song> LoadSongsFromJsonFile(string jsonFilePath)
         {
             ObservableCollection<Song> loadedSongs = new ObservableCollection<Song>();
            
-            if (File.Exists(jsonPath))
+            if (File.Exists(jsonPath))  
             {
                 string jsonContent = File.ReadAllText(jsonPath);
 
@@ -75,7 +75,7 @@ namespace AudioMixingApp.ViewModels
         /// Method that adds song(s) to the JSON file
         /// </summary>
         /// <param name="song"></param>
-        /// <returns></returns>
+        /// <returns>A task that writes the song data to the songs.json</returns>
         public async Task AddSongToJsonFile(Song song)
         {
             string jsonFilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\songs.json";
