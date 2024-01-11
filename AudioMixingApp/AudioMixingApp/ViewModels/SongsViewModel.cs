@@ -9,7 +9,7 @@ namespace AudioMixingApp.ViewModels
     public class SongsViewModel
     {
         ObservableCollection<Song> songs;
-        string jsonPath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
+        string jsonPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\songs.json";
 
         public ObservableCollection<Song> Songs
         {
@@ -40,12 +40,12 @@ namespace AudioMixingApp.ViewModels
         /// loads all the songs from the json
         /// </summary>
         /// <param name="jsonFilePath"></param>
-        /// <returns></returns>
+        /// <returns>The songs from the json file</returns>
         private ObservableCollection<Song> LoadSongsFromJsonFile(string jsonFilePath)
         {
             ObservableCollection<Song> loadedSongs = new ObservableCollection<Song>();
            
-            if (File.Exists(jsonPath))
+            if (File.Exists(jsonPath))  
             {
                 string jsonContent = File.ReadAllText(jsonPath);
 
@@ -75,10 +75,10 @@ namespace AudioMixingApp.ViewModels
         /// Method that adds song(s) to the JSON file
         /// </summary>
         /// <param name="song"></param>
-        /// <returns></returns>
+        /// <returns>A task that writes the song data to the songs.json</returns>
         public async Task AddSongToJsonFile(Song song)
         {
-            string jsonFilePath = $@"C:\Users\{Environment.UserName}\Documents\AudioMixingApp\songs.json";
+            string jsonFilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\songs.json";
 
             // Check if json file exists
             if (!File.Exists(jsonFilePath))
@@ -131,7 +131,7 @@ namespace AudioMixingApp.ViewModels
         /// <returns>A task that writes the json data to the playlists.json file</returns>
         public async Task AddSongToPlaylist(string playlistName, Song song)
         {
-            string jsonFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "AudioMixingApp", "playlists.json");
+            string jsonFilePath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\playlists.json";
             // Read the playlist.json file
             string existingJsonContent = File.Exists(jsonFilePath) ? await File.ReadAllTextAsync(jsonFilePath) : "";
 

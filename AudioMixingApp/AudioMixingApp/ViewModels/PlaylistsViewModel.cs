@@ -1,14 +1,14 @@
 ﻿using AudioMixingApp.Models;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Newtonsoft.Json;
-using System.Text.Json;
 
 namespace AudioMixingApp.ViewModels
 {
     internal class PlaylistsViewModel
     {
         ObservableCollection<Playlist> playlistsCollection;
+
         public ObservableCollection<Playlist> PlaylistsCollection
         {
             get { return playlistsCollection; }
@@ -28,26 +28,29 @@ namespace AudioMixingApp.ViewModels
 
         public PlaylistsViewModel()
         {
-            List<Playlist> playlists = JsonConvert.DeserializeObject<List<Playlist>>(Utils.GetJSON());
-            PlaylistsCollection = new ObservableCollection<Playlist>();
-            foreach (var playlist in playlists)
+            if (File.Exists($@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AudioMixingApp\playlists.json"))
             {
-                // Create a new Playlist object
-                Playlist newPlaylist = new() { Name = playlist.Name };
-
-                // Iterate through songs in the playlist and add them to the Playlist object
-                foreach (var song in playlist.Songs)
+                List<Playlist> playlists = JsonConvert.DeserializeObject<List<Playlist>>(Utils.GetJSON());
+                PlaylistsCollection = new ObservableCollection<Playlist>();
+                foreach (var playlist in playlists)
                 {
-                    newPlaylist.Songs.Add(new Song
-                    {
-                        Title = song.Title,
-                        Artist = song.Artist,
-                        FilePath = song.FilePath
-                    });
-                }
+                    // Create a new Playlist object
+                    Playlist newPlaylist = new() { Name = playlist.Name };
 
-                // Add the newly created Playlist object to the Playlists collection
-                PlaylistsCollection.Add(newPlaylist);
+                    // Iterate through songs in the playlist and add them to the Playlist object
+                    foreach (var song in playlist.Songs)
+                    {
+                        newPlaylist.Songs.Add(new Song
+                        {
+                            Title = song.Title,
+                            Artist = song.Artist,
+                            FilePath = song.FilePath
+                        });
+                    }
+
+                    // Add the newly created Playlist object to the Playlists collection
+                    PlaylistsCollection.Add(newPlaylist);
+                }
             }
         }
     }

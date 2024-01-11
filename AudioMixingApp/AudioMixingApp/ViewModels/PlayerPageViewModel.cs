@@ -1,8 +1,7 @@
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
 using AudioMixingApp.Models;
 using NAudio.Wave;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace AudioMixingApp.ViewModels;
 
@@ -191,13 +190,16 @@ public class PlayerPageViewModel : INotifyPropertyChanged
         }
     }
 
-    public void AudioFade(float value)
+    public void AudioFade(float value, float volA, float volB)
     {
-        float newVolumeA = _currentVolumeA * (1.0f - (float)value);
-        float newVolumeB = _currentVolumeB * ((float)value);
+        float newVolumeA = value;
+        float newVolumeB = 1 - value;
+        
+        // float newVolumeA = _currentVolumeA * (1.0f - (float)value);
+        // float newVolumeB = _currentVolumeB * ((float)value);
      
-        ChangeVolume('A', newVolumeA);
-        ChangeVolume('B', newVolumeB);
+        ChangeVolume('A', newVolumeA * volA);
+        ChangeVolume('B', newVolumeB * volB);
     }
 
     /// <summary>
@@ -207,7 +209,10 @@ public class PlayerPageViewModel : INotifyPropertyChanged
     /// <param name="volume">number from 0 to 1</param>
     public void ChangeVolume(char player, float volume)
     {
-        GetPlayer(player).Output.Volume = volume;
+        if (GetPlayer(player).PlayingSong != null)
+        {
+            GetPlayer(player).PlayingSong.Volume = volume;
+        }
     }
 
     /// <summary>

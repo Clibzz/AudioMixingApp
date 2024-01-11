@@ -31,6 +31,7 @@ public class Player
     public Equalizer Equalizer { get; set; }
     public FlangerEffect Flanger { get; set; }
     public PitchshiftEffect Pitchshifter { get; set; }
+    public float currentVolume = 0.5f;
 
     // Counter to give the songs in the queue a unique number
     private int _idCounter;
@@ -84,8 +85,11 @@ public class Player
         }
 
         // Prepare the song for playback.
-        PlayingSong = new(song.FilePath);
-        
+        PlayingSong = new(song.FilePath)
+        {
+            Volume = currentVolume
+        };
+
         // Make a reference to the currently playing song and trigger an event to update it to the frontend
         CurrentSong = song;
         TitleUpdated?.Invoke(this, EventArgs.Empty);

@@ -11,7 +11,11 @@
             </MenuFlyoutItem>
         </MenuBarItem>
         <MenuBarItem Text="Playlists">
-            <MenuFlyoutItem Text="Playlists">
+            <MenuFlyoutItem Text="Playlists" Clicked="PlaylistsPageButton_OnClicked">
+            </MenuFlyoutItem>
+        </MenuBarItem>
+        <MenuBarItem Text="Songs">
+            <MenuFlyoutItem Text="Songs" Clicked="SongsPageButton_OnClicked">
             </MenuFlyoutItem>
         </MenuBarItem>
     </ContentPage.MenuBarItems>
@@ -29,58 +33,88 @@
             Grid.Row="0">
             <VerticalStackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
                                  x:Name="CircleParent">
-                <Image Source="djpanel.png"
+                <Label FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,10" TextColor="RoyalBlue">Player A</Label>
+                <Image Source="djpanelA.png"
                        WidthRequest="120"
                        HeightRequest="120"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonA_Clicked"></ImageButton>
-                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonA_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton x:Name="PlayButtonA" Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonA_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonA_OnClicked" BackgroundColor="#424242"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Slider VerticalOptions="FillAndExpand"
+                <Slider x:Name="VolumeASlider"
+                    VerticalOptions="FillAndExpand"
                     WidthRequest="185"
                     HeightRequest="29"
                     Rotation="-90"
-                    Maximum="1.0" 
+                    Maximum="1.0"
                     Minimum="0.0" 
+                    Margin="40,0,0,0"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     ValueChanged="VolumeSliderA_OnDragCompleted" Value="0.5"/>
+
+                <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Volume A"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
 
+
+
             <VerticalStackLayout Grid.Row="0" Grid.Column="3" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Slider VerticalOptions="FillAndExpand"
-                        WidthRequest="185"
-                        HeightRequest="29"
-                        Rotation="-90"
-                        Maximum="1.0" 
-                        Minimum="0.0" 
-                        ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5"/>
+                <Slider x:Name="VolumeBSlider"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="185"
+                    HeightRequest="29"
+                    Rotation="-90"
+                    Maximum="1.0"
+                    Minimum="0.0" 
+                    Margin="0,0,40,0"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
+                    ValueChanged="VolumeSliderB_OnDragCompleted" Value="0.5" />
+
+                <Label Rotation="90" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Volume B"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </VerticalStackLayout>
 
             <VerticalStackLayout Grid.Row="0" Grid.Column="4" HorizontalOptions="Fill" VerticalOptions="Center">
-                <Image Source="djpanel.png"
+                <Label FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,10" TextColor="HotPink">Player B</Label>
+                <Image Source="djpanelB.png"
                        WidthRequest="120"
                        HeightRequest="120"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"/>
                 <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
-                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonB_Clicked"></ImageButton>
-                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked"></ImageButton>
-                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked"></ImageButton>
+                    <ImageButton Source="previous.png" HeightRequest="20" Clicked="PreviousButtonB_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton x:Name="PlayButtonB"  Source="play.png" HeightRequest="20" Margin="30,0" Clicked="PlayButtonB_Clicked" BackgroundColor="#424242"></ImageButton>
+                    <ImageButton Source="next.png" HeightRequest="20" Clicked="SkipButtonB_OnClicked" BackgroundColor="#424242"></ImageButton>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             
-            <ImageButton Source="filter.png"
-                         WidthRequest="40"
-                         HeightRequest="40"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         Grid.Row="1"
-                         Grid.Column="0"
-                         Clicked="EffectPageButtonA_OnClicked"/>
+            <VerticalStackLayout HorizontalOptions="Fill"
+                                 VerticalOptions="Center"
+                                 Grid.Row="1"
+                                 Grid.Column="0">
+                <ImageButton Source="filter.png"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Clicked="EffectPageButtonA_OnClicked" BackgroundColor="#424242" />
+                <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
+            </VerticalStackLayout>
 
             <Label Text="{Binding SongTitleA}"
                    Grid.Row="1"
@@ -91,18 +125,19 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
-            <Slider x:Name="SliderSongMixing"
+            <Slider x:Name="FadeSlider"
                     VerticalOptions="Center"
                     WidthRequest="140"
                     Grid.Row="1"
                     Grid.Column="2"
                     Grid.ColumnSpan="2"
-                    MinimumTrackColor="Blue"
+                    MinimumTrackColor="RoyalBlue"
                     MaximumTrackColor="HotPink"
                     Maximum="1.0" 
                     Minimum="0.0" 
                     Value="0.5"
-                    ValueChanged="FadeSlider_OnDragCompleted"/>
+                    ValueChanged="FadeSlider_OnValueChanged"
+                    />
             
             <Label Text="{Binding SongTitleB}"
                    Grid.Row="1"
@@ -113,14 +148,16 @@
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"/>
 
-            <ImageButton Source="filter.png"
-                         WidthRequest="40"
-                         HeightRequest="40"
-                         HorizontalOptions="Center"
-                         VerticalOptions="Center"
-                         Grid.Row="1"
-                         Grid.Column="5"
-                         Clicked="EffectPageButtonB_OnClicked"/>
+            <VerticalStackLayout HorizontalOptions="Fill"
+                                 VerticalOptions="Center"
+                                 Grid.Row="1"
+                                 Grid.Column="5">
+                <ImageButton Source="filter.png"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             Clicked="EffectPageButtonB_OnClicked" BackgroundColor="#424242" />
+                <Label HorizontalOptions="Center" Margin="0,5,0,0">Effects</Label>
+            </VerticalStackLayout>
 
             <Label Grid.Row="2" 
                    Grid.Column="0" 
@@ -134,6 +171,8 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     Value="{Binding CurrentTimeA}"
                     Maximum="{Binding TotalTimeA}"
                     DragStarted="ProgressbarSliderA_OnDragStarted"
@@ -156,6 +195,8 @@
                     HorizontalOptions="Fill"
                     VerticalOptions="Center" 
                     WidthRequest="200"
+                    BackgroundColor="#666666"
+                    MaximumTrackColor="#666666"
                     Value="{Binding CurrentTimeB}"
                     Maximum="{Binding TotalTimeB}"
                     DragStarted="ProgressbarSliderB_OnDragStarted"
@@ -174,8 +215,7 @@
             Grid.Row="1">
             
             <HorizontalStackLayout>
-                <Button Text="Import A" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonA_OnClicked"/>
-                <Button Text="Import B" HorizontalOptions="End" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButtonB_OnClicked"/>
+                <Button Text="Add to Queue" HorizontalOptions="Start" Margin="0,0,0,10" Padding="5" WidthRequest="150" CornerRadius="0" Clicked="SongsPageButton_OnClicked"/>
             </HorizontalStackLayout>
             <Grid
                 ColumnDefinitions="*, *"
@@ -184,14 +224,15 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"
                 BackgroundColor="#292929">
-                
+
                 <StackLayout
                     Grid.Column="0"
                     Grid.Row="0"
                     VerticalOptions="Fill"
                     HorizontalOptions="Fill"
                     BackgroundColor="Black"
-                    Padding="10">
+                    Padding="10"
+                    HeightRequest="150">
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -235,7 +276,8 @@
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
                     BackgroundColor="Black"
-                    Padding="10">
+                    Padding="10"
+                    HeightRequest="150">
 
                     <ListView HasUnevenRows="True" HorizontalOptions="FillAndExpand" ItemsSource="{Binding PlayerBQueue}">
                         <ListView.Header>

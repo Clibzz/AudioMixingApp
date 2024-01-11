@@ -1,6 +1,5 @@
 using AudioMixingApp.ViewModels;
 using NAudio.Wave;
-using System.Diagnostics;
 
 namespace AudioMixingApp.Views;
 
@@ -31,14 +30,9 @@ public partial class PlayerPage
         DjPanel.WidthRequest = DjPanel.Height * 2.5;
     }
     
-    private void SongsPageButtonA_OnClicked(object sender, EventArgs e)
+    private void SongsPageButton_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SongsPage(_viewModel.GetPlayer('A')));
-    }
-    
-    private void SongsPageButtonB_OnClicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new SongsPage(_viewModel.GetPlayer('B')));
+        Navigation.PushAsync(new SongsPage(_viewModel.GetPlayer('A'), _viewModel.GetPlayer('B')));
     }
 
     private void AboutPageButton_OnClicked(object sender, EventArgs e)
@@ -48,12 +42,12 @@ public partial class PlayerPage
 
     private void PlaylistsPageButton_OnClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new PlaylistPage());
+        Navigation.PushAsync(new PlaylistPage(_viewModel.GetPlayer('A'), _viewModel.GetPlayer('B')));
     }
 
-    private void FadeSlider_OnDragCompleted(object sender, ValueChangedEventArgs e)
+    private void FadeSlider_OnValueChanged(object sender, ValueChangedEventArgs e)
     {
-        _viewModel.AudioFade((float)e.NewValue);
+        _viewModel.AudioFade((float)e.NewValue, (float)VolumeASlider.Value, (float)VolumeBSlider.Value);
     }
 
     //////////////////////
@@ -74,7 +68,10 @@ public partial class PlayerPage
     
     private void VolumeSliderA_OnDragCompleted(object sender, ValueChangedEventArgs e)
     {
-        _viewModel.ChangeVolume('A', (float)e.NewValue);
+        float newValue = (float)e.NewValue *  (FadeSlider != null ? (float)FadeSlider.Value : 1);
+        
+        _viewModel.ChangeVolume('A', newValue);
+        _viewModel.GetPlayer('A').currentVolume = newValue;
     }
     
     private void PlayButtonA_Clicked(object sender, EventArgs e)
@@ -138,8 +135,11 @@ public partial class PlayerPage
     }
     
     private void VolumeSliderB_OnDragCompleted(object sender, ValueChangedEventArgs e)
-    {
-        _viewModel.ChangeVolume('B', (float)e.NewValue);
+    {  
+        float newValue = (float)e.NewValue *  (FadeSlider != null ? 1 - (float)FadeSlider.Value : 1);
+        
+        _viewModel.ChangeVolume('B', newValue);
+        _viewModel.GetPlayer('B').currentVolume = newValue;
     }
     
     private void PlayButtonB_Clicked(object sender, EventArgs e)

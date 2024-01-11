@@ -7,8 +7,11 @@
 
     <ScrollView>
         <StackLayout Padding="100,50,100,100">
-            <Label Text="Playlists" FontSize="Large" FontAttributes="Bold"/>
+            <Label Margin="0,0,0,20" Text="Playlists" FontSize="Large" FontAttributes="Bold"/>
             <CollectionView BackgroundColor="#292929" ItemsSource="{Binding PlaylistsCollection}" x:Name="collectionView">
+                <CollectionView.EmptyView>
+                    <Label Padding="20" Text="There currently are no playlists to display" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -31,6 +34,10 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
+                                    <HorizontalStackLayout Margin="10,10,0,10" HorizontalOptions="End">
+                                        <Button Text="Add to Queue A"  HorizontalOptions="EndAndExpand" Clicked="AddToQueueA_OnClicked" />
+                                        <Button Text="Add to Queue B"  HorizontalOptions="EndAndExpand" Clicked="AddToQueueB_OnClicked" />
+                                    </HorizontalStackLayout>
                                 </StackLayout>
                             </Border>
                         </Grid>

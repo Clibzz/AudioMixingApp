@@ -1,27 +1,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AudioMixingApp.Views.SongsPage"
-             Title="SongsPage"
+             Title="Songs"
              BackgroundColor="#3F3F3F">
 
     <ScrollView>
         <StackLayout Padding="100,50,100,100">
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Margin="0,0,0,20">
                 <Label Text="Songs" FontSize="Large" FontAttributes="Bold"/>
                 <Button Text="Add Song" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="5" Clicked="OnAddSongClicked" HeightRequest="35"/>
                 <Button Text="Add Multiple Songs" HorizontalOptions="Start" Margin="10,10,0,10" Padding="5" WidthRequest="150" CornerRadius="5" Clicked="OnAddMultipleSongsClicked" HeightRequest="35"/>
             </HorizontalStackLayout>
             
             <CollectionView ItemsSource="{Binding Songs}">
+                <CollectionView.EmptyView>
+                    <Label BackgroundColor="#292929" Padding="20" Text="There currently are no songs to display" TextColor="White" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                </CollectionView.EmptyView>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Border Stroke="#2F2F2F" StrokeThickness="1" HorizontalOptions="Center" WidthRequest="1720">
-                            <StackLayout BackgroundColor="#5F5F5F" Padding="10,10,10,10" FlowDirection="LeftToRight">
+                            <StackLayout BackgroundColor="#5F5F5F" Padding="10" FlowDirection="LeftToRight">
                                 <Label FontSize="Large" Text="{Binding Title}" />
                                 <Label FontSize="Medium" Text="{Binding Artist}" TextColor="Pink"/>
                                 <HorizontalStackLayout>
-                                    <Button Text="Add to Queue" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="AddToQueue_OnClicked"></Button>
-                                    <Button Text="Add to Playlist" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start"></Button>
+                                    <Button Text="Add to Queue A" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="AddToQueueA_OnClicked"></Button>
+                                    <Button Text="Add to Queue B" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="AddToQueueB_OnClicked"></Button>
+                                    <Button Text="Add to Playlist" Margin="0,10,0,20" WidthRequest="150" HorizontalOptions="Start" Clicked="PlaylistBtn_OnClicked"></Button>
                                 </HorizontalStackLayout>
                             </StackLayout>
                         </Border>
